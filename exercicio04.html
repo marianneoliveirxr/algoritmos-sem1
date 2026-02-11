@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+</head>
+<!-- Crie uma página que solicite ao usuário:
+
+✅ Um campo para inserir o Nome da Rua/Avenida/Vila
+✅ Um campo para inserir o Número da Casa
+✅ Um botão com o texto "Onde eu moro"
+✅ Ao clicar no botão, as seguintes mensagens devem aparecer:
+"Seu logradouro é X" (onde X é o nome da rua/avenida digitada)
+"O número do seu logradouro é Y" (onde Y é o número da casa informado) -->
+<body>
+    <h1>Onde Eu Moro </h1>
+    <p>Insira o Nome da Rua/Avenida/Vila:</p>
+    <input type="text" id="ipt_rua">
+    <p>Insira o número da casa:</p>
+    <input type="number" id="ipt_casa">
+    <br>
+    <br>
+    <button onclick="exibirEndereco()">Onde eu moro</button>
+</body>
+</html>
+<script>
+    function exibirEndereco(){
+        alert("Seu logradouro é " + ipt_rua.value + 
+        ". O número do seu logradouro é " + ipt_casa.value)
+    }
+</script>
