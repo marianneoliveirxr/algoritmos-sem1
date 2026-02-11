@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Seja bem-vindo</h1>
+    <span>Digite o seu nome:</span>
+    <input type="text" id="iptNome">     <!-- caixa de texto -->
+    <button onclick="mostrarMensagem()">Mostrar Mensagem</button> 
+<!-- onclick serve para clicar e mostra a função mencionada -->
+</body>
+</html>
+<script>
+    function mostrarMensagem(){
+        alert("Bom ju bb, " + iptNome.value + "! você é linda");  
+    //  O .value pega o valor da input iptNome
+    }
+</script>
