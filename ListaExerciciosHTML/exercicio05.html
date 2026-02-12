@@ -10,12 +10,30 @@
 ✅ Tenha um campo para inserir a sua nota na escola
 ✅ Tenha um botão "opinião da avó"
 ✅ Tenha um botão "opinião da mãe"
-✅ Ao clicar num botão "opinião da avó", abaixo dos botões, exibir "Muito bem, que neto inteligente, porque tirou X".
+✅ Ao clicar num botão "opinião da avó", abaixo dos botões, exibir "Muito bem, que neto inteligente, porquetirou X". 
 ✅ Ao clicar num botão "opinião da mãe", abaixo dos botões, exibir "Não fez mais que tua obrigação com essa nota X".
-         (Onde X é a nota que ele digitou.) -->
+(Onde X é a nota que ele digitou.) -->
 
 
 <body>
     <h1>Opinião da mãe e da avó </h1>
+    <p>Insira a nota:</p>
+    <input type="number" id="ipt_nota">
+    <br>
+    <br>
+    <button onclick="mensagemAvo()">Opinião da avó</button>
+    <span id="avo_mensagem"></span>
+    <br>
+    <br>
+    <button onclick="mensagemMae()">Opinião da mãe</button>
+    <span id="mae_mensagem"></span>
 </body>
 </html>
+<script>
+    function mensagemAvo(){
+        avo_mensagem.innerHTML = "Muito bem, que neto inteligente, porque tirou " + ipt_nota.value
+    }
+    function mensagemMae(){
+        mae_mensagem.innerHTML= "Não fez mais que tua obrigação com essa nota " + ipt_nota.value
+    }
+</script>
