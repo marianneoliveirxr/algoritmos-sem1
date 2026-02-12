@@ -23,10 +23,11 @@
  
     let media = (nota1 + nota2) / 2;  //cálculo da média com VARIÁVEL LOCAL
 
-    div_msg.innerHTML = ('A média é: ${media}'); /*nova forma de exibir o valor dentro 
-                                                  do texto sem conctenar*/
+    div_msg.innerHTML = ('A média é: ${media.toFixed(2)}'); /*nova forma de exibir o valor em 
+                                                             duas casa decimais, 
+                                                             USAR SOMENTE PARA EXIBIR*/
 
     alert("A média é " + media); // exibindo a média através do alert
     }  
-
+    
 </script>
