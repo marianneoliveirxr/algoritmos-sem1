@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operacoes Aritmeticas</title>
+</head>
+<!-- Crie um programa para calcular o ki de um guerreiro Sayajin nas diferentes formas de poder.
+
+Solicite o nome do guerreiro e seu ki normal.
+
+Ao clicar no botão "Ver ki em cada forma", exiba alertas mostrando:
+
+"O ki de NOME na forma Super Sayajin é KIx50"
+
+"O ki de NOME na forma Super Sayajin 2 é KIx100" -->
+<body>
+    <h1>O Ki dos Sayajins! </h1>
+    <p>Informe seu nome, guerreiro:</p>
+    <input type="text" id="ipt_nome">
+    <br>
+    <br>
+    <p>Informe o seu Ki:</p>
+    <input type="number" id="ipt_ki">
+    <br>
+    <br>
+    <button onclick="exibirKI()">Ver ki em cada forma</button>
+</body>
+</html>
+<script>
+    function exibirKI(){
+        alert("O KI de " + ipt_nome.value + " na forma Super Sayajin é " 
+        + (Number(ipt_ki.value)*50));
+
+        alert("O KI de " + ipt_nome.value + " na forma Super Sayajin 2 é " 
+        + (Number(ipt_ki.value)*100));
+    }
+</script>

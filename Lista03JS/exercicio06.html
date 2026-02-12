@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operacoes Aritmeticas</title>
+</head>
+<!-- Crie um programa que solicite dois números ao usuário.
+
+Adicione botões para cada operação aritmética.
+
+Ao clicar em um botão, exiba na página a operação correspondente:
+
+"A soma entre X e Y é Z"
+
+"A diferença entre X e Y é Z"
+
+"O produto entre X e Y é Z"
+
+"A razão entre X e Y é Z" -->
+<body>
+    <h1>Calculadora Básica</h1>
+    <p>Primeiro número</p>
+    <input type="number" id="ipt_n1">
+    <br>
+    <p>Segundo número</p>
+    <input type="number" id="ipt_n2">
+    <br>
+    <br>
+    <button onclick="soma()">+</button>
+    <br>
+    <br>
+    <button onclick="subtracao()">-</button>
+    <br>
+    <br>
+    <button onclick="multiplicacao()">X</button>
+    <br>
+    <br>
+    <button onclick="divisao()">/</button>
+</body>
+</html>
+<script>
+    function soma(){
+        alert("A soma entre " + ipt_n1.value + " e " + ipt_n2.value + " é de " + 
+        ipt_n1.value + ipt_n2.value);
+    }
+    function subtracao(){
+        alert("A subtração entre " + ipt_n1.value + " e " + ipt_n2.value + " é de " + 
+        ipt_n1.value - ipt_n2.value);
+    }
+    function multiplicacao(){
+        alert("A multiplicação entre " + ipt_n1.value + " e " + ipt_n2.value + " é de " + 
+        ipt_n1.value * ipt_n2.value);
+    }
+    function divisao(){
+        alert("A divisão entre " + ipt_n1.value + " e " + ipt_n2.value + " é de " + 
+        ipt_n1.value / ipt_n2.value);
+    }
+</script>

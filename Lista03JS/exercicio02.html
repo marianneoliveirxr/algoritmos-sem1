@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operacoes Aritmeticas</title>
+</head>
+<!-- Crie um programa para dividir o valor de uma pizza entre amigos.
+
+Solicite o valor da pizza e a quantidade de amigos.
+
+Ao clicar no botão "#lovePizza", exiba um alerta com a mensagem:
+
+"Cada um dos X amigos vai pagar R$Y", onde X é a quantidade de amigos e 
+Y o valor calculado por pessoa. -->
+
+<body>
+    <h1>Dividindo a Pizza!</h1>
+
+    <p>Informe o valor da pizza: </p>
+    <input type="number" id="ipt_valor">
+    <br>
+    <br>
+    <p>Informe a quantidade de amgigos:</p>
+    <input type="number" id="ipt_amigos">
+    <br>
+    <br>
+    <button onclick="dividirPizza()">#lovePizza</button>
+</body>
+</html>
+<script>
+    function dividirPizza(){
+        alert("Cada um dos " + ipt_amigos.value + " amigos vai pagar R$" + 
+        Number(ipt_valor.value) / Number(ipt_amigos.value))
+    }
+</script>

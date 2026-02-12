@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span>Nota 1:</span>
+    <input type="number" id="ipt_n1">
+    <span>Nota 2:</span>
+    <input type="number" id="ipt_n2">
+    <button onclick="calcularMedia()">Calcular Média</button>
+    <div id="div_msg">
+        
+    </div>
+</body>
+</html>
+<script>
+    function calcularMedia(){
+        div_msg.innerHTML = "A média é " + ((Number(ipt_n1.value) + Number(ipt_n2.value))/2)
+    }
+</script>

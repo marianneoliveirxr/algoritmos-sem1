@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operacoes Aritmeticas</title>
+</head>
+<!-- Um estudante recebeu o Bilhete Único de estudante pela primeira vez e deseja saber
+quanto vai economizar por mês. O valor para estudante é metade do valor da passagem. 
+
+Crie um programa que:
+
+Solicite o valor da passagem e o número de viagens mensais.
+
+Ao clicar no botão "Ver economia", exiba um alerta informando:
+
+"Você economizará R$X por mês", onde X é o valor economizado. -->
+<body>
+    <h1>Economia com Bilhete Único </h1>
+    <p>Informe o valor da passagem:</p>
+    <input type="number" id="ipt_passagem">
+    <br>
+    <br>
+    <p>Informe o número de viagens mensais:</p>
+    <input type="number" id="ipt_viagens">
+    <br>
+    <br>
+    <button onclick="exibirEconomia()">Ver Economia</button>
+</body>
+</html>
+<script>
+    function exibirEconomia(){
+        alert("Você economizará R$" + (Number(ipt_passagem.value) * Number(ipt_viagens.value)) / 2 
+        + " por mês!");
+    }
+</script>
