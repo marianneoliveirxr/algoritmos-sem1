@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variáveis</title>
+</head>
+<!-- Todo mundo gosta de pizza! É um prato super democrático, pois existem sabores 
+veganos, vegetarianos, sem glúten, "low carb" (pouco carboidrato), doces etc.   
+
+Crie um programa o qual:  
+
+a) Solicite o sabor e o preço da pizza;  
+
+b) Solicite a quantidade de amigos que vão comer;  
+
+c) Ao clicar num botão "Ver valor por amigo", calcule e exiba na tela uma frase como esta:  
+
+Cada amigo vai colaborar com R$X para a pizza de Y.  
+
+Obs: inclua no valor da pizza a caixinha do entregador que é sempre 10% do valor da pizza.  
+
+Obs²: Y é o sabor da pizza;   -->
+<body>
+    <h1>Divisão Justa da Pizza (Com Gorjeta)</h1>
+    <p>Informe o sabor da pizza</p>
+    <input type="text" id="ipt_sabor">
+    <p>Informe o preço da pizza</p>
+    <input type="number" id="ipt_preco">
+    <p>Informe quantos amigos vão comer</p>
+    <input type="number" id="ipt_amigos">
+    <button onclick="calcularPizza()">Ver valor por amigo</button>
+    <div id="exibir"></div>
+    
+</body>
+</html>
+<script>
+    function calcularPizza(){
+        let preco = Number(ipt_preco.value);
+        let gorjeta = preco * 0.1;
+        let qtdAmigos = Number(ipt_amigos.value);
+        let valor = (preco+gorjeta)/qtdAmigos;
+
+        exibir.innerHTML = (`Cada amigo vai colaborar com R$${valor.toFixed(2)} para a pizza de ` + ipt_sabor.value);
+    }
+</script>

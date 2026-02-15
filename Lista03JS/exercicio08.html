@@ -12,14 +12,36 @@ a) Solicite o valor a ser depositado/retirado pelo usuário
 b) Tenha os botões “Depositar” e “Retirar”. Ao clicar em algum deles, 
 exibe um alerta com uma das mensagens abaixo, de acordo com o botão que foi clicado:  
 
-   - Depósito de R$X efetuado! Saldo atual: R$Y 
+- Depósito de R$X efetuado! Saldo atual: R$Y 
 
-   - Retirada de R$X efetuada! Saldo atual: R$Y 
+- Retirada de R$X efetuada! Saldo atual: R$Y 
 
 OBS: o valor do saldo atual se inicia em 0, para depois ir reduzindo/incrementando 
 de acordo com a operação realizada  -->
 
 <body>
     <h1>Banco Virtual: Depósitos e Retiradas</h1>
+    <p>Informe o valor a ser depositado/retirado</p>
+    <input type="number" id="ipt_valor">
+    <br>
+    <br>
+    <button onclick="depositar()">Depositar</button>
+    <button onclick="retirar()">Retirar</button>
 </body>
 </html>
+<script>
+    let saldo = 0;         
+
+    function depositar(){
+        let valor = Number(ipt_valor.value); 
+        saldo += valor;
+        
+        alert("Depósito de R$" + valor + " efetuado! Saldo atual: R$" + saldo);
+    }
+    function retirar(){
+        let valor = Number(ipt_valor.value); 
+        saldo -= valor;
+        alert("Retirada de R$" + valor + " efetuada! Saldo atual: R$" + saldo)
+    }
+
+</script>

@@ -6,6 +6,26 @@
     <title>Variáveis</title>
 </head>
 <body>
-    
+    <h1>Calculadora das Fases do Sono</h1>
+    <p>Quantas horas você dormiu essa noite?</p>
+    <input type="number" id="ipt_horas">
+    <button onclick="calcularSono()">Calcular horas sono</button>
+    <div id="sono"></div>
 </body>
 </html>
+<script>
+    function calcularSono(){
+        let horas = Number(ipt_horas.value)
+        let fase1 = (Number(ipt_horas.value) * 0.05);
+        let fase2 = (Number(ipt_horas.value) * 0.45);
+        let fase3 = (Number(ipt_horas.value) * 0.30);
+        let faseREM = (Number(ipt_horas.value) * 0.20);
+
+        sono.innerHTML = (`Ao dormir ${horas} você dormiu: 
+        
+        ${fase1.toFixed(2)} horas na fase 1, 
+        ${fase2.toFixed(2)} horas na fase 2,
+        ${fase3.toFixed(2)} horas na fase 3,
+        ${faseREM.toFixed(2)} horas na fase REM.`);
+    }
+</script>
