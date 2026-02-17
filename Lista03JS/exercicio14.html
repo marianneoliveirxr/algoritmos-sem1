@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Variáveis</title>
 </head>
-<!-- Na franquia de desenhos animados “Dragon Ball”, existe a raça guerreira “Saiyajin”, que pode se transformar para obter diferentes níveis de poder. 
+<!-- Na franquia de desenhos animados “Dragon Ball”, existe a raça guerreira 
+ “Saiyajin”, que pode se transformar para obter diferentes níveis de poder. 
 
-Crie um programa que demonstre como o poder de guerreiros Sayajins aumenta na medida em que se transformam:  
+Crie um programa que demonstre como o poder de guerreiros Sayajins aumenta na
+medida em que se transformam:  
 
 a) Solicite o "ki base" (força base) do guerreiro Sayajin;  
 
@@ -30,5 +32,33 @@ e) O valor do novo ki deve aparecer abaixo com uma frase como esta:
     Onde X é o nome da transformação (SSJ, SSJ2 ou SSJ3) e Y é o valor calculado em d)   -->
 <body>
     <h1>Transformações Saiyajin e Poder de Luta</h1>
+    <p>Informe o ki base:</p>
+    <input type="number" id="ipt_kiBase">
+    <p>Transformar em...</p>
+    <button onclick="transformarSSJ()">SSJ</button>
+    <div id="exibir1"></div>
+    <button onclick="transformarSSJ2()">SSJ2</button>
+    <div id="exibir2"></div>
+    <button onclick="transformarSSJ3()">SSJ3</button>
+    <div id="exibir3"></div>
 </body>
 </html>
+<script>
+
+    function transformarSSJ(){
+        let kiBase = Number(ipt_kiBase.value);
+        let ssj = kiBase * 50;
+        exibir1.innerHTML = (`Após se transformar em ssj, o ki desse Sayajin passa a ser de ${ssj}`);
+    }
+    function transformarSSJ2(){
+        let kiBase = Number(ipt_kiBase.value);
+        let ssj2 = kiBase * 100;
+        exibir2.innerHTML = (`Após se transformar em ssj, o ki desse Sayajin passa a ser de ${ssj2}`);
+    }
+    function transformarSSJ3(){
+        let kiBase = Number(ipt_kiBase.value);
+        let ssj3 = kiBase * 200;
+        exibir3.innerHTML = (`Após se transformar em ssj, o ki desse Sayajin passa a ser de ${ssj3}`);
+    }
+    
+</script>

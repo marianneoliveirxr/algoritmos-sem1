@@ -16,5 +16,21 @@ b.1) Calcule e exiba seu IMC na tela (não num alert), abaixo do botão;
 Obs: Pesquise a fórmula simples de IMC na internet;   -->
 <body>
     <h1>Calculadora de IMC</h1>
+    <p>Informe sua altura (metros):</p>
+    <input type="number" id="ipt_altura">
+    <p>Informe seu peso (quilos):</p>
+    <input type="number" id="ipt_peso">
+    <button onclick="calcularIMC()">Calcular IMC</button>
+    <div id="exibirIMC"></div>
 </body>
 </html>
+<script>
+    function calcularIMC(){
+        let altura = Number(ipt_altura.value);
+        let peso = Number(ipt_peso.value);
+        let imc = peso/(altura * altura);
+
+        exibirIMC.innerHTML = (`Seu IMC é de ${imc.toFixed(1)}`);
+
+    }
+</script>

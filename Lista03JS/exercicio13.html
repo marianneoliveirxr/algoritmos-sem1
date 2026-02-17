@@ -32,12 +32,22 @@ considere 45 de ônibus e 5 de transporte de aplicativo).   -->
     <input type="number" id="ipt_qtd">
     <p>Informe a distância do trabalho até em casa (km)</p>
     <input type="number" id="ipt_distancia">
-    <button onclick="calcularVT">Calcular VT</button>
+    <button onclick="calcularVT()">Calcular VT</button>
+    <div id="exibir"></div>
 </body>
 </html>
 <script>
-    
     function calcularVT(){
 
+        let passagem = Number(ipt_passagem.value); //valor da passagem somente de önibus
+        let qtd = Number(ipt_qtd.value); //qtd de viagens de onibus + app
+        let distancia = Number(ipt_distancia.value);  //distancia até em casa
+        let qtdOnibus = qtd * 0.9; //qtd de vezes que anda de onibus é 90% do total de viagens do mes
+        let valorOnibus = qtdOnibus * passagem; //valor mensal gasto com onibus
+        let qtdUber = qtd * 0.1; // qtd de vezes que anda de app é 10% do total de viagens do mes
+        let valorUber = (distancia * 0.75) * qtdUber; //valor mensal gasto com app
+
+        let total = valorOnibus + valorUber; //soma dos valores 
+        exibir.innerHTML = (`Você vai gastar R$${total.toFixed(2)} por mês com transporte.`);
     }
 </script>
