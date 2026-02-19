@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cálculo da Conta de Luz</h1>
+    <p>KWh/Mês:</p>
+    <input type="number" id="ipt_kwh">
+    <button onclick="calcularConta()">Calcular conta do mês</button>
+</body>
+</html>
+<script>
+    function calcularConta(){
+
+        let kwh = Number(ipt_kwh.value);
+        let luz = kwh * 0.85;
+        let desconto = luz - (luz*0.1);
+
+        if (luz < 100) {
+            alert("A conta de luz a ser paga é de R$" + desconto.toFixed(2))
+        } else {
+            alert("A conta de luz a ser paga é de R$" + luz.toFixed(2))
+        }
+    }
+</script>

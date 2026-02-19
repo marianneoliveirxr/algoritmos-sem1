@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionais</title>
+</head>
+<body>
+    <h1>Média Escolar de Paty</h1>
+    <p>Informe a nota 1</p>
+    <input type="number" id="ipt_n1">
+    <p>Informe a nota 2</p>
+    <input type="number" id="ipt_n2">
+    <p>Informe a nota 3</p>
+    <input type="number" id="ipt_n3">
+
+    <button onclick="mostrarMedia()">Analisar desempenho</button>
+    <div id="exibir"></div>
+    <div id="parabens"></div>
+</body>
+</html>
+<script>
+
+    function mostrarMedia(){
+    let nota1 = Number(ipt_n1.value);
+    let nota2 = Number(ipt_n2.value);
+    let nota3 = Number(ipt_n3.value);
+    let media = (nota1 + nota2 + nota3)/3;
+
+    exibir.innerHTML = (`Sua média foi de ${media.toFixed(1)}`)
+
+    if (media > 9.4) {
+        parabens.innerHTML = (`Parabéns, você é fora de série!`)
+    }
+    }
+
+</script>

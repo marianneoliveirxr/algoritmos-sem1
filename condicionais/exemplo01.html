@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="ipt_idade"></input>
+    <button onclick="mostrarMensagem()">Mostra Mensagem</button>
+</body>
+</html>
+<script>
+    function mostrarMensagem(){
+
+        let idade = Number(ipt_idade.value);
+
+        if (idade == 18) {
+            alert("Você tem 18 anos");
+        }
+
+
+        // if (idade >= 18) {          //não está vinculado com o if anterior
+        //     alert("Você é maior de idade");
+        // } else {
+        //     alert("Você é menor de idade");
+        // }
+
+        //alternativa if else 
+        let mensagem = idade >= 18 ? "Você é maior de idade <br>" : "Você é menor de idade <br>"
+        div_mensagem.innerHTML += mensagem
+
+        if (idade < 16) {
+            alert("Você não pode votar nem dirigir")
+        } else if (idade <18) {          //só existe se esse if de antes for falso
+            alert("Pode votar mas não pode dirigir")
+        } else {
+            alert("Pode votar e dirigir")
+        }
+
+        alert("Fim do programa");
+
+    }
+</script>

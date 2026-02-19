@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionais</title>
+</head>
+<body>
+    <h1>Divisão Justa da Pizza</h1>
+    <p>Qual o valor da pizza?</p>
+    <input type="number" id="ipt_valor">
+    <p>Informe a quantidade de amigos</p>
+    <input type="number" id="ipt_amigos">
+    <button onclick="mostrarValor()">Rola pizza?</button>
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function mostrarValor(){
+        let qtAmigos = Number(ipt_amigos.value);
+        let valor = Number(ipt_valor.value);
+        let pagar = valor/qtAmigos;
+
+        exibir.innerHTML += (`Cada amigo irá pagar R$${pagar.toFixed(2)}. <br>`);
+
+        if (pagar > 20) {
+            exibir.innerHTML += "Deu ruim! Pizza muito cara!"
+        }
+
+
+    }
+</script>

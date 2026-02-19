@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicional</title>
+</head>
+<body>
+    <h1>Consumo Anual de Refrigerante</h1>
+    <p>Quantas latinhas você toma por dia?</p>
+    <input type="number" id="ipt_lata">
+    <button onclick="latinhasAno()">Quantos refris?</button>
+    <div id="exibir">  </div>
+</body>
+</html>
+<script>
+    function latinhasAno(){
+        let latinhas = Number(ipt_lata.value);
+        let qtdAnual = latinhas * 365;
+
+        if (qtdAnual > 500) {
+            exibir.innerHTML = (`Cuidado com a diabetes!`)
+        }
+    }
+</script>
