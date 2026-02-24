@@ -32,10 +32,19 @@ Obs: Considere 22min como o tempo de duração de 1 episódio.  -->
     <p>Qual o total de episódios que você já assistiu?</p>
     <input type="number" id="ipt_episodios">
     <button onclick="verificarNivel()">Verificar Nível</button>
+    <div id="exibir"></div>
 </body>
 </html>
 <script>
     function verificarNivel(){
+        let episodio = Number(ipt_episodios.value);
+        let minutos = episodio * 22;
+        let tempoTotal = minutos / 60;
+
+        exibir.innerHTML += (`Vejo que você gosta da série ${ipt_serie.value}!! <br>`);
+
+        if (tempoTotal > 30){
+        exibir.innerHTML += (`Uau, você realmente gosta dessa série!!`)}
         
     }
 </script>

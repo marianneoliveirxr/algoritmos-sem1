@@ -32,6 +32,25 @@ f) Caso tenha 4 ou mais filhos, exiba na tela, abaixo da frase em e), a frase "N
     Se tiver 2 filhos, deve exibir apenas "Não tem TV" e "Não tem internet", de acordo com as 
     validações descritas acima  -->
 <body>
-    
+    <h1>Analisador de Família: O Impacto dos Filhos no Entretenimento</h1>
+    <p>Quantos filhos você tem?</p>
+    <input type="number" id="ipt_filhos">
+    <button onclick="analisarFamilia()">Analisar Família</button>
+    <div id="exibir"></div>
 </body>
 </html>
+<script>
+    function analisarFamilia(){
+        let filhos = Number(ipt_filhos.value);
+
+        if (filhos == 1) {
+            exibir.innerHTML += (`Não tem TV <br>`)
+        } else if (filhos == 2) {
+            exibir.innerHTML += (`Não tem TV <br> Não tem internet`)
+        } else if (filhos == 3) {
+            exibir.innerHTML += (`Não tem TV <br> Não tem internet <br> Não tem video game`)
+        } else if (filhos >= 4) {
+            exibir.innerHTML += (`Não tem TV <br> Não tem internet <br> Não tem video game <br> Não tem Netflix`)
+        }
+    }
+</script>

@@ -15,6 +15,24 @@ PlayStation!"
 
    -->
 <body>
-    
+    <h1>Autoescola Inteligente: Você Já Pode Tirar a CNH?</h1>
+    <p>Insira o nome</p>
+    <input type="text" id="ipt_nome">
+    <p>Insira a idade</p>
+    <input type="number" id="ipt_idade"> <br>
+    <button onclick="avaliarAluno()">Avaliar Aluno</button>
+    <div id="exibir"></div>
 </body>
 </html>
+<script>
+    function avaliarAluno(){
+        let idade = Number(ipt_idade.value)
+        let nome = ipt_nome.value
+
+        if (idade >= 18) {
+            exibir.innerHTML = (`${nome}, vamos tirar a CNH?`)
+        } else {
+            exibir.innerHTML = (`${nome}, vai jogar PlayStation!!`)
+        }
+    }
+</script>

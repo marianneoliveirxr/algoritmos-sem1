@@ -19,5 +19,22 @@ b) Ao clicar no botão "Verificar finanças":
     b3) Caso o saldo seja positivo (>0), exiba esta frase na cor azul: "Saldo positivo! sorriso"   -->
 <body>
     <h1>Situação Financeira da Conta Bancária</h1>
+    <p>Informe o valor do saldo em conta:</p>
+    <input type="number" id="ipt_saldo">
+    <button onclick="verificarFinancas()">Verificar finanças</button>
+    <div id="exibir"></div>
 </body>
 </html>
+<script>
+    function verificarFinancas(){
+        let saldo = Number(ipt_saldo.value);
+
+        if (saldo==0) {
+            exibir.innerHTML += (`<b style='color: black'>Conta zerada<b> <br>`)
+        } else if (saldo <0){
+            exibir.innerHTML += (`<b style='color: red'>Está devendo!<b> <br>`)
+        } else{
+            exibir.innerHTML += (`<b style='color: blue'>Saldo positivo! sorriso<b> <br>`)
+        }
+    }
+</script>

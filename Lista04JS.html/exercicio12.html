@@ -15,6 +15,20 @@ c) Caso o peso seja menor que 500, exiba um alert com a frase "Elevador vai se m
 
 d) Caso o peso seja a partir de 500, exiba um alert com "Alguém precisa descer do elevador"   -->
 <body>
-    
+    <h1>Controle de Peso no Elevador: Segurança em Primeiro Lugar</h1>
+    <p>Peso total no elevador:</p>
+    <input type="number" id="ipt_pesoTotal">
+    <button onclick="ligarElevador()">Ligar Elevador</button>
 </body>
 </html>
+<script>
+    function ligarElevador(){
+        let pesoTotal = Number(ipt_pesoTotal.value);
+
+        if (pesoTotal >= 500){
+            alert("Alguém precisa descer do elevador")
+        } else {
+            alert("Elevador vai se mover")
+        }
+    }
+</script>
