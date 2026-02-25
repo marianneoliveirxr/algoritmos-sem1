@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrutura de Decisao</title>
+</head>
+<!-- O Mercado BOM DOCE está em promoção, qualquer chocolate custa R$ 3,00 cada e se a 
+ compra for acima de uma dúzia de chocolates o preço cai para R$ 2,50 cada um. 
+ Criar um programa que auxilie o Mercado a calcular o valor da compra de chocolate 
+
+a) Solicite a quantidade de chocolates comprados 
+
+b) Após clicar num botão "Compra", exiba a mensagem "o valor da sua compra foi de XXX".    -->
+<body>
+    <h1>Promoção de Chocolates: Calcule o Valor da Sua Compra</h1>
+    <p>Informe a quantidade de chocolates comprados: </p>
+    <input type="number" id="ipt_qtd">
+    <button onclick="calcularChocolate()">Compra</button>
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function calcularChocolate(){
+        let qtdChoco = Number(ipt_qtd.value);
+        console.log(qtdChoco);
+        let total = 0; 
+
+        if (qtdChoco > 12){
+            total = qtdChoco * 2.5
+            exibir.innerHTML = (`O valor da sua compra foi de R$${total.toFixed(2)}`)
+            console.log("if funcionando")
+        } 
+        else {
+            total = qtdChoco * 3
+            exibir.innerHTML = (`O valor da sua compra foi de R$${total.toFixed(2)}`)
+            console.log("else funcionando")
+        }
+        console.log(total)
+    }
+</script>

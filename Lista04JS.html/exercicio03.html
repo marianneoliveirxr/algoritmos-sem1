@@ -33,6 +33,7 @@ c) Somente caso a média for acima de 9,4 exibir também a frase "Parabéns, v
     let nota2 = Number(ipt_n2.value);
     let nota3 = Number(ipt_n3.value);
     let media = (nota1 + nota2 + nota3)/3;
+    exibir.innerHTML = "";
 
     exibir.innerHTML = (`Sua média foi de ${media.toFixed(1)}`)
 

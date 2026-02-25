@@ -28,6 +28,8 @@ b) Ao clicar no botão "Verificar finanças":
 <script>
     function verificarFinancas(){
         let saldo = Number(ipt_saldo.value);
+        exibir.innerHTML = "";
+        
 
         if (saldo==0) {
             exibir.innerHTML += (`<b style='color: black'>Conta zerada<b> <br>`)

@@ -28,6 +28,8 @@ d) Somente caso a quantidade seja a partir de 500, exiba também a frase: "Cui
     function latinhasAno(){
         let latinhas = Number(ipt_lata.value);
         let qtdAnual = latinhas * 365;
+        exibir.innerHTML = "";
+        
 
         if (qtdAnual > 500) {
             exibir.innerHTML = (`Cuidado com a diabetes!`)

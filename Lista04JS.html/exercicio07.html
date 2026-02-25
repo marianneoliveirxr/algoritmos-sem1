@@ -30,6 +30,7 @@ Esta frase deverá estar em negrito e vermelho somente se o saldo for menor que 
         let saldo = Number(ipt_saldo.value);
         let debito = Number(ipt_debito.value);
         let novoSaldo = saldo - debito;
+        exibir.innerHTML = "";
 
         if (novoSaldo < 0 ) {
             exibir.innerHTML += (`<b style= 'color: red'>O saldo atual da conta corrente é R$ ${novoSaldo.toFixed(2)} </b> <br>`)

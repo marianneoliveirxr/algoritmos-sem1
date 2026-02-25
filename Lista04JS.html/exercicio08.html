@@ -29,6 +29,7 @@ que alguém desça para que o elevador se movimente" - na cor azul.   -->
     let mulher = Number(ipt_mulheres.value);
     let homem = Number(ipt_homens.value);
     let pesoTotal = (homem * 80) + (mulher * 60);
+    exibir.innerHTML = "";
 
     if (pesoTotal > 800) {
         exibir.innerHTML += (`<b style='color: blue'> Será necessário 

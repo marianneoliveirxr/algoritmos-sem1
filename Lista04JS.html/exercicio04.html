@@ -29,6 +29,7 @@ d) Somente caso o valor por amigo passe de R$20,00, exiba também a frase "Deu
         let qtAmigos = Number(ipt_amigos.value);
         let valor = Number(ipt_valor.value);
         let pagar = valor/qtAmigos;
+        exibir.innerHTML = "";
 
         exibir.innerHTML += (`Cada amigo irá pagar R$${pagar.toFixed(2)}. <br>`);
 

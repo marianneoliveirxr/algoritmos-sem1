@@ -28,6 +28,7 @@ PlayStation!"
     function avaliarAluno(){
         let idade = Number(ipt_idade.value)
         let nome = ipt_nome.value
+        exibir.innerHTML = "";
 
         if (idade >= 18) {
             exibir.innerHTML = (`${nome}, vamos tirar a CNH?`)

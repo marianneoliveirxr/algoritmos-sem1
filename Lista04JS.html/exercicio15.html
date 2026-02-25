@@ -31,6 +31,7 @@ c) Ao clicar em "Analisar conta", calcule o novo saldo da conta e exiba a mensag
         let saldo = Number(ipt_saldo.value);
         let debito = Number(ipt_debito.value);
         let saldoAtual = saldo-debito;
+        exibir.innerHTML = "";
 
         if (saldoAtual <0){
             exibir.innerHTML = (`<b style=' color: red'>O saldo atual da conta corrente é: ${saldoAtual}<b>`)

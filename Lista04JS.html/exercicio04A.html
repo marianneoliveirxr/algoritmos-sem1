@@ -24,6 +24,7 @@
         let qtAmigos = Number(ipt_amigos.value);
         let valor = Number(ipt_valor.value);
         let pagar = valor/qtAmigos;
+        exibir.innerHTML = "";
 
         exibir.innerHTML += (`Cada amigo irá pagar R$${pagar.toFixed(2)}. <br>`);
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrutura de Decisão</title>
+</head>
+<!-- Crie um programa o qual: 
+
+a) Solicita a frequência do aluno 
+
+b) Ao clicar em "Analisar frequência", deve aparecer, abaixo dele: 
+
+    A imagem de um turista, caso a frequência for menor que 50 OU 
+
+    A imagem de um aluno estudioso, caso a frequência for a partir de 50  -->
+
+
+<body>
+    <h1>Frequência Escolar: Turista ou Estudioso?</h1>
+    <p>Informe a frequência do aluno</p>
+    <input type="number" id="ipt_freq">
+    <button onclick="analisarFreq()">Analisar Frequência</button>
+    <div id="div_imagem"></div>
+
+</body>
+</html>
+<script>
+    function analisarFreq(){
+        let freq = Number(ipt_freq.value);
+        console.log(freq)
+        div_imagem.innerHTML = "";
+
+        if (freq < 50) {
+            div_imagem.innerHTML = '<img src="img/turista.png" width="300" alt="cachorro turista">';
+        } else {
+            div_imagem.innerHTML = '<img src="img/estudioso.jpeg" width="300" alt="cachorro estudioso">'
+        }
+    }
+</script>

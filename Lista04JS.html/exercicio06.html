@@ -31,6 +31,7 @@ d) Se o valor calculado acima for maior que 30%,
         let renda = Number(ipt_renda.value);
         let prestacao = Number(ipt_prestacao.value);
         let valor = (prestacao/renda) * 100;
+        exibir.innerHTML = "";
 
         exibir.innerHTML += (`A prestação corresponde a ${valor.toFixed(1)}% da renda familiar <br>`);
         if (valor > 30) {

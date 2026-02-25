@@ -42,15 +42,25 @@ f) Caso tenha 4 ou mais filhos, exiba na tela, abaixo da frase em e), a frase "N
 <script>
     function analisarFamilia(){
         let filhos = Number(ipt_filhos.value);
+        exibir.innerHTML = ""; //reseta a div quando clicar no botão para não acumular resultado
 
-        if (filhos == 1) {
+
+        // = só atribui valor pra variável
+        // == é exatamente aquilo
+        // != diferente 
+
+        
+        if (filhos >= 1) {
             exibir.innerHTML += (`Não tem TV <br>`)
-        } else if (filhos == 2) {
-            exibir.innerHTML += (`Não tem TV <br> Não tem internet`)
-        } else if (filhos == 3) {
-            exibir.innerHTML += (`Não tem TV <br> Não tem internet <br> Não tem video game`)
-        } else if (filhos >= 4) {
-            exibir.innerHTML += (`Não tem TV <br> Não tem internet <br> Não tem video game <br> Não tem Netflix`)
+        } 
+        if (filhos >= 2 ){
+            exibir.innerHTML += (`Não tem internet <br>`)
+        }
+        if (filhos >= 3) {
+            exibir.innerHTML += (`Não tem video game<br>`)
+        }
+        if (filhos >= 4) {
+            exibir.innerHTML += (`Não tem video Netflix <br>`)
         }
     }
 </script>
