@@ -26,8 +26,17 @@ d) Caso a média seja menor que 6, exiba "Tente outra vez..."  -->
 </html>
 <script>
     function analisarMedia(){
-        let nota1 = Number(ipt_nota1.value);
-        let nota2 = Number(ipt_nota2.value);
-        let media 
+        let nota1 = Number(ipt_n1.value);
+        let nota2 = Number(ipt_n2.value);
+        let media = (nota1 + nota2)/2;
+        console.log(media);
+        exibir.innerHTML = "";
+
+
+        if (media >= 6){
+            exibir.innerHTML += (`Parabés, aprovado!`)
+        } else {
+            exibir.innerHTML += (`Tente outra vez...`)
+        }
     }
 </script>

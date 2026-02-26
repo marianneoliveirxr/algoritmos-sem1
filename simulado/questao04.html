@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Calculadora SPFlix</h1>
+
+  <div>
+      <p>Qualidade (720p ou 1080p ou 4K):</p>
+      <input type="text" id="ipt_qualidade">
+  </div>
+
+
+  <div style="display: flex; gap: 50px">
+    <div>
+      <p>Telas simultâneas - Na mesma casa:</p>
+      <input type="text" id="ipt_qtd_telas">
+    </div>
+
+    <div>
+      <p>Telas extras - Fora da residência:</p>
+      <input type="text" id="ipt_qtd_telas_extras">
+    </div>
+  </div>
+
+  <div>
+    <p>Quer fazer download ('sim' ou 'nao'):</p>
+    <input type="text" id="ipt_download">
+  </div>
+
+  <p></p>
+  <button onclick="exibirResultado()">Exibir Resultado</button>
+
+  <p></p>
+  <div id="div_mensagem"></div>
+
+</body>
+</html>
+<script>
+function exibirResultado() {
+  //qualidade
+  let qualidade = ipt_qualidade.value;
+  console.log(qualidade)
+  
+  //telas
+  let telas = Number(ipt_qtd_telas.value);
+  console.log(telas)
+
+  let telas_extra = Number(ipt_qtd_telas_extras.value); 
+  console.log(telas_extra)
+
+  let valor_extra = telas_extra * 12.90;
+  console.log(valor_extra)
+
+
+  div_mensagem.innerHTML += "";
+
+  // qualidade
+  let valor_qualidade = 0;
+  
+  if (qualidade == "720p"){
+    valor_qualidade = 15;
+    div_mensagem.innerHTML += (`O valor base do seu plano mensal é de R$15.00 <br>`)
+
+  } else if (qualidade == "1080p"){
+    valor_qualidade = 20;
+    div_mensagem.innerHTML += (`O valor base do seu plano mensal é de R$20.00 <br>`)
+
+  } else if (qualidade == "4K"){
+    valor_qualidade = 25;
+    div_mensagem.innerHTML += (`O valor base do seu plano mensal é de R$25.00 <br>`)
+  } 
+
+  // telas
+
+  let valor_tela_comum = 0;
+  let total_telas = 0;
+
+  if (telas <= 2){
+    valor_tela_comum = 10;
+    total_telas = valor_tela_comum + valor_extra;
+    div_mensagem.innerHTML += 
+    (`O valor das telas do seu plano é R$${total_telas.toFixed(2)} <br>`)
+  }
+  else if (telas >=3, telas <= 4){
+    valor_tela_comum = 20;
+    total_telas = valor_tela_comum + valor_extra;
+    div_mensagem.innerHTML += (`O valor das telas do seu plano é R$${total_telas.toFixed(2)} <br>`)
+  }
+  else if(telas > 4){
+    valor_tela_comum = 30;
+    total_telas = valor_tela_comum + valor_extra;
+    div_mensagem.innerHTML += (`O valor das telas do seu plano é R$${total_telas.toFixed(2)} <br>`)
+  }
+
+  let valor_total = valor_qualidade + total_telas;
+  let qtd_telas = telas + telas_extra;
+  
+
+  // download 
+  let download = ipt_download.value;
+
+  //desconto para quem vai fazer download
+  let desconto_sim = (valor_total * 0.05) + ((qtd_telas/100) * valor_total);
+  console.log(desconto_sim)
+
+  //desconto para quem não vai fazer download
+  let desconto_nao = (valor_total * 0.1);
+  console.log(desconto_nao)
+
+  let pagar = 0;
+
+  // cálculo valor final e desconto
+    if (download == "sim"){
+    pagar = valor_total - desconto_sim;
+    div_mensagem.innerHTML += 
+    (`Você optou por fazer download e por isso sua conta irá subir em ${5 + qtd_telas}% <br>
+    Valor final: R$${pagar.toFixed(2)} <br>`)
+    console.log(pagar)
+  
+  } 
+  else if (download == "nao"){
+    pagar = valor_total - desconto_nao;
+    div_mensagem.innerHTML += (`Você não optou por fazer download e por isso sua conta será reduzida em 10% <br>
+    Valor final: R$${pagar.toFixed(2)} <br>`)
+    console.log(pagar)
+  }
+
+   //cálculo do valor que cada um irá pagar
+  let valor_pessoa = pagar / qtd_telas;
+  console.log(valor_pessoa)
+
+  div_mensagem.innerHTML += (`Se quiser dividir fica R$${valor_pessoa.toFixed(2)} pra cada!`)
+}
+</script>

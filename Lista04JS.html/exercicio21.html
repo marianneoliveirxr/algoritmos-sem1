@@ -6,6 +6,82 @@
     <title>Estrutura de Decisão</title>
 </head>
 <body>
-    
+    <h1>Pesquisa sobre os tipos de Pokémon</h1>
+    <p>Qual o seu nome?</p>
+    <input type="text" id="ipt_nome">
+    <p>Escolha o Pokemón que você deseja saber mais:</p>
+    <input type="text" id="ipt_pokemon">
+    <p>Pokemóns:</p>
+    <p>Fogo</p>
+    <p>Água</p>
+    <p>Planta</p>
+    <p>Elétrico</p>
+    <p>Dragão</p>
+    <button onclick="analisarPokemon()">Pesquisar</button>
+    <div id="exibir"></div>
 </body>
 </html>
+<script>
+    function analisarPokemon(){
+        let nome = ipt_nome.value;
+        console.log(nome)
+        let pokemon = ipt_pokemon.value;
+        console.log(pokemon)
+        exibir.innerHTML += "";
+        
+        if (pokemon == "Fogo"){
+            exibir.innerHTML += 
+        (`Olá ${nome} aqui estão as informações sobre o pokemón ${pokemon}!<br>
+        - Ele é forte contra Planta <br>
+        - Ele é fraco contra Fogo, Água e Dragão; <br>
+        - Ele é resistente contra Fogo e Planta; <br>
+        - Ele não é resistente contra Água.`)
+
+        console.log("fogo funcionando")
+
+        } else if (pokemon == "Água") {
+        exibir.innerHTML += 
+        (`Olá ${nome} aqui estão as informações sobre o pokemón ${pokemon}!<br>
+        - Ele é forte contra Fogo; <br>
+        - Ele é fraco contra Água, Planta e Dragão; <br>
+        - Ele é resistente contra Fogo e Água; <br>
+        - Ele não é resistente contra Planta e Elétrico`)
+
+        console.log("água funcionando")
+
+        } else if (pokemon == "Planta") {
+        exibir.innerHTML += 
+        (`Olá ${nome} aqui estão as informações sobre o pokemón ${pokemon}!<br>
+        - Ele é forte contra Água; <br>
+        - Ele é fraco contra Fogo, Planta e Dragão; <br>
+        - Ele é resistente contra Água, Planta e Elétrico; <br>
+        - Ele não é resistente contra Fogo.`)
+
+        console.log("planta funcionando")
+
+        } else if (pokemon == "Elétrico") {
+        exibir.innerHTML += 
+        (`Olá ${nome} aqui estão as informações sobre o pokemón ${pokemon}!<br>
+        - Ele é forte contra Água; <br>
+        - Ele é fraco contra Planta, Elétrico e Dragão;<br>
+        - Ele é resistente contra Elétrico;<br>
+        - Ele não é resistente contra nada.`)
+
+        console.log("eletrico funcionando")
+
+        } else if (pokemon == "Dragão") {
+        exibir.innerHTML += 
+        (`Olá ${nome} aqui estão as informações sobre o pokemón ${pokemon}!<br>
+        - Ele é forte contra Dragão; <br>
+        - Ele não é fraco contra nada; <br>
+        - Ele é resistente contra Fogo, Água, Planta e Elétrico; <br>
+        - Ele não é resistente contra Dragão.`)
+
+        console.log("dragão funcionando")
+
+        } else {
+            exibir.innerHTML += (`Pesquisa inválida, tente outra vez!`)
+        }
+
+    }
+</script>

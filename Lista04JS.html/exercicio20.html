@@ -5,7 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estrutura de Decisão</title>
 </head>
+<!-- Crie um programa o qual: 
+
+a) Solicite a quantidade de homens e mulheres num elevador 
+
+b) Ao clicar num botão "Ligar elevador", calcule o peso total no elevador, 
+considerando que um homem pesa em média 90kg e uma mulher 70kg 
+
+c) Caso o peso seja até 500, exiba uma frase na cor verde abaixo do botão com a 
+frase Elevador vai se mover, pois está com Xkg 
+
+d) Caso o peso seja maior que 500, exiba uma frase na cor vermelha abaixo do botão 
+com a frase Alguém precisa descer. Precisa perder Xkg para mover o elevador  -->
 <body>
-    
+    <h1>Peso no Elevador: Será Que Ele Vai se Mover?</h1>
+    <p>Informe a quantidade de mulheres</p>
+    <input type="number" id="ipt_m"> 
+    <p>Informe a quantidade de homens</p>
+    <input type="number" id="ipt_h">
+    <button onclick="elevadorFeliz()">Ligar Elevador</button>
+    <div id="exibir"></div>
 </body>
 </html>
+<script>
+    function elevadorFeliz(){
+        let mulher = Number(ipt_m.value);
+        console.log(mulher);
+
+        let homem = Number(ipt_h.value);
+        console.log(homem);
+
+        let total = (mulher * 70) + (homem * 90);
+        console.log(total);
+
+        let perder = (total - 500);
+        console.log(perder)
+
+        exibir.innerHTML += "";
+
+        if (total <= 500){
+            exibir.innerHTML += (`<b style='color: green'>O elevador vai se mover, 
+            pois está com ${total.toFixed(1)}kg.</b>`)
+
+            console.log("if funcionando")
+        } else {
+            exibir.innerHTML += (`<b style='color: red'>Alguém precisa descer.
+                Precisa perder ${perder.toFixed(1)}kg para mover o elevador</b>`)
+
+            console.log("else funcionando")
+        }
+    }
+</script>

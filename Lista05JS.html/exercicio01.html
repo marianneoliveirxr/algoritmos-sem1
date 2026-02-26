@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If e Else</title>
+</head>
+<!-- Crie um programa no qual um profissional de educação física possa determinar de forma
+mais rápida quais esportes uma pessoa tem uma boa altura para 
+ praticar. 
+
+a) Solicite a altura do usuário;
+
+b) Ao clicar em "Analisar Estatura", deve aparecer abaixo uma dessas frases: 
+
+   "Você pode ser piloto de corrida" (altura até 1.65) 
+
+   "Você pode ser jogador de futebol" (altura +1.65 até 1.80) 
+
+   "Você pode ser jogador de vôlei ou basquete" (altura + 1.80)  -->
+<body>
+    <h1>Altura e Esportes: Descubra Sua Vantagem Competitiva</h1>
+    <p>Informe sua altura:</p>
+    <input type="number" id="ipt_altura">
+    <button onclick="analisarEstatura()">Analisar Estatura</button>
+    <div id="exibir"></div>
+</body>
+</html>
+<script>
+    function analisarEstatura(){
+        let altura = Number(ipt_altura.value);
+        console.log(altura)
+        exibir.innerHTML += (``);
+
+        if (altura <= 1.65) {
+            exibir.innerHTML += (`Você pode ser piloto de corrida`)
+        } else if (altura > 1.65, altura <= 1.80){
+            exibir.innerHTML += (`Você pode ser jogador de futebol`)
+        } else {
+            exibir.innerHTML += (`Você pode ser jogador de vôlei ou basquete`)
+        }
+    }
+</script>
