@@ -11,6 +11,8 @@
     <input type="number" id="ipt_idade">
     <p>Tem convite?</p>
     <input type="text" id="ipt_convite">
+    <p>Está acompanhada de um adulto?</p>
+    <input type="text" id="ipt_adulto">
     <button onclick="validarEntrada()">Posso entrar?</button>
     <div id="div_mensagem"></div>
 </body>
@@ -22,27 +24,16 @@
     function validarEntrada(){
         let idade = Number(ipt_idade.value);
         let convite = ipt_convite.value;
+        let adulto = ipt_adulto.value;
+
 
         if (idade >= 18 && convite == "sim"){
-                div_mensagem.innerHTML = (`Pode entrar`)
+            div_mensagem.innerHTML = `Pode entrar`;
+        } else if (idade < 18 && convite == "sim" && adulto == "sim"){
+            div_mensagem.innerHTML = `Pode entrar`;
         } else {
-                div_mensagem.innerHTML = (`Não pode entrar`)
-            }
+            div_mensagem.innerHTML = `Não pode entrar`;
+        }
     }
-
-// com || precisa inverter a lógica
-
-// function validarEntrada(){
-//         let idade = Number(ipt_idade.value);
-//         let convite = ipt_convite.value;
-
-//         if (idade < 18 || convite != "sim"){
-//                 div_mensagem.innerHTML = (`Não oode entrar`)
-//         } else {
-//                 div_mensagem.innerHTML = (`Pode entrar`)
-//             }
-//     }
-
-// 
 
 </script>
