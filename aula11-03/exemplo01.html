@@ -17,7 +17,7 @@
 </html>
 <script>
 
-// && ou || 
+// &&
 
     function validarEntrada(){
         let idade = Number(ipt_idade.value);
@@ -27,6 +27,19 @@
                 div_mensagem.innerHTML = (`Pode entrar`)
         } else {
                 div_mensagem.innerHTML = (`Não pode entrar`)
+            }
+    }
+
+// com || precisa inverter a lógica
+
+function validarEntrada(){
+        let idade = Number(ipt_idade.value);
+        let convite = ipt_convite.value;
+
+        if (idade < 18 || convite != "sim"){
+                div_mensagem.innerHTML = (`Não oode entrar`)
+        } else {
+                div_mensagem.innerHTML = (`Pode entrar`)
             }
     }
 </script>
