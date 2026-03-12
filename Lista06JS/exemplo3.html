@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="ipt_cor">
+    <option value="">Selecione uma opção</option>
+    <option value="1">Azul</option>
+    <option value="2">Amarelo</option>
+    <option value="3">Vermelho</option>
+    </select>
+
+    <button onclick="selecionar()">Qual cor?</button>
+</body>
+</html>
+<script>
+    function selecionar(){
+        let cor = ipt_cor.value;
+        alert(cor)
+    }
+</script>

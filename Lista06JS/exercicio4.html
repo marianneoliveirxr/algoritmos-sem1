@@ -21,5 +21,40 @@ b) Ao clicar num botão "Autenticar", exiba uma dessas frases abaixo do botão:
      b.2.) "Falha na autenticação", caso as regras de verificação em b.1) falhem  -->
 <body>
     <h1>4. Autenticação Segura: Acesso ao Banco Melete</h1>
+    <p>Informe o usuário:</p>
+    <input type="login" id="ipt_login">
+    <p>Informe a senha:</p>
+    <input type="password" id="ipt_senha"> <br> <br>
+
+    <select name="" id="ipt_tipoInfo">
+        <option value="">Informação Pessoal</option>
+        <option value="nascimento">Ano de Nascimento</option>
+        <option value="nomeAnimal">Nome do animal de estimação</option>
+    </select> <br> <br>
+
+    <!-- Usuário escreve a 3a informação -->
+    <input type="text" id="ipt_info"> <br> <br>
+
+    <div id="div_mensagem"></div>
+
+    <button onclick="autenticar()">Autenticar</button>
 </body>
 </html>
+<script>
+    function autenticar(){
+        let login = ipt_login.value;
+        let password = ipt_senha.value;
+        let info = ipt_info.value;
+
+        if(login == "ana" && password == "braga"){
+            if (info == "1949" || info == "louro josé"){
+                div_mensagem.innerHTML = `Usuário autenticado`;
+            } else {
+                div_mensagem.innerHTML = `Falha na autenticação`;
+            }
+        } else {
+            div_mensagem.innerHTML = `Falha na autenticação`;
+        }
+        
+    }
+</script>

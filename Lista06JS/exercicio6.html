@@ -29,5 +29,50 @@ h) Caso o aluno tiver frequência a partir de 75, exiba na tela "Aluno aprovado 
  ou "Aluno reprovado por frequência", em caso contrário  -->
 <body>
     <h1>6. Desempenho Escolar: O Aluno Foi Aprovado?</h1>
+    <p>Informe a nota:</p>
+    <input type="number" id="ipt_nota">
+    <p>Informe a frequência:</p>
+    <input type="number" id="ipt_frequencia">
+    <button onclick="analisarAluno()">Analisar aluno</button>
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    function analisarAluno(){
+        let nota = Number(ipt_nota.value);
+        let frequencia = Number(ipt_frequencia.value);
+
+        if (nota < 0 || nota > 10){
+            alert("Onde já se viu nota <0 ou >10?!");
+                ipt_nota.value = "";
+                ipt_frequencia.value = "";
+
+        } else if (nota > 0 && nota < 6){
+            alert("Aluno ficou abaixo da média");
+
+        } else if (nota >= 6 && nota <=8 ){
+            alert ("Aluno ficou na média");
+
+        } else if (nota > 8 && nota <= 10) {
+            alert ("Aluno acima da média");
+
+        }
+
+        if (frequencia < 0 || frequencia > 100){
+            alert("Onde já se viu frequência <0 ou >100?!");
+                ipt_nota.value = "";
+                ipt_frequencia.value = "";
+
+        } else if (frequencia >= 75) {
+            alert("Aluno aprovado por frequência");
+
+        } else {
+            alert("Aluno reprovado por frequência");
+        }
+
+        console.log(nota);
+        console.log(frequencia);
+        
+    }
+
+</script>

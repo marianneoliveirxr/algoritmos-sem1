@@ -28,6 +28,43 @@ a mensagem de autenticação aparece normalmente e a frase com a quantidade de t
 sumir da tela e deve ser "reiniciada" para as próximas falhas.  -->
 <body>
     <h1>7. Autenticação Segura com Tentativas Limitadas</h1>
+    <p>Informe o usuário:</p>
+    <input type="login" id="ipt_login">
+    <p>Informe a senha:</p>
+    <input type="password" id="ipt_senha"> <br> <br>
 
+    <select name="" id="ipt_tipoInfo">
+        <option value="">Informação Pessoal</option>
+        <option value="nascimento">Ano de Nascimento</option>
+        <option value="nomeAnimal">Nome do animal de estimação</option>
+    </select> <br> <br>
+
+    <!-- Usuário escreve a 3a informação -->
+    <input type="text" id="ipt_info"> <br> <br>
+
+    <div id="div_mensagem"></div>
+
+    <button onclick="autenticar()">Autenticar</button>
 </body>
 </html>
+<script>
+    let tentativa = 3;
+    function autenticar(){
+        
+        let login = ipt_login.value;
+        let password = ipt_senha.value;
+        let info = ipt_info.value;
+
+        if((login == "ana" && password == "braga") && (info == "1949" || info == "louro josé")){
+                div_mensagem.innerHTML = `Usuário autenticado`;
+        } else {
+            div_mensagem.innerHTML += `Falha na autenticação <br>`;
+            div_mensagem.innerHTML += `Você ainda tem ${-tentativa} tentativa(s) <br>`;
+
+            if (tentativa = 0){
+                div_mensagem.innerHTML = `Usuário BLOQUEADO! Procure seu gerente!`;
+            }
+        }
+        
+    }
+</script>

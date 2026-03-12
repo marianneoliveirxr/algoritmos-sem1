@@ -35,7 +35,9 @@ b) Ao clicar no botão “Analisar Renda”, deve aparecer abaixo uma dessas fra
         let renda = Number(ipt_renda.value);
         exibir.innerHTML = "";
         if (renda <= 250){
-            exibir
-        }
+            exibir.innerHTML = `Classe E`;
+        } else if (renda > 250 && renda <= 900){
+            exibir.innerHTML = `Classe D`;
+        } 
     }
 </script>

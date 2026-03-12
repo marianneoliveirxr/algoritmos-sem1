@@ -30,9 +30,15 @@ Ou a imagem de uma pessoa decepcionada, caso contrário.   -->
     <h1>2. Simulador de Preferências de Compras: Será que Robervaldo Gostaria?</h1>
     <p>Informe o tamanho da tela:</p>
     <input type="number" id="ipt_tela">
-    <p>Informe a cor do celular dentre as opções:</p>
-    <input type="text" id="ipt_cor">
-    <p>Preto / Prata / Azul / Vermelho</p>
+    
+    <select name="" id="ipt_cor">
+        <option value="">Selecione a cor dentre as opções</option>
+        <option value="preto">Preto</option>
+        <option value="prata">Prata</option>
+        <option value="azul">Azul</option>
+        <option value="vermelho">Vermelho</option>
+
+    </select>
     <button onclick="verificarCelular()">Será que ele gosta?</button>
     <div id="div_mensagem"></div>
 </body>
@@ -42,10 +48,10 @@ Ou a imagem de uma pessoa decepcionada, caso contrário.   -->
         let tela = Number(ipt_tela.value);
         let cor = ipt_cor.value;
 
-        if(tela > 6.5 && cor == "Preto"){
+        if(tela > 6.5 && cor == "preto"){
             div_mensagem.innerHTML = (`<img src="img/feliz.png" width="300">`)
 
-        } else if(tela > 6.5 && cor == "Prata"){
+        } else if(tela > 6.5 && cor == "prata"){
             div_mensagem.innerHTML = (`<img src="img/feliz.png" width="300">`)
 
         } else {

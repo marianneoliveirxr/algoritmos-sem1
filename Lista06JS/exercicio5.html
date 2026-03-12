@@ -22,5 +22,35 @@ c) Ao clicar em 'Avaliar clima':
             "Clima desconfortável", em caso contrário.   -->
 <body>
     <h1>5. Avaliação do Clima: Está Agradável ou Desconfortável?</h1>
+    <p>Informe a temperatura (C):</p>
+    <input type="number" id="ipt_temperatura">
+    <p>Informe a umidade do ar</p>
+    <input type="number" id="ipt_umidade">
+    <button onclick="avaliarClima()">Avaliar Clima</button>
+    
 </body>
 </html>
+<script>
+    function avaliarClima(){
+        let temperatura = Number(ipt_temperatura.value);
+        let umidade = Number(ipt_umidade.value);
+
+        if(umidade < 0 || umidade > 100){
+            alert("Valor de umidade inválido");
+            ipt_temperatura.value = "";
+            ipt_umidade.value = "";
+            
+        } else {
+            if (temperatura == 22 || temperatura == 23){
+                if (umidade < 60){
+                    alert("Clima agradável")
+                }
+            } else {
+                alert("Clima desconfortável")
+            }
+        }
+        console.log(temperatura);
+        console.log(umidade);
+
+    }
+</script>

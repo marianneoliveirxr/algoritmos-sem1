@@ -29,16 +29,19 @@ d) Considere ainda que um estudante tem 50% de desconto e idoso/PNE possuem grat
 em qualquer tipo de passagem  -->
 <body>
     <h1>3. Simulador de Preço do Bilhete Único de São Paulo</h1>
-    <p>Informe o tipo de passageiro:</p>
-    <p>Comum</p>
-    <p>Estudante</p>
-    <p>Idoso/PNE</p>
-    <input type="text" id="ipt_passageiro">
+    <select id="ipt_passageiro">
+    <option value="">Informe o tipo de passageiro:</option>
+    <option value="comum">Comum</option>
+    <option value="estudante">Estudante</option>
+    <option value="idoso/pne">Idoso/PNE</option>
+    </select>
 
-    <p>Informe o tipo de passagem:</p>
-    <p>Passagem única</p>
-    <p>Passagem integração</p>
-    <input type="text" id="ipt_passagem">
+    <select id="ipt_passagem">
+    <option value="">Informe o tipo de passagem:</option>
+    <option value="unica">Passagem única</option>
+    <option value="integracao">Passagem integração</option>
+    </select>
+
 
     <button onclick="simularPreco()">Simular preço</button>
     <div id="div_mensagem"></div>
@@ -50,29 +53,28 @@ em qualquer tipo de passagem  -->
         let passagem = ipt_passagem.value;
         let preco;
 
-        if (passageiro == "Comum" && passagem == "Passagem única"){
-            preco = 4.40;
+        console.log(passageiro);
+        console.log(passagem);
+        
+
+        if (passageiro == "comum" && passagem == "unica"){
             div_mensagem.innerHTML = (`Valor da passagem escolhida: R$4.40`);
         } 
-        else if (passageiro == "Comum" && passagem == "Passagem integração"){
+        else if (passageiro == "comum" && passagem == "integracao"){
             div_mensagem.innerHTML = (`Valor da passagem escolhida: R$5.90`);
         }
-        else if (passageiro == "Estudante" && passagem == "Passagem única"){
+        else if (passageiro == "estudante" && passagem == "unica"){
             preco = 4.40/2;
             div_mensagem.innerHTML = (`Valor da passagem escolhida: R$${preco.toFixed(2)}`);
-
         } 
-        else if (passageiro == "Estudante" && passagem == "Passagem integração"){
+        else if (passageiro == "estudante" && passagem == "integracao"){
             preco = 5.90/2;
             div_mensagem.innerHTML = (`Valor da passagem escolhida: R$${preco.toFixed(2)}`);
         } 
-        else if (passageiro == "Idoso/PNE" && passagem == "Passagem única"){
-            div_mensagem.innerHTML = (`Valor da passagem escolhida: R$0.00`);
-        }
-        else if (passageiro == "Idoso/PNE" && passagem == "Passagem integração"){
+        else if (passageiro == "idoso/pne"){
             div_mensagem.innerHTML = (`Valor da passagem escolhida: R$0.00`);
         }
             
-        
+        console.log(preco)
     }
 </script>
