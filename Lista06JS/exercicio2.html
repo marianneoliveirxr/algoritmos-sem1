@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- Imagine que Robervaldo está buscando um novo celular. Ele tem algumas preferências 
+ específicas para a escolha de modelo.
+
+Robervaldo prefere celulares com tela grande (acima de 6.5 polegadas) e que sejam da cor 
+preta ou prata.
+
+Com base nessas informações, crie um simulador no qual:
+
+a) Solicite o tamanho da tela do celular encontrado.
+
+b) Solicite a cor do celular encontrado, dentre as opções:
+
+Preto
+Prata
+Azul
+Vermelho
+c) Ao clicar em "Será que ele gosta?", mostre, abaixo:
+
+A imagem de uma pessoa feliz, caso as características do celular coincidam com as 
+preferências de Robervaldo.
+Ou a imagem de uma pessoa decepcionada, caso contrário.   -->
+<body>
+    <h1>2. Simulador de Preferências de Compras: Será que Robervaldo Gostaria?</h1>
+    <p>Informe o tamanho da tela:</p>
+    <input type="number" id="ipt_tela">
+    <p>Informe a cor do celular dentre as opções:</p>
+    <input type="text" id="ipt_cor">
+    <p>Preto / Prata / Azul / Vermelho</p>
+    <button onclick="verificarCelular()">Será que ele gosta?</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function verificarCelular(){
+        let tela = Number(ipt_tela.value);
+        let cor = ipt_cor.value;
+
+        if(tela > 6.5 && cor == "Preto"){
+            div_mensagem.innerHTML = (`<img src="img/feliz.png" width="300">`)
+
+        } else if(tela > 6.5 && cor == "Prata"){
+            div_mensagem.innerHTML = (`<img src="img/feliz.png" width="300">`)
+
+        } else {
+            div_mensagem.innerHTML = (`<img src="img/triste.png" width="300">`)
+        }
+    }
+</script>
