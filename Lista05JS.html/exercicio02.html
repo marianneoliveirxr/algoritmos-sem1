@@ -10,9 +10,7 @@ Crie um programa que exibe a classe social de uma pessoa que mora em Tuvalu
 (um dos menores países do mundo) conforme a renda familiar mensal. 
 
 a) Solicite a renda familiar mensal 
-
 b) Ao clicar no botão “Analisar Renda”, deve aparecer abaixo uma dessas frases:   
-
    "Classe E" (até 250) 
 
    "Classe D" (+250 até 900) 
@@ -38,6 +36,12 @@ b) Ao clicar no botão “Analisar Renda”, deve aparecer abaixo uma dessas fra
             exibir.innerHTML = `Classe E`;
         } else if (renda > 250 && renda <= 900){
             exibir.innerHTML = `Classe D`;
-        } 
+        } else if (renda > 900 && renda <= 2500){
+            exibir.innerHTML = `Classe C`;
+        } else if (renda > 2500 && renda <= 9500){
+            exibir.innerHTML= `Classe B`;
+        } else {
+            exibir.innerHTML= `Classe A`;
+        }
     }
 </script>

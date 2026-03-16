@@ -19,5 +19,24 @@ Peso na média (se peso maior que 13.5kg até 21.2kg)
 Peso perfeito (se o peso for exatamente 18.3kg)  -->
 <body>
     <h1>4. Avaliação de Peso Infantil: Está Dentro da Faixa Saudável?</h1>
+    <p>Informe o peso da criança:</p>
+    <input type="number" id="ipt_peso">
+    <button onclick="analisarPeso()">Analisar Peso</button>
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    function analisarPeso(){
+        let peso = Number(ipt_peso.value);
+
+        if (peso <= 13.5){
+            div_mensagem.innerHTML = `Abaixo do peso`;
+        } else if (peso == 18.3){
+            div_mensagem.innerHTML = `Peso perfeito`;
+        } else if (peso > 13.5 && peso <= 21.2){
+            div_mensagem.innerHTML = `Peso na média`;
+        }  else {
+            div_mensagem.innerHTML = `Acima do Peso`;
+        }
+    }
+</script>

@@ -20,5 +20,27 @@ Calor escaldante (mais de 31ºC)
 Crie um programa que, ao ler uma temperatura, exiba uma dessas situações acima.  -->
 <body>
     <h1>Sensação Térmica: Como o Corpo Humano Percebe a Temperatura</h1>
+    <p>Informe a temperatura em graus Celsius:</p>
+    <input type="number" id="ipt_temperatura">
+    <button onclick="analisarTemperatura()">Analisar temperatura</button>
+    <div id="div_mensagem"></div>
 </body>
 </html>
+
+<script>
+    function analisarTemperatura(){
+        let temperatura = Number(ipt_temperatura.value);
+
+        if (temperatura < 14){
+            div_mensagem.innerHTML = `Congelante`;
+        } else if (temperatura >= 14 && temperatura <= 21){
+            div_mensagem.innerHTML = `Com frio`;
+        } else if (temperatura > 21 && temperatura <= 24){
+            div_mensagem.innerHTML = `Confortável`;
+        } else if (temperatura > 24 && temperatura <= 31){
+            div_mensagem.innerHTML = `Com calor`;
+        } else {
+            div_mensagem.innerHTML = `Calor escaldante`;
+        }
+    }
+</script>

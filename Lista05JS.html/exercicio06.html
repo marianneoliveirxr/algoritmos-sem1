@@ -7,7 +7,8 @@
 </head>
 <!--
 Crie um programa o qual: 
-a) Pergunte qual dos seguintes times de São Paulo o usuário torce (São Paulo, Palmeiras, Corinthians, Santos); 
+a) Pergunte qual dos seguintes times de São Paulo o usuário torce 
+(São Paulo, Palmeiras, Corinthians, Santos); 
 b) Ao clicar em "Fale sobre esse time", exiba abaixo: 
 
    "Salve o Corinthians" -> com fundo preto e letra branca, se for Corinthians 
@@ -16,5 +17,36 @@ b) Ao clicar em "Fale sobre esse time", exiba abaixo:
    "Salve o Tricolor paulista" -> com fundo preto e letra vermelha, se for São Paulo -->
 <body>
     <h1> 6. Times Paulistas: O Canto da Sua Torcida!</h1>
+    <p>Para qual dos seguintes times de São Paulo você torce?</p> 
+    <select name="" id="ipt_time">
+        <option value="saopaulo">São Paulo</option>
+        <option value="corinthians">Corinthians</option>
+        <option value="palmeiras">Palmeiras</option>
+        <option value="santos">Santos</option>
+    </select>
+    <br>
+    <br>
+    <button onclick="informarTime()">Fale sobre esse time</button>
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    function informarTime(){
+        let time = ipt_time.value;
+
+        if (time == "saopaulo"){
+            div_mensagem.innerHTML = 
+            (`<p style='background: black; color: red'>Salve o Tricolor paulista </p>`);
+        } else if (time == "palmeiras"){
+            div_mensagem.innerHTML = 
+            (`<p style='background: green; color: white'>Salve o alviverde imponente</p>`);
+        } else if (time == "santos"){
+            div_mensagem.innerHTML = 
+            (`<p style='background: white; color: black'>Agora quem dá a bola é o Santos</p>`);
+        } else {
+            div_mensagem.innerHTML = 
+            (`<p style='background: black; color: white'>Salve o Corinthians</p>`);
+        }
+
+    }
+</script>

@@ -23,5 +23,31 @@ f) Caso a meta ainda não tenha sido alcançada, exibir, abaixo do botão, a fra
 “Força! Ainda em busca da meta! Falta X” (onde X é a diferença entre a meta e a economia)  -->
 <body>
     <h1> 8. Meta de Economia: Você Está no Caminho Certo?</h1>
+    <p>Qual a sua meta de economia?</p>
+    <input type="number" id="ipt_meta">
+    <p>Quanto você tem guardado?</p>
+    <input type="number" id="ipt_reserva">
+    <br>
+
+    <button onclick="analisarEconomia()">Analisar economia</button>
+
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    function analisarEconomia(){
+        let meta = Number(ipt_meta.value);
+        let reserva = Number(ipt_reserva.value);
+
+        if (reserva > meta){
+            div_mensagem.innerHTML = `Parabéns, meta alcançada! <br> Meta ultrapassada em R$${reserva - meta}`;
+
+        } else if (reserva == meta){
+            div_mensagem.innerHTML = 
+            (`Parabéns, meta alcançada!`);
+
+        } else {
+            div_mensagem.innerHTML = `Força! Ainda em busca da meta! Falta R$${meta - reserva}`;
+        }
+    }
+</script>
