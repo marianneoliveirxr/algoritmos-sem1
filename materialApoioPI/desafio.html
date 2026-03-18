@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO</title>
+</head>
+<body>
+    <center>
+    <h1>Adivinhe o Ranking da Competição</h1>
+
+    <p>Palpite para o 1º lugar:</p>
+    <input type="text" id="ipt_p1">
+
+    <p>Palpite para o 2º lugar:</p>
+    <input type="text" id="ipt_p2">
+
+    <p>Palpite para o 3º lugar:</p>
+    <input type="text" id="ipt_p3">
+
+    <p>Palpite para o 4º lugar:</p>
+    <input type="text" id="ipt_p4">
+
+    <p>Palpite para o 5º lugar:</p>
+    <input type="text" id="ipt_p5">
+    <br> <br>
+
+    <button onclick="exibirResultado()">Exibir Resultado</button>
+        
+    <br> <br>
+    <div id="div_mensagem"></div>
+
+    <br> <br>
+
+<!-- Campeões inseridos pelo usuário -->
+    <h2>Meus campeões:</h2>
+    <input type="text" id="ipt_meu_campeao">
+    <br> <br>
+    <button onclick="adicionarCampeao()">Adicionar</button>
+    <br> <br>
+    <div id="novos_campeoes"></div>
+
+<!-- Campo buscar -->
+    <h2>Buscar</h2>
+    <input type="text" id="ipt_busca">
+    <button onclick="pesquisar()">Pesquisar</button>
+    <br> <br>
+    <div id="resultado_busca"></div>
+
+    </center>
+</body>
+</html>
+<script>
+    let resultado = ["Sophia", "Cecilia", "Marcelo", "Marina", "Fernando"];
+    console.log(resultado);
+
+//Resultado dos palpites
+    function exibirResultado(){
+
+        div_mensagem.innerHTML = "";
+
+        //Lê os palpites de cada lugar
+        let palpite1 = ipt_p1.value; //1 lugar
+        let palpite2 = ipt_p2.value; //2 lugar
+        let palpite3 = ipt_p3.value; //3 lugar
+        let palpite4 = ipt_p4.value; //4 lugar
+        let palpite5 = ipt_p5.value; //5 lugar
+
+        let acertos = 0; //conta o número de acertos
+        let erros = 0;   //conta o número de erros
+
+        let nomes_acertos = []; //nomes que acertou
+        let nomes_erros = [];   //nomes que errou
+
+        // Primeiro campeão
+        if (palpite1 == resultado[0]){
+            acertos++;
+            div_mensagem.innerHTML += (`Você acertou o nome do 1º lugar: Sophia <br>`);
+            
+        } else {
+            erros++;
+            div_mensagem.innerHTML += (`Você errou o nome do 1º lugar: Sophia <br>`);
+        }
+
+        //Segundo campeão
+        if(palpite2 == resultado[1]){
+            acertos++;
+            div_mensagem.innerHTML += (`Você acertou o nome do 2º lugar: Cecilia <br>` );
+
+        } else {
+            erros++;
+            div_mensagem.innerHTML += (`Você errou o nome do 2º lugar: Cecilia <br>` );
+
+        }
+
+        //Terceiro campeão
+        if (palpite3 == resultado[2]){
+            acertos++;
+            div_mensagem.innerHTML += (`Você acertou o nome do 3º lugar: Marcelo <br>`);
+
+        } else {
+            erros++;
+            div_mensagem.innerHTML += (`Você errou o nome do 3º lugar: Marcelo <br>`);
+        }
+
+        //Quarto campeão
+        if(palpite4 == resultado[3]){
+            acertos++;
+            div_mensagem.innerHTML += (`Você acertou o nome do 4º lugar: Marina <br>`);
+
+        } else {
+            erros++;
+            div_mensagem.innerHTML += (`Você errou o nome do 4º lugar: Marina <br>`);
+        }
+
+        //Quinto campeão
+        if (palpite5 == resultado[4]){
+            acertos++;
+            div_mensagem.innerHTML += (`Você acertou o nome do 5º lugar: Fernando <br>`);
+
+        } else {
+            erros++;
+            div_mensagem.innerHTML += (`Você errou o nome do 5º lugar: Fernando <br>`);
+
+        }
+
+        div_mensagem.innerHTML += (`Quantidade de acertos: ${acertos} <br>`);
+        div_mensagem.innerHTML += (`Quantidade de erros: ${erros} <br>`);
+
+        console.log(resultado.length)
+
+        if (acertos >= resultado.length/2){
+            div_mensagem.innerHTML += (`Você conhece bem essa competição! <br>`);
+
+        } else {
+            div_mensagem.innerHTML += (`Você precisa acompanhar mais essa competição! <br>`);
+        }
+
+        // Nome do campeão com letra maiúscula
+        let campeao = resultado[0].toUpperCase();
+        div_mensagem.innerHTML += (`<b>O campeão é ${campeao}</b>🥇 <br>`)
+    }
+
+    // Campeões a serem inseridos pelo usuário
+    function adicionarCampeao(){
+        let novo_campeao = ipt_meu_campeao.value;
+        let meus_campeoes = [];
+        meus_campeoes.push(novo_campeao + "<br>");
+
+        novos_campeoes.innerHTML += (`${meus_campeoes}`)
+
+    }
+
+    function pesquisar(){
+        let busca = ipt_busca.value;
+        let existe_meuscampeoes = busca.includes(meus_campeoes);
+        let existe_resultado = busca.includes(resultado);
+
+        if (existe_meuscampeoes && existe_resultado){
+            resultado_busca.innerHTML += (`${busca} existe em ambas as listas`);
+            
+        } else if (existe_meuscampeoes){
+            resultado_busca.innerHTML += (`${busca} está na lista do usuário <br>`);
+
+        } else if (busca != existe_meuscampeoes){
+            resultado_busca.innerHTML += (`${busca} não está na lista do usuário <br>`);
+        }
+        else {
+            resultado_busca.innerHTML += (`${busca} não existe em nenhuma das listas`);
+        }
+
+
+        if (existe_resultado){
+            resultado_busca.innerHTML += (`${busca} está na lista do sistema <br>`);
+        } else {
+            resultado_busca.innerHTML += (`${busca} está na lista do sistema <br>`);
+        }
+
+        
+
+    }
+
+
+</script>

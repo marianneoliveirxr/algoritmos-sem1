@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VETORES</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    //Guardando valores dentro do vetor
+    let frutas = ["Abacaxi", "Melancia", "Kiwi", 7, 8.9]
+    console.log(frutas);
+
+    //Como saber o tamanho do vetor
+    console.log("Tamanho do vetor: ", frutas.length);
+
+    //Como saber o valor do primeiro item
+    console.log("Primeiro item do vetor: ", frutas[0]);
+
+    //Como saber o valor do último item
+    console.log("Último item do vetor: ", frutas[frutas.length - 1]);
+
+    // Ou também assim:
+    let ultima_fruta = frutas[frutas.length - 1];
+    console.log("Último item do vetor: ", ultima_fruta);
+
+    //Como ver o tamanho de uma palavra
+    console.log("Tamanho da primeira palavra: ", frutas[0].length);
+
+    //Adicionar informação
+    frutas.push("Banana", "Pera");
+    
+    console.log(frutas);
+
+    //Saber se tem uma determinada letra ou palavra no vetor
+    let existe_pera = frutas.includes("Pera")
+
+    if (existe_pera){
+        console.log("Existe pera na lista")
+    } else {
+        console.log("Não existe pera na lista")
+    }
+
+    //OU
+
+    let indice_pera = frutas.indexOf("Pera");
+
+    if (indice_pera){
+        console.log(`Existe pera na lista no índice: ${indice_pera}`);
+    } else {
+        console.log(`NÃO EXISTE PERA NA LISTA`)
+    }
+
+    //REMOVER ITEM DA LISTA
+
+    // 1 forma --> remove o último item 
+    // frutas.pop();
+
+    //2 forma --> remove o primeiro item
+    // frutas.shift();
+
+    //3 forma --> remove do meio
+
+    frutas.splice(2, 1);
+    console.log(frutas);
+    
+    //adicionar no início
+    frutas.unshift("Laranja");
+    
+    
+</script>
