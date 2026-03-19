@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Alunos</title>
+</head>
+<body>
+    <center>
+    <h1>Gerenciamento de Lista de Alunos</h1>
+    <p>Nome do Aluno que deseja cadastrar:</p>
+    <input type="text" id="ipt_add_aluno">
+
+    <p>Nome do aluno que deseja remover:</p>
+    <input type="text" id="ipt_del_aluno">
+
+    <br> <br>
+    <button onclick="exibirAlunos()">Exibir Alunos</button> <br> <br>
+    <button onclick="cadastrarAluno()">Cadastrar Aluno</button> <br> <br>
+    <button onclick="removerAluno()">Remover Aluno</button> <br> <br>
+    <button onclick="atualizarAluno()">Atualizar Aluno</button>
+
+    <div id="div_mensagem"></div>
+    </center>
+</body>
+</html>
+<script>
+    let aluno = []; //vetor dos alunos  
+
+    function cadastrarAluno(){
+    let novo_aluno = ipt_add_aluno.value; //aluno que será cadastrado
+    let ja_existe = aluno.includes(novo_aluno); //já existe o novo aluno
+    ipt_add_aluno.value = "";
+    ipt_del_aluno.value = "";
+
+    div_mensagem.innerHTML = ""; //innerHTML vazio quando apertar o botão de novo
+
+        if (novo_aluno == ""){
+            div_mensagem.innerHTML += `Preencha o campo de cadastro de aluno <br>`;
+        }
+        else if (ja_existe){
+            div_mensagem.innerHTML += `Aluno já cadastrado <br>`;
+        } 
+        else {
+            let adicionar = aluno.push(novo_aluno);
+            div_mensagem.innerHTML += `Aluno(a) ${novo_aluno} foi cadastrado(a) com sucesso! <br>`;
+        }
+
+        console.log(aluno)
+
+    }
+    
+    function removerAluno(){
+        let novo_aluno = ipt_add_aluno.value; //aluno que será cadastrado
+        let del_aluno = ipt_del_aluno.value; //aluno que será deletado
+        let ja_existe_del = aluno.includes(del_aluno); //já existe o novo aluno 
+        ipt_add_aluno.value = "";
+        ipt_del_aluno.value = "";
+
+        if (del_aluno == ""){
+            div_mensagem.innerHTML += `Preencha o campo de remoção do aluno <br>`;
+
+        } else if (! ja_existe_del){
+            div_mensagem.innerHTML += `Aluno não encontrado na lista <br>`;
+
+        } else {
+            let remover = aluno.pop(del_aluno);
+            div_mensagem.innerHTML += `Aluno(a) ${del_aluno} foi removido(a) com sucesso! <br>`;
+        }
+    }
+
+    function atualizarAluno(){
+        let novo_aluno = ipt_add_aluno.value; //aluno que será cadastrado
+        let del_aluno = ipt_del_aluno.value; //aluno que será deletado
+        let ja_existe = aluno.includes(novo_aluno); //já existe o novo aluno
+        let posicao_del = aluno.indexOf(del_aluno);
+        let ja_existe_del = aluno.includes(del_aluno); //existe o aluno a remover 
+
+        ipt_add_aluno.value = "";
+        ipt_del_aluno.value = "";
+
+        if (novo_aluno == "" || del_aluno == ""){
+            div_mensagem.innerHTML += `Preencha os campos de cadastro e remoção de aluno <br>`;
+
+        } else if (ja_existe){
+            div_mensagem.innerHTML += `Aluno já cadastrado <br>`;
+        } 
+        else if (! ja_existe_del){
+            div_mensagem.innerHTML += `Aluno não encontrado na lista <br>`;
+
+        }
+        else {
+            let remover = aluno.splice(`${posicao_del}`,1,`${novo_aluno}`);
+            div_mensagem.innerHTML += `Aluno(a) ${novo_aluno} atualizado com sucesso! <br>`;
+            console.log(aluno)
+        }
+        
+   
+    }
+
+    function exibirAlunos(){
+        let tamanho = aluno.length; //tamanho do vetor aluno
+
+        if (tamanho == 0){
+            div_mensagem.innerHTML += (`Nenhum aluno cadastrado na lista <br>`);
+
+        } else {
+            div_mensagem.innerHTML += (`${aluno} <br>`);
+        } 
+    }
+
+</script>

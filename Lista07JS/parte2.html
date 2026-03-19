@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadrastro de Viagens</title>
+</head>
+<body>
+    <center>
+        <h1>Cadastro de viagens</h1>
+        <p>Informe o destino:</p>
+        <input type="text" id="ipt_destino">
+
+        <p>Informe o valor gasto na viagem:</p>
+        <input type="number" id="ipt_gasto">
+
+        <br> <br>
+        <button onclick="cadastrarViagem()">Cadastrar</button>
+        <div id="div_viagem"></div>
+
+        <h2>Buscar viagem</h2>
+        <input type="text" id="ipt_busca">
+        <button onclick="pesquisar()">Buscar</button>
+        <div id="div_busca"></div>
+    </center>
+</body>
+</html>
+<script>
+
+    let viagem = [];
+    let custo = [];
+
+    function cadastrarViagem(){
+        let destino = ipt_destino.value;
+        let gasto = Number(ipt_gasto.value);
+        viagem.push(destino);
+        custo.push(gasto)
+        ipt_destino.value = "";
+        ipt_gasto.value = "";
+
+        div_viagem.innerHTML += (`Destino: ${destino}, Gasto: R$${gasto.toFixed(2)} <br>`);
+    }
+
+    function pesquisar(){
+        let busca = ipt_busca.value;
+        let viajou = viagem.includes(busca);
+        let indice_primeira = viagem.indexOf(busca); //primeira vez que viajou para esse destino
+        let ultima_vez = viagem.lastIndexOf(busca);
+        
+
+        if(! viajou){
+            div_busca.innerHTML = `Você nunca visitou ${busca}`;
+
+        } else if (indice_primeira == ultima_vez){
+            div_busca.innerHTML = 
+            `Você visitou ${viagem[indice_primeira]} e gastou ${custo[indice_primeira]}`;
+
+        } else if (ultima_vez){
+            div_busca.innerHTML = 
+            `Você visitou ${viagem[indice_primeira]} e gastou R$${custo[indice_primeira]} da primeira vez,
+            e R$${custo[ultima_vez]} da última vez`;
+        }
+    }
+</script>
