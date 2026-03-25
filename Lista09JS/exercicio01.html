@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Números Primos</title>
 </head>
 <body>
-    
+    <h1>1. Números Primos</h1>
+    <p>Informe um número:</p>
+    <input type="number" id="ipt_num">
+
+    <button onclick="exibirDivisores()">Exibir Divisores</button>
+
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    function exibirDivisores(){
+        let numero = Number(ipt_num.value);
+        div_mensagem.innerHTML = "";
+
+        for (i = 0; i <= numero; i++){
+            if(numero % i == 0){
+                div_mensagem.innerHTML += `${i} <br>`;
+            }
+        }
+
+        if(i == 2){
+            div_mensagem.innerHTML += `${numero} é um número primo!`;
+        }
+
+    }
+</script>
