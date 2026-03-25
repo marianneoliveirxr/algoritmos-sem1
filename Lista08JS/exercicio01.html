@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Simples</title>
+</head>
+<!-- Crie um programa o qual:
+ 
+a) Ao clicar num botão "Contar"...   
+
+b) Exiba, debaixo do botão, os números de 1 a 15, um embaixo do outro -->
+<body>
+    <button onclick="contar()">Contar</button>
+    <br> <br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function contar(){
+        let contador = 0;
+
+        while(contador <= 14){
+        contador++;
+        div_mensagem.innerHTML += contador + "<br>";
+        }
+        
+    }
+</script>

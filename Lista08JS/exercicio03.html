@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frase Numerada</title>
+</head>
+<!-- Refaça o programa anterior de tal forma que, antes de cada frase 
+ apareça um contador. Ex: Se a frase digitada foi “Boa Tarde” a página ficará assim:   
+
+   1. Boa tarde   
+
+   2. Boa tarde   
+   ....
+   
+   7. Boa tarde   -->
+<body>
+    <button onclick="mostrarMensagem()">Diga algo sobre a matéria de Algoritmos</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function mostrarMensagem(){
+        let contador = 0;
+
+        while (contador < 7){
+            contador++;
+            div_mensagem.innerHTML += `${contador}. Eu amo JavaScript! <br>`;
+        }
+
+        
+    }
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pares no Intervalo</title>
+</head>
+<!-- Crie um programa o qual:
+ 
+a) Pergunte ao usuário quantas voltas um carro dará numa corrida   
+
+b) Ao clicar num botão "Iniciar corrida!"...   
+
+c) Exiba, debaixo do botão, frases como estas:   
+
+       Carro dando a 1ª volta   
+
+       Carro dando a 2ª volta   
+
+       Carro dando a 3ª volta   
+
+d) Até que o carro "termine" a corrida. Nesse caso, exiba abaixo de tudo, 
+somente 1 vez, a frase "Corrida finalizada!"    -->
+<body>
+    <p>Quantas voltas o carro dará nesta corrida?</p>
+    <input type="number" id="ipt_voltas">
+
+    <button onclick="corrida()">Iniciar corrida!</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function corrida(){
+        let voltas = Number(ipt_voltas.value);
+        let contador = 0;
+
+        while(contador <= voltas){
+            div_mensagem.innerHTML += `Carro dando a ${contador}ª volta <br>`;
+            contador++;
+        }
+    }
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo For</title>
+</head>
+<body>
+
+    <button onclick="mostrarMensagem()">Mostrar Mensagem</button>
+    <div id="div_while"></div>
+    <div id="div_for"></div>
+</body>
+</html>
+<script>
+    function mostrarMensagem(){
+        let contador = 0;
+
+        div_while.innerHTML = "";
+        div_while.innerHTML += "While: <br>";
+        while(contador < 10){
+            
+            div_while.innerHTML += contador + "<br>";
+            contador++;
+        }
+    }
+
+// ==============================================================================
+
+    div_for.innerHTML = "For: <br>";
+    for (let contador = 0; contador < 10; contador++){
+        div_for.innerHTML += contador + "<br>";
+    }
+
+</script>
