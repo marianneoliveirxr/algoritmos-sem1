@@ -28,5 +28,36 @@ c) Ao clicar em "Acompanhar grana", deve aparecer o valor, mês a mês, como nes
 No exemplo acima, o usuário informou 5 depósitos e 500 por depósito. -->
 <body>
     <h1>6. Acompanhando a Poupança</h1>
+    <p>Informe quantos depósitos você fez no banco:</p>
+    <input type="number" id="ipt_depositos">
+    <p>Informe o valor de cada depósito:</p>
+    <input type="number" id="ipt_valor">
+
+    <br> <br>
+
+    <button onclick="mostrarGrana()">Acompanhar grana</button>
+    <br>
+
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    function mostrarGrana(){
+        let qtd_depositos = Number(ipt_depositos.value);
+        let valor = Number(ipt_valor.value);
+        div_mensagem.innerHTML = "";
+
+        console.log(qtd_depositos);
+        console.log(valor);
+
+        for (i = 1; i <= qtd_depositos; i++){
+            if(i == 1){
+                div_mensagem.innerHTML += `${i}º Mês: R$${(valor.toFixed(2))} <br>`;
+            }
+            else {
+                div_mensagem.innerHTML += `${i}º Mês: R$${(valor * i.toFixed(2))} <br>`;
+                div_mensagem.innerHTML += `Total guardado: R$${(valor * qtd_depositos).toFixed(2)}<br>`;
+            }
+        }
+    }
+</script>
