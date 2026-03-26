@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD do Sanji</title>
+</head>
+<body>
+    <h1>CRUD do Sanji</h1>
+    <h2>Cadastrar Estoque de Comida</h2>
+    <p>Comida:</p>
+    <input type="text" id="ipt_comida">
+
+    <br> <br>
+    <button onclick="cadastrarComida()">Cadastrar</button>
+    <br> <br>
+    <button onclick="alterar()">Atualizar Nome</button>
+    <br> <br>
+    <button onclick="remover()">Remover Comida</button>
+
+    <br> 
+    <button onclick="verificarQtd()">Verificar Quantidade</button>
+    <div id="div_mensagem"></div>
+
+    <br>
+    <h2>Pesquisar comida</h2>
+    <br>
+    <input type="text" id="ipt_pesquisa">
+    <button onclick="pesquisar()">Pesquisar</button>
+
+    <div id="div_msg_pesquisa"></div>
+    <br>
+
+    <button onclick="estoque()">Exibir Estoque</button>
+    <br>
+    <div id="div_estoque"></div>
+    <br>
+
+    
+
+    
+</body>
+</html>
+<script>
+    let listaComida = [];
+
+    function cadastrarComida(){
+        let comida = ipt_comida.value;
+        listaComida.push(comida);
+
+        console.log(comida);
+        console.log(listaComida);
+    }
+
+    function verificarQtd(){
+
+        let tamanhoLista = listaComida.length;
+        console.log(listaComida);
+
+        if(tamanhoLista < 3){
+            div_mensagem.innerHTML += `Desse jeito, o Luffy devora até o navio <br>`;
+
+        } else if (tamanhoLista >= 3 && tamanhoLista <= 7){
+            div_mensagem.innerHTML += `O comilão do Luffy não vai deixar sobrar nenhuma comida <br>`;
+
+        } else if(tamanhoLista >= 8 && tamanhoLista <= 10){
+            div_mensagem.innerHTML += `Assim, talvez sobre um pouco para a tripulação <br>`;
+
+        } else if (tamanhoLista > 10){
+            div_mensagem.innerHTML += 
+            `Desse jeito vai ter comida para todo mundo e ainda consigo guardar um pouco para a senhorita Nami! <br>`;
+        }
+    }
+
+    function pesquisar(){
+        let pesquisa = ipt_pesquisa.value;
+        let existe_pesquisa = listaComida.includes(pesquisa); 
+        let tamanhoLista = listaComida.length;
+        let contador = 0;
+        div_msg_pesquisa.innerHTML = "";
+
+        
+        console.log(pesquisa);
+        console.log(existe_pesquisa);
+        console.log(tamanhoLista);
+
+        if (!existe_pesquisa){
+
+            div_msg_pesquisa.innerHTML = `Alguém vai ter que comprar ${pesquisa}, tá fazendo falta...`;
+
+        } else {
+            for (let i = 0; i <= tamanhoLista; i++){
+                
+                if(listaComida[i] == pesquisa){
+                    contador++;
+
+                }
+                div_msg_pesquisa.innerHTML = 
+                `Temos a comida ${pesquisa} e há ${contador} unidade(s) dela<br>`;
+            }
+            
+        }
+    }
+
+    function estoque(){
+        let tamanhoLista = listaComida.length;
+        div_estoque.innerHTML = "";
+        console.log(tamanhoLista);
+        let estoqueContar = [];
+        
+
+        // contador para identificar a posição da determinada comida
+        for (let i = 0; i < tamanhoLista; i++){
+            let quantidade = 0;
+            // contador de quantidade da determinada comida
+            for(let j = 0; j < tamanhoLista; j++){
+                if(listaComida[i] == listaComida[j]){
+                    quantidade++;
+                }
+            }
+            if(!estoqueContar.includes(listaComida[i])) {
+
+                    if(quantidade == 1){
+                        div_estoque.innerHTML += `${listaComida[i]} (${quantidade} unidade) <br>`;
+                    } else {
+                        div_estoque.innerHTML += `${listaComida[i]} (${quantidade} unidades) <br>`;
+                    }
+
+                    estoqueContar.push(listaComida[i]);
+                    estoqueContar.push(quantidade);
+                    }
+        }       
+    }
+
+    function alterar(){
+
+    }
+
+    function remover(){
+
+    }
+</script>
+
+
