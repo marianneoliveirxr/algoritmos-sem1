@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Capacidade Flexível</title>
 </head>
+<!--Incremente a questão anterior de tal forma que:   
+a) Também tenha um campo no qual o usuário indique a capacidade de passageiros que o veículo suporta   
+
+b) Ao clicar no botão, as frases só começam a mostrar que o passageiro terá que esperar quando a 
+capacidade indicada em a) for excedida.  -->
 <body>
-    
+    <h1>3. Capacidade Flexível</h1>
+    <p>Quantas pessoas irão entrar no carro?</p>
+    <input type="number" id="ipt_pessoas">
+
+    <p>Qual a capacidade máxima que este veículo suporta?</p>
+    <input type="number" id="ipt_capacidade">
+
+    <button onclick="carona()">#Partiu Carona</button>
+
+    <div id="div_mensagem"></div>
+
 </body>
 </html>
+<script>
+    function carona(){
+        let pessoas = Number(ipt_pessoas.value);
+        let capacidade = Number(ipt_capacidade.value);
+        div_mensagem.innerHTML = "";
+        
+        for(let i = 1; i <= pessoas; i++){
+            if(i == 1){
+                div_mensagem.innerHTML += `Entrou o ${i}º passageiro (motorista) <br>`;
+            } 
+            else if (i > 1 && i <= capacidade){
+                div_mensagem.innerHTML += `Entrou o ${i}º passageiro <br>`;
+            }
+            else {
+                div_mensagem.innerHTML += `O ${i}º passageiro terá que esperar! <br>`;
+            }
+        }
+
+    }
+</script>

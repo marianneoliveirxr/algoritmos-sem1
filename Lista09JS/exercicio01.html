@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Números Primos</title>
 </head>
+<!-- Crie  um programa o qual:
+
+a) Ao exibir os divisores do número informado, caso o número seja divisível somente por 1
+ e por ele mesmo, exiba abaixo: 
+     Divisores do Número 13:
+
+     1
+
+     13
+
+     O número 13 é um número primo.-->
 <body>
     <h1>1. Números Primos</h1>
     <p>Informe um número:</p>
@@ -20,15 +31,16 @@
         let numero = Number(ipt_num.value);
         div_mensagem.innerHTML = "";
 
+        let c = 0;
         for (i = 0; i <= numero; i++){
             if(numero % i == 0){
+                c++;
                 div_mensagem.innerHTML += `${i} <br>`;
             }
         }
 
-        if(i == 2){
-            div_mensagem.innerHTML += `${numero} é um número primo!`;
+        if(c == 2){
+            div_mensagem.innerHTML += `O número ${numero} é um número primo!`;
         }
-
     }
 </script>

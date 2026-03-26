@@ -3,9 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Carona Compartilhada:</title>
 </head>
+<!-- a) Pergunte ao usuário quantas pessoas, vão entrar no carro   
+
+b) Ao clicar num botão "#Partiu Carona"...   
+
+c) Exiba, debaixo do botão, frases como estas:   
+
+Entrou o 1º passageiro (que é o(a) motorista)   
+
+Entrou o 2º passageiro   
+
+Entrou o 3º passageiro   
+
+Entrou o 4º passageiro   
+
+Entrou o 5º passageiro   
+
+O 6º passageiro terá que esperar!   
+
+O 7º passageiro terá que esperar!   
+
+d) Note que, sempre na frase do 1º passageiro, deve constar ao lado que é motorista   
+
+e) A partir do 6º passageiro, a frase muda, pois o carro só comporta 5 passageiros   -->
 <body>
-    
+    <h1>2. Carona Compartilhada:</h1>
+
+    <p>Quantas pessoas irão entrar no carro?</p>
+    <input type="number" id="ipt_pessoas">
+
+    <button onclick="carona()">#Partiu Carona</button>
+
+    <div id="div_mensagem"></div>
+
 </body>
 </html>
+<script>
+    function carona(){
+        let pessoas = Number(ipt_pessoas.value);
+        div_mensagem.innerHTML = "";
+        
+        for(let i = 1; i <= pessoas; i++){
+            if(i == 1){
+                div_mensagem.innerHTML += `Entrou o ${i}º passageiro (motorista) <br>`;
+            } 
+            else if (i > 1 && i < 6){
+                div_mensagem.innerHTML += `Entrou o ${i}º passageiro <br>`;
+            }
+            else {
+                div_mensagem.innerHTML += `O ${i}º passageiro terá que esperar! <br>`;
+            }
+        }
+
+    }
+</script>

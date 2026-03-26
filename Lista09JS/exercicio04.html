@@ -3,9 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contador de Coca-Colas</title>
 </head>
+<!--
+Crie um programa no qual:   
+a) O usuário informe quantas "Coca-Cola" ele acha que já bebeu na vida   
+
+b) Ao clicar em "Ver a quantidade", devem aparecer na tela N garrafinhas 
+(ou latas, se preferir) de "Coca-Cola" uma ao lado da outra, conforme a quantidade informada em a)   
+
+c) Para saber se seu programa está correto, teste algo assim: informe 20 e clique. 
+Depois informe só 3 e clique novamente. Veja se vão aparecer só 3 garrafinhas (ou latas) na tela.   -->
 <body>
+    <h1>4. Contador de Coca-Colas</h1>
     
+    <p>Quantas coca-colas você acha que já bebeu na vida?</p>
+    <input type="number" id="ipt_qtd">
+
+    <button onclick="analisarCoca()">Ver quantidade</button>
+
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    function analisarCoca(){
+
+        let qtd = Number(ipt_qtd.value);
+        div_mensagem.innerHTML = "";
+
+        for (i = 0; i < qtd; i++){
+            div_mensagem.innerHTML += `<img width= 100; src="img/coca.png" alt="coca-cola em vidro">`;
+        }
+    }
+</script>
