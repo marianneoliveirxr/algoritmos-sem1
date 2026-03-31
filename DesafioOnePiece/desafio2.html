@@ -16,14 +16,14 @@
     <p>Quantidade de carnes disponíveis</p>
     <input type="number" id="ipt_carnes">
 
-    <button onclick="batalhar()">Iniciar nova batalha</button>
+    <button onclick="iniciar()">Iniciar nova batalha</button>
     <div id="div_mensagem"></div>
 </center>
 </body>
 </html>
 <script>
-   function batalhar() {
-        let qtd_batalhaa = Number(ipt_batalhas.value);
+   function iniciar() {
+        let qtd_batalhas = Number(ipt_batalhas.value);
         let qtd_marinheiros = Number(ipt_marinheiros.value);
         let carnes = Number(ipt_carnes.value);
 
