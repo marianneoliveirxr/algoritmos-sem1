@@ -16,14 +16,52 @@
     <p>Quantidade de carnes disponíveis</p>
     <input type="number" id="ipt_carnes">
 
-    <button onclick="iniciar()">Iniciar nova batalha</button>
+    <button onclick="batalhar()">Iniciar nova batalha</button>
+    <div id="div_mensagem"></div>
 </center>
 </body>
 </html>
 <script>
-    function iniciar(){
-        let qtd_batalha = Number(ipt_batalhas.value);
-        let qtd_marinheiro = Number(ipt_marinheiros.value);
+   function batalhar() {
+        let qtd_batalhaa = Number(ipt_batalhas.value);
+        let qtd_marinheiros = Number(ipt_marinheiros.value);
         let carnes = Number(ipt_carnes.value);
+
+        let marinheirosDerrotados = 0;
+        let energia = 100;
+
+        for (let i = 0; i < qtd_batalhaa; i++) {
+            energia -= 10;
+            
+            for (let j = 0; j < qtd_marinheiros; j++) {
+                if (energia >= 5) {
+                    energia -= 5;
+                    marinheirosDerrotados++;
+                } else {
+                    if (carnes > 0) {
+                        carnes--;
+                        energia += 100;
+                        energia -= 5;
+                        marinheirosDerrotados++;
+                    }
+                }
+            }
+        }
+
+        if (marinheirosDerrotados == (qtd_marinheiros * qtd_batalhas)) {
+            div_mensagem.innerHTML = `
+                Resultado: Luffy saiu vitorioso! <br>
+                Quantidade de carnes restantes: ${carnes} <br>
+                Quantidade de marinheiros derrotados: ${marinheirosDerrotados} <br>
+                Energia restante ao final das batalhas: ${energia}
+            `;
+        } else {
+            div_mensagem.innerHTML = `
+                Resultado: Luffy saiu derrotado! <br>
+                Quantidade de carnes restantes: ${carnes} <br>
+                Quantidade de marinheiros derrotados: ${marinheirosDerrotados} <br>
+                Energia restante ao final das batalhas: ${energia}
+            `;
+        }
     }
 </script>
