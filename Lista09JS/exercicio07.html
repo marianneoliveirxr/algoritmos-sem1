@@ -25,6 +25,40 @@ A cada 3 depósitos o banco dê um bônus de 1% sobre o valor acumulado após o 
 Note que nos meses 3 e 6, o valor aumentou em 1% do total após o depósito.   -->
 <body>
     <h1>7. Bônus Bancário Inteligente</h1>
-    
+        <p>Informe quantos depósitos você fez no banco:</p>
+    <input type="number" id="ipt_depositos">
+    <p>Informe o valor de cada depósito:</p>
+    <input type="number" id="ipt_valor">
+
+    <br> <br>
+
+    <button onclick="mostrarGrana()">Acompanhar grana</button>
+    <br>
+
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    function mostrarGrana(){
+        let qtd_depositos = Number(ipt_depositos.value);
+        let valor = Number(ipt_valor.value);
+        div_mensagem.innerHTML = "";
+
+        console.log(qtd_depositos);
+        console.log(valor);
+
+        for (i = 1; i <= qtd_depositos; i++){
+            let valor_mes = valor * i;
+
+            if(i % 3 == 0){
+                let bonus = valor_mes*1.01;
+                div_mensagem.innerHTML += `${i}º Mês: R$${bonus.toFixed(2)} <br>`;
+                console.log(bonus);
+            } else {
+                div_mensagem.innerHTML += `${i}º Mês: R$${(valor * i.toFixed(2))} <br>`;
+
+            }
+        }
+        div_mensagem.innerHTML += `Total guardado: R$${(valor * qtd_depositos).toFixed(2)}<br>`;
+    }
+</script>

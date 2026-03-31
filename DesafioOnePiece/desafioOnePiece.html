@@ -6,6 +6,7 @@
     <title>CRUD do Sanji</title>
 </head>
 <body>
+    <center>
     <h1>CRUD do Sanji</h1>
     <h2>Cadastrar Estoque de Comida</h2>
     <p>Comida:</p>
@@ -13,12 +14,8 @@
 
     <br> <br>
     <button onclick="cadastrarComida()">Cadastrar</button>
-    <br> <br>
-    <button onclick="alterar()">Atualizar Nome</button>
-    <br> <br>
-    <button onclick="remover()">Remover Comida</button>
 
-    <br> 
+    <br> <br>
     <button onclick="verificarQtd()">Verificar Quantidade</button>
     <div id="div_mensagem"></div>
 
@@ -34,11 +31,24 @@
     <button onclick="estoque()">Exibir Estoque</button>
     <br>
     <div id="div_estoque"></div>
-    <br>
 
-    
+    <p>Insira o nome atual da comida</p>
+    <input type="text" id="ipt_nomeAtual">
 
-    
+    <p>Insira o novo nome da comida</p>
+    <input type="text" id="ipt_novoNome">
+    <br> <br>
+
+    <button onclick="alterar()">Alterar Nome</button>
+    <br> <br>
+    <div id="div_alterar"></div>
+
+    <p>Digite o nome da comida que deseja deletar:</p>
+    <input type="text" id="ipt_deletecomida">
+    <button onclick="remover()">Remover Comida</button>
+    <div id="div_deletar"></div>
+
+</center>
 </body>
 </html>
 <script>
@@ -133,11 +143,34 @@
     }
 
     function alterar(){
+        let nomeAtual = ipt_nomeAtual.value;
+        let novoNome = ipt_novoNome.value;
+        let existeNome = listaComida.includes(nomeAtual);
+        let posicao = listaComida.indexOf(nomeAtual);
 
+        if(existeNome){
+            listaComida.splice(posicao, 1);
+            listaComida.push(novoNome);
+
+            div_alterar.innerHTML += (`A comida ${nomeAtual} foi alterada para ${novoNome}`);
+
+        } else{
+            div_alterar.innerHTML += (`A comida ${nomeAtual} não foi encontrada no estoque.`);
+        }
     }
 
     function remover(){
+        let comida = ipt_deletecomida.value;
+        let existeComida = listaComida.includes(comida);
+        let posicao = listaComida.indexOf(comida);
 
+        if(existeComida){
+            listaComida.splice(comida, 1);
+
+            div_deletar.innerHTML += (`A comida ${comida} foi removida do estoque.`);
+        } else{
+            div_deletar.innerHTML += (`A comida ${comida} não está no estoque.`);
+        }
     }
 </script>
 

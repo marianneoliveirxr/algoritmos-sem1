@@ -51,13 +51,8 @@ No exemplo acima, o usuário informou 5 depósitos e 500 por depósito. -->
         console.log(valor);
 
         for (i = 1; i <= qtd_depositos; i++){
-            if(i == 1){
-                div_mensagem.innerHTML += `${i}º Mês: R$${(valor.toFixed(2))} <br>`;
-            }
-            else {
                 div_mensagem.innerHTML += `${i}º Mês: R$${(valor * i.toFixed(2))} <br>`;
-                div_mensagem.innerHTML += `Total guardado: R$${(valor * qtd_depositos).toFixed(2)}<br>`;
-            }
         }
+        div_mensagem.innerHTML += `Total guardado: R$${(valor * qtd_depositos).toFixed(2)}<br>`;
     }
 </script>
