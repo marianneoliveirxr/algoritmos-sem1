@@ -21,5 +21,23 @@ Se o número for múltiplo de 3 e 5, exiba "FizzBuzz".
 Caso contrário, exiba o próprio número.-->
 <body>
     <h1>9. FizzBuzz</h1>
+    <button onclick="iniciar()">Iniciar</button>
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    function iniciar(){
+        for(let i = 1; i < 101; i++){
+            if (i % 3 == 0){
+                div_mensagem.innerHTML += `Fizz <br>`;
+            } else if (i % 5 == 0){
+                div_mensagem.innerHTML += `Buzz <br>`;
+            } else if (i % 3 == 0 && i % 5 == 0){
+                div_mensagem.innerHTML += `FizzBuzz <br>`;
+            } else {
+                div_mensagem.innerHTML += i + "<br>";
+            }
+
+        }
+    }
+</script>

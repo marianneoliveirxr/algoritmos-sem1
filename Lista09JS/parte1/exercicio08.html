@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrelas de Recompensa</title>
+</head>
+<!--8. Estrelas de Recompensa
+Refaça o programa anterior de tal forma de que:
+Somente nos meses que ganhou o "bônus", apareça uma imagem de uma estrela bem pequena 
+(reduza a imagem para ficar quase do tamanho da fonte) à direita do valor acumulado.-->
+
+<body>
+    <h1>8. Estrelas de Recompensa</h1>
+    <p>Informe quantos depósitos você fez no banco:</p>
+    <input type="number" id="ipt_depositos">
+    <p>Informe o valor de cada depósito:</p>
+    <input type="number" id="ipt_valor">
+
+    <br> <br>
+
+    <button onclick="mostrarGrana()">Acompanhar grana</button>
+    <br>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function mostrarGrana(){
+        let qtd_depositos = Number(ipt_depositos.value);
+        let valor = Number(ipt_valor.value);
+        div_mensagem.innerHTML = "";
+        let valor_total = 0;
+
+        console.log(qtd_depositos);
+        console.log(valor);
+
+        for (i = 1; i <= qtd_depositos; i++){
+            valor_total += valor;
+
+            if(i % 3 == 0){
+                valor_total = valor_total*1.01;
+                div_mensagem.innerHTML += `${i}º Mês: R$${valor_total.toFixed(2)} 
+                <img width= 15; src="img/estrela.png" alt="estrela">
+                <br>`;
+
+            } else {
+                div_mensagem.innerHTML += `${i}º Mês: R$${(valor_total.toFixed(2))} <br>`;
+            }
+        }
+        div_mensagem.innerHTML += `Total guardado: R$${(valor_total).toFixed(2)}<br>`;
+    }
+</script>

@@ -43,22 +43,22 @@ Note que nos meses 3 e 6, o valor aumentou em 1% do total após o depósito.   -
         let qtd_depositos = Number(ipt_depositos.value);
         let valor = Number(ipt_valor.value);
         div_mensagem.innerHTML = "";
+        let valor_total = 0;
 
         console.log(qtd_depositos);
         console.log(valor);
 
         for (i = 1; i <= qtd_depositos; i++){
-            let valor_mes = valor * i;
+            valor_total += valor;
 
             if(i % 3 == 0){
-                let bonus = valor_mes*1.01;
-                div_mensagem.innerHTML += `${i}º Mês: R$${bonus.toFixed(2)} <br>`;
-                console.log(bonus);
-            } else {
-                div_mensagem.innerHTML += `${i}º Mês: R$${(valor * i.toFixed(2))} <br>`;
+                valor_total = valor_total*1.01;
+                div_mensagem.innerHTML += `${i}º Mês: R$${valor_total.toFixed(2)} <br>`;
 
+            } else {
+                div_mensagem.innerHTML += `${i}º Mês: R$${(valor_total.toFixed(2))} <br>`;
             }
         }
-        div_mensagem.innerHTML += `Total guardado: R$${(valor * qtd_depositos).toFixed(2)}<br>`;
+        div_mensagem.innerHTML += `Total guardado: R$${(valor_total).toFixed(2)}<br>`;
     }
 </script>
