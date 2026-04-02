@@ -3,9 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Elementos Duplicados</title>
 </head>
+
+<!--Crie um programa o qual:
+
+a) Tenha uma input e botão para adicionar um elemento no vetor.
+
+b) Tenha um botão que exibe UMA VEZ os itens duplicados do vetor chamado "Exibir Duplicados".
+
+c) Tenha um botão que remove os elementos duplicados do vetor e mantém apenas um item de cada um dos duplicados. Esse botão deve ser chamado "Remover Duplicatas".
+
+d) Ao clicar em qualquer um dos botões exiba o vetor atual com os elementos um em baixo do outro.
+
+❌ Não é permitido usar métodos prontos como:
+
+filter, map, reduce, includes, indexOf, lastIndexOf
+
+✅ Use apenas:
+
+laços (for, while) e estruturas básicas (arrays, variáveis)-->
+
 <body>
-    
+    <input type="text" id="ipt_add">
+    <br> <br>
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="exibir()">Exibir Duplicados</button>
+    <button onclick="eliminar()">Remover Duplicatas</button>
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    let vetor = [];
+
+    function adicionar(){
+        let add = ipt_add.value;
+        vetor.push(add);
+        console.log(vetor);
+
+        div_mensagem.innerHTML = "";
+        for(let i = 0; i < vetor.length; i++){
+            div_mensagem.innerHTML += `${vetor[i]} <br>`;
+        }
+    }
+
+    function exibir(){
+
+        div_mensagem.innerHTML = "";
+        let exibido = [];
+
+        for (let i = 0; i < vetor.length; i++) {
+            let encontrei = false;
+
+        for (let k = 0; k < exibido.length; k++) {
+            if (exibido[k] == vetor[i]) {
+                encontrei = true;
+                break;
+            }
+        }
+
+        if (encontrei) {
+            continue;
+        }
+
+        for (let j = 0; j < vetor.length; j++) {
+            if (vetor[i] == vetor[j] && i != j) {
+                div_mensagem.innerHTML += `${vetor[i]} <br>`;
+                exibido.push(vetor[i]);
+                break;
+            }
+        }
+    }
+    }
+
+    function eliminar(){
+        div_mensagem.innerHTML += ``;
+
+        for(let i = 0; i <vetor.length; i++){
+            for (let j = 0; j < vetor.length; j++){
+                if(vetor[i] == vetor[j + i + 1]){
+                    vetor.splice(j + i + 1, 1);
+                    j--;
+                }
+            }
+            console.log(vetor);
+        }
+        div_mensagem.innerHTML += `${vetor}`;
+        
+    }
+</script>

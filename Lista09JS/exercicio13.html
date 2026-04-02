@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Palíndromo</title>
+</head>
+<!--Crie um programa o qual:
+
+a) O usuário tenha um campo para digitar uma palavra;
+
+b) Ao clicar no botão "Validar Palíndromo", deve aparecer na tela a mensagem dizendo 
+se a palavra é um palíndromo ou não. Ex: O nome "Ana" é um palíndromo, porque ao contrário
+ permanece sendo "Ana";
+
+OBS: Ignore letras maiúsculas e minúsculas e também espaços em branco.
+
+Exemplo: Subi no onibus deve ser considerado palindromo
+
+c) Exiba na tela também a palavra digitada pelo usuário escrita ao contrário.
+
+OBS: Um palíndromo é uma palavra, frase, número ou sequência de caracteres que pode ser 
+lida da mesma forma de trás para frente e de frente para trás.
+
+❌ Não é permitido usar métodos prontos como:
+
+filter, map, reduce, includes, indexOf, lastIndexOf
+
+✅ Use apenas:
+
+laços (for, while) e estruturas básicas (arrays, variáveis)-->
+<body>
+    <input type="text" id="ipt_palavra">
+    <button onclick="validar()">Validar Palíndromo</button>
+    <div id="div_mensagem"></div>
+    <div id="div_mensagem2"></div>
+    <!---->
+</body>
+</html>
+<script>
+    function validar(){
+        let texto = ipt_palavra.value;
+
+        for(let i = texto.length - 1; i >= 0; i--){
+            div_mensagem2.innerHTML += texto[i];
+
+            for(let j = 0; j < texto.length; j++){
+                if(texto[i].toLowerCase() == texto[j].toLowerCase()){
+                    div_mensagem.innerHTML = `${texto} é um palíndromo <br>`;
+                } else{
+                    div_mensagem.innerHTML = `${texto} não é um palíndromo <br>`;
+                }   
+        }
+        }
+    }
+</script>
