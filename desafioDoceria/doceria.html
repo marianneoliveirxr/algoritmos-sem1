@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 02 - Sprint 02 </title>
+</head>
+<body>
+    <h2 id="macaron">Macaron</h2>
+    <p>Informe a quantidade do doce a ser vendido:</p>
+    <input type="number" id="ipt_qtdMacaron">
+    <p>Informe o preço unitário:</p>
+    <input type="number" id="ipt_precoMacaron">
+    <div id="msg_macaron"></div>
+
+    <h2 id="brigadeiro">Brigadeiro</h2>
+    <p>Informe a quantidade do doce a ser vendido:</p>
+    <input type="number" id="ipt_qtdBrigadeiro">
+    <p>Informe o preço unitário:</p>
+    <input type="number" id="ipt_precoBrigadeiro">
+    <div id="msg_brigadeiro"></div>
+
+    <h2 id="cupcake">Cupcake</h2>
+    <p>Informe a quantidade do doce a ser vendido:</p>
+    <input type="number" id="ipt_qtdCupcake">
+    <p>Informe o preço unitário:</p>
+    <input type="number" id="ipt_precoCupcake">
+    <div id="msg_cupcake"></div>
+
+    <h2 id="cheesecake">Cheesecake</h2>
+    <p>Informe a quantidade do doce a ser vendido:</p>
+    <input type="number" id="ipt_qtdCheesecake">
+    <p>Informe o preço unitário:</p>
+    <input type="number" id="ipt_precoCheesecake">
+    <div id="msg_cheesecake"></div>
+
+    <br> <br>
+    <button onclick="verificarVendas()">Verificar Vendas</button>
+    <div id="div_mensagem"></div>
+    <img src="" alt="" width="">
+</body>
+</html>
+<script>
+    function verificarVendas(){
+        let qtdMc = Number(ipt_qtdMacaron.value);
+        let precoMc = Number(ipt_precoMacaron.value);
+        
+        let qtdBrig = Number(ipt_qtdBrigadeiro.value);
+        let precoBrig = Number(ipt_precoBrigadeiro.value);
+
+        let qtdCp = Number(ipt_qtdCupcake.value);
+        let precoCp = Number(ipt_precoCupcake.value);
+
+        let qtdCh = Number(ipt_qtdCheesecake.value);
+        let precoCh = Number(ipt_precoCheesecake.value);
+
+        let total_vendas = (precoMc * qtdMc) + (precoBrig * qtdBrig) + 
+            (precoCp * qtdCp) + (precoCh * qtdCh);
+            console.log(total_vendas);
+
+        div_mensagem.innerHTML = "";
+        
+
+        if(
+            qtdMc < 0 || precoMc < 0 ||
+            qtdBrig < 0 || precoBrig < 0 ||
+            qtdCp < 0 || precoCp < 0 ||
+            qtdCh < 0 || precoCh < 0 
+        ){
+            div_mensagem.innerHTML = "Insira valores positivos";
+        }
+        else {
+                for(let i = 1; i <= qtdMc; i++){
+                    div_mensagem.innerHTML += 
+                    `Venda ${i} - <img src="macaron.png" alt="macaron" width="80px"> R$${precoMc.toFixed(2)}<br>`;
+                }
+                for(let j = 1; j <= qtdBrig; j++){
+                    div_mensagem.innerHTML += 
+                    `Venda ${ j + qtdMc} - <img src="brigadeiro.png" alt="macaron" width="80px"> R$${precoBrig.toFixed(2)}<br>`;
+                }
+                for(let l = 1; l <= qtdCp; l++){
+                    div_mensagem.innerHTML += 
+                    `Venda ${l + qtdMc + qtdBrig} - <img src="cupcake.png" alt="cupcake" width="80px"> R$${precoCp.toFixed(2)}<br>`;
+                }
+                for(let g = 1; g <= qtdCh; g++){
+                    div_mensagem.innerHTML += 
+                    `Venda ${g + qtdMc + qtdBrig + qtdCp} - <img src="cheesecake.png" alt="cheesecake" width="80px"> R$${precoCh.toFixed(2)}<br>`;
+                }
+
+                div_mensagem.innerHTML += 
+                `Com a quantidade de ${qtdMc} Macarons, ${qtdBrig} Brigadeiros, ${qtdCp} Cupcakes e 
+                ${qtdCh} Cheesecakes, a venda totalizará R$${total_vendas.toFixed(2)}`;
+        }
+    }
+</script>
