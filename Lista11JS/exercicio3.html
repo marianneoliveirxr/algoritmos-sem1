@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3</title>
+</head>
+<!-- a) Tenha um botão "jogar dado";  
+
+b) Ao clicar nele, sorteie um dos 20 números de um dado D20 (Google) e exiba o número 
+sorteado em um quadrado com fundo preto, contendo a letra branca e o número centralizado dentro 
+do quadrado (100px de largura e altura é suficiente);  -->
+<style>
+.button{
+    background-color: rgb(244, 73, 250);
+    font-weight: 600;
+    color: white;
+    border: 1px solid rgb(255, 72, 103);
+    width: 100px;
+    height: 30px;
+    border-radius: 50px;
+}
+
+.mensagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+}
+
+.numero{
+    color:white;
+    font-weight: 600;
+    font-size: 50px;
+    
+}
+</style>
+<body>
+    <center>
+    <button class="button" onclick="sortearDado()">Jogar Dado</button>
+    <br> <br>
+    <div class="mensagem">
+        <div class="numero" id="div_mensagem"></div>
+    </div>
+    </center>
+</body>
+</html>
+<script>
+    function sortearDado(){
+        let numero = Math.random() * (20 - 1) + 1;
+
+        div_mensagem.innerHTML = numero.toFixed(0);
+    }
+</script>

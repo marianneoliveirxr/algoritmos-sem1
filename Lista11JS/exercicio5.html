@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+</head>
+<!-- Tente fazer uma pequena simulação do famoso jogo "jo ken po" (pedra, papel e tesoura) em HTML/JS:  
+
+a) Ao clicar no botão "Jogar", deve aparecer abaixo dele ou a figura de uma pedra, 
+de uma folha de papel ou de uma tesoura (seja qual for a imagem, ela deve ter 200px de altura). 
+
+b) Abaixo das imagens, exiba quem venceu e exiba/atualize o placar de vitórias como abaixo: 
+
+     O jogador 1 venceu!  
+
+     Jogador 1: 1 vitória(s) 
+
+     Jogador 2: 0 vitória(s)  -->
+<body>
+    <center>
+        <h2>JO KEN PO</h2>
+        <button onclick="jogar()">Jogar</button>
+        <p>Jogador 1</p>
+        <div id="jogador1"></div>
+        <p>Jogador 2</p>
+        <div id="jogador2"></div>
+
+        <div id="div_resultado"></div>
+    </center>
+</body>
+</html>
+<script>
+
+    let vitoria1 = 0;
+    let vitoria2 = 0;
+
+    function jogar(){
+        let jogada1 = Math.random() * (3 - 1) + 1;
+        let jogada2 = Math.random() * (3 - 1) + 1;
+
+
+        div_resultado.innerHTML = "";
+
+        // JOGADOR 1
+
+        if (jogada1.toFixed(0) == 1){
+            jogador1.innerHTML = `<img height="200px" src="img/pedra.png" alt="pedra">`
+        }
+        else if(jogada1.toFixed(0) == 2){
+            jogador1.innerHTML = `<img height="200px" src="img/papel.png" alt="papel">`
+        }
+        else if (jogada1.toFixed(0) == 3){
+            jogador1.innerHTML = `<img height="200px" src="img/tesoura.png" alt="tesoura">`
+        }
+
+        // JOGADOR 2
+        if (jogada2.toFixed(0) == 1){
+            jogador2.innerHTML = `<img height="200px" src="img/pedra.png" alt="pedra">`
+        }
+        else if(jogada2.toFixed(0) == 2){
+            jogador2.innerHTML = `<img height="200px" src="img/papel.png" alt="papel">`
+        }
+        else if (jogada2.toFixed(0) == 3){
+            jogador2.innerHTML = `<img height="200px" src="img/tesoura.png" alt="tesoura">`
+        }
+
+        // Somar Vitórias
+        if(jogada1.toFixed(0) == 1 && jogada2.toFixed(0) == 1){
+            div_resultado.innerHTML = `Empate! <br>  
+                                        Jogador 1: ${vitoria1} vitória(s) <br>
+                                        Jogador 2: ${vitoria2} vitória(s)`
+        } 
+        else if (jogada1.toFixed(0) == 1 && jogada2.toFixed(0) == 2){
+            vitoria2++;
+            div_resultado.innerHTML = `O jogador 2 venceu! <br>  
+                                        Jogador 1: ${vitoria1} vitória(s) <br>
+                                        Jogador 2: ${vitoria2} vitória(s)`
+            
+        }
+        else if(jogada1.toFixed(0) == 1 && jogada2.toFixed(0) == 3){
+            vitoria1++;
+            div_resultado.innerHTML = `O jogador 1 venceu! <br>  
+                                        Jogador 1: ${vitoria1} vitória(s) <br>
+                                        Jogador 2: ${vitoria2} vitória(s)`
+            
+        }
+        else if(jogada1.toFixed(0) == 2 && jogada2.toFixed(0) == 1){
+            vitoria1++;
+            div_resultado.innerHTML = `O jogador 1 venceu! <br>  
+                                        Jogador 1: ${vitoria1} vitória(s) <br>
+                                        Jogador 2: ${vitoria2} vitória(s)`
+            
+        }
+        else if(jogada1.toFixed(0) == 2 && jogada2.toFixed(0) == 2){
+            div_resultado.innerHTML = `Empate! <br>  
+                                        Jogador 1: ${vitoria1} vitória(s) <br>
+                                        Jogador 2: ${vitoria2} vitória(s)`
+        }
+        else if(jogada1.toFixed(0) == 2 && jogada2.toFixed(0) == 3){
+            vitoria2++;
+            div_resultado.innerHTML = `O jogador 2 venceu! <br>  
+                                        Jogador 1: ${vitoria1} vitória(s) <br>
+                                        Jogador 2: ${vitoria2} vitória(s)`
+            
+        }
+        else if(jogada1.toFixed(0) == 3 && jogada2.toFixed(0) == 1){
+            vitoria2++;
+            div_resultado.innerHTML = `O jogador 2 venceu! <br>  
+                                        Jogador 1: ${vitoria1} vitória(s) <br>
+                                        Jogador 2: ${vitoria2} vitória(s)`
+            
+        }
+        else if(jogada1.toFixed(0) == 3 && jogada2.toFixed(0) == 2){
+            vitoria1++;
+            div_resultado.innerHTML = `O jogador 1 venceu! <br>  
+                                        Jogador 1: ${vitoria1} vitória(s) <br>
+                                        Jogador 2: ${vitoria2} vitória(s)`
+            
+        }
+        else if (jogada1.toFixed(0) == 3 && jogada2.toFixed(0) == 3){
+            div_resultado.innerHTML = `Empate! <br>  
+                                        Jogador 1: ${vitoria1} vitória(s) <br>
+                                        Jogador 2: ${vitoria2} vitória(s)`
+        }
+    }
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+</head>
+<!-- a) Ao clicar no botão "Sortear time", faz aparecer somente um dos escudos dos 4 times 
+ de futebol de maior torcida do estado de São Paulo. Independente da imagem, todas devem ter 150px 
+ de altura.   -->
+<body>
+    <button style="background-color: rgb(255, 0, 255); color: white" onclick="sorteio()">
+        Sortear Time
+    </button>
+    <div id="div_mensagem"></div>
+    <img src="" alt="" height="150px;">
+</body>
+</html>
+<script>
+    function sorteio(){
+        let timeAleatorio = Math.random() * (4 - 1) + 1;
+        console.log(timeAleatorio)
+
+        if (timeAleatorio.toFixed(0) == 1){
+            div_mensagem.innerHTML = `<img height="150px" src="img/corinthians.png" alt="Corinthians">`
+        }
+        else if(timeAleatorio.toFixed(0) == 2){
+            div_mensagem.innerHTML = `<img height="150px" src="img/palmeiras.png" alt="Palmeiras">`
+        }
+        else if (timeAleatorio.toFixed(0) == 3){
+            div_mensagem.innerHTML = `<img height="150px" src="img/santos.png" alt="Santos">`
+        }
+        else if (timeAleatorio.toFixed(0) == 4){
+            div_mensagem.innerHTML = `<img height="150px" src="img/saopaulo.png" alt="São Paulo">`
+        }
+    }
+</script>
