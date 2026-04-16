@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 12</title>
+</head>
+<!-- 12. Faça uma versão melhorada da questão anterior:  
+a) Tenha um botão "Verificar Média" que quando clicado, mostre abaixo da última avaliação a 
+média de todas as avaliações realizadas. Ex: "Média geral: 3.9"  
+
+b) Mostrar também o emoji de acordo com a média.  
+
+OBS: Essa média é a soma de todas as avaliações dividida pela quantidade de avaliações realizadas  -->
+<body>
+    <button onclick="avaliar()">Avaliar</button>
+    <button onclick="calcularMedia()">Verificar Média</button>
+    <div id="div_mensagem"></div>
+    <div id="div_media"></div>
+    
+
+</body>
+</html>
+<script>
+
+    let notas = [];
+
+    function avaliar(){
+
+        div_mensagem.innerHTML = "";
+        
+        let nota = (Math.random() * (5 - 1) + 1).toFixed(1);
+        notas.push(Number(nota));
+
+        div_mensagem.innerHTML += `Nota recebida: ${nota} <br>`;
+
+        if(nota >=0 && nota <= 0.5){
+            div_mensagem.innerHTML += "Muito triste <br>";
+        }
+        else if (nota > 0.5 && nota <= 1.5){
+            div_mensagem.innerHTML += "Meio triste <br>";
+        }
+        else if(nota > 1.5 && nota <= 3.5){
+            div_mensagem.innerHTML += "Neutro <br>";
+        } 
+        else if(nota > 3.5 && nota <= 4.5){
+            div_mensagem.innerHTML += "Feliz <br>";
+        }
+        else if(nota > 4.5){
+            div_mensagem.innerHTML += "Muito Feliz <br>";
+        }
+    }
+
+    function calcularMedia(){
+        let soma = 0;
+        for(let i = 0; i < notas.length; i++){
+            soma += notas[i];
+        }
+
+        let media = soma / notas.length;
+
+
+        div_media.innerHTML = "";
+        
+            if(media >=0 && media <= 0.5){
+                div_media.innerHTML += `Média das avaliações: ${media.toFixed(1)} 😭`;
+            }
+            else if (media > 0.5 && media <= 1.5){
+                div_media.innerHTML += `Média das avaliações: ${media.toFixed(1)} 😕`;
+            }
+            else if(media > 1.5 && media <= 3.5){
+                div_media.innerHTML += `Média das avaliações: ${media.toFixed(1)} 😐`;
+            } 
+            else if(media > 3.5 && media <= 4.5){
+                div_media.innerHTML += `Média das avaliações: ${media.toFixed(1)} 😃`;
+            }
+            else if(media > 4.5){
+                div_media.innerHTML += `Média das avaliações: ${media.toFixed(1)} 😆😁`;
+            }
+    }
+</script>

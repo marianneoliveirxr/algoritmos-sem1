@@ -20,15 +20,41 @@ c) Tenha um botão "Comparar Resultados", que exibe uma das frases abaixo de tud
   -->
 <body>
     <button onclick="dadoJ1()">Dado Jogador 1</button>
-    <div id="jogador1"></div>
+    <div id="j1"></div>
     <button onclick="dadoJ2()">Jogador 2</button>
-    <div id="jogador2"></div>
+    <div id="j2"></div>
     <button onclick="comparar()">Comparar resultados</button>
     <div id="resultado"></div>
 </body>
 </html>
 <script>
-    let jogador1 = Math.random() * (6-1) + 1;
-    let jogador2 = Math.random() * (6 - 1) + 1;
+
+    let jogador1 = 0;
+    let jogador2 = 0;
+
+
+    function dadoJ1(){
+        jogador1 = (Math.random() * (6-1) + 1).toFixed(0);
+        j1.innerHTML = `${jogador1}`;
+    }
+    
+    function dadoJ2(){
+        jogador2 = (Math.random() * (6 - 1) + 1).toFixed(0);
+        j2.innerHTML = `${jogador2}`;
+    }
+
+    function comparar(){
+        if(jogador1 > jogador2){
+            resultado.innerHTML = "Jogador 1 venceu!"
+        }
+        else if(jogador2 > jogador1){
+            resultado.innerHTML = "Jogador 2 venceu!"
+        } 
+        else if(jogador1 == jogador2){
+            resultado.innerHTML = "Empate!"
+        }
+    
+    }
+    
     
 </script>

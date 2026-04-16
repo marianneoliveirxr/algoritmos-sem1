@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. DESAFIO 🥷</title>
+</head>
+<!-- a) Inverter apenas letras e manter símbolos na posição.
+
+Exemplo:
+
+"a,b$c" vira "c,b$a"
+
+Apenas as letras foram invertidas.  -->
+<body>
+    <p>Escreva o texto que deseja inverter:</p>
+    <input type="text" id="ipt_texto">
+    <button onclick="inverter()">Inverter Texto</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function inverter(){
+        let texto = ipt_texto.value;
+        let texto_invertido = "";
+        let letras = [];
+
+
+    for (let i = 0; i < texto.length; i++) {
+        let caractere = texto[i];
+
+        if ((caractere >= 'a' && caractere <= 'z') || (caractere >= 'A' && caractere <= 'Z'))
+        {letras += caractere;
+        }
+    }
+
+    let ultima = letras.length - 1;
+
+
+    for (let i = 0; i < texto.length; i++) {
+        let caractere = texto[i];
+
+        if ((caractere >= 'a' && caractere <= 'z') || (caractere >= 'A' && caractere <= 'Z')) {
+            texto_invertido += letras[ultima];
+            ultima--;
+
+        } else {
+            texto_invertido += caractere;
+        }
+    }
+
+    div_mensagem.innerHTML = texto_invertido;
+    }
+</script>

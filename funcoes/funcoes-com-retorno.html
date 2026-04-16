@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funções com retorno</title>
+</head>
+<body>
+    <p>Nota:</p>
+    <input type="number" id="ipt_nota">
+    <p>Frequencia (%)</p>
+    <input type="number" id="ipt_frequencia">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let notas = [];
+    let frequencias = [];
+
+    function cadastrar(){
+        let nota = Number(ipt_nota.value);
+        notas.push(nota);
+
+        let frequencia = Number(ipt_frequencia.value);
+        frequencias.push(frequencia);
+
+        let mediaNotas = calcularMedia(notas);
+        let mediaFrequencias = calcularMedia(frequencias);
+
+        div_mensagem.innerHTML += "";
+        div_mensagem.innerHTML += `A média das notas é: ${mediaNotas.toFixed(2)} <br>`;
+        div_mensagem.innerHTML += `A média das frequências é: ${mediaFrequencias.toFixed(2)} <br>`;
+    }
+
+    function calcularMedia(lista){
+        let soma = 0;
+        for(let i = 0; i < lista.length; i++){
+            soma += lista[i];
+        }
+
+        let media = soma / lista.length;
+        return media;
+    }
+
+    function pesquisar(lista, busca){
+        for (let i = 0; i < lista.length; i++){
+            if(lista[i] == busca){
+                console.log("Encontrei");
+                return; //não retorna um valor, só interrompe a execução da função por inteiro
+                // return i caso ele queira o índice
+            }
+
+            console.log("Não encontrei");
+        }
+    }
+</script>
