@@ -11,6 +11,64 @@ Sendo que as mensagens ficarão: “Parabéns, YYYYYY o seu número da sorte 99 
 
  -->
 <body>
-    
+    <p>Digite seu nome:</p>
+    <input type="text" id="ipt_nome">
+    <p>Digite seu primeiro número da sorte: (Entre 1 e 100)</p>
+    <input type="numero" id="ipt_numero1">
+    <p>Digite seu segundo número da sorte: (Entre 1 e 100)</p>
+    <input type="numero" id="ipt_numero2">
+    <p>Digite seu terceiro número da sorte: (Entre 1 e 100)</p>
+    <input type="numero" id="ipt_numero3">
+    <button onclick="sortear()">Sortear</button>
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    let contador = 0;
+
+    function sortear(){
+        let nome = ipt_nome.value;
+        let numero_sorte1 = Number(ipt_numero1.value);
+        let numero_sorte2 = Number(ipt_numero2.value);
+        let numero_sorte3 = Number(ipt_numero3.value);
+        contador++;
+
+        console.log(contador);
+
+        if (
+            numero_sorte1 > 100 || 
+            numero_sorte2 > 100 || 
+            numero_sorte3 > 100
+        )
+        {
+            alert("Digite números entre 1 e 100"); 
+        }
+        else if (
+            numero_sorte1 < 1 || 
+            numero_sorte2 < 1 || 
+            numero_sorte3 < 1
+        )
+        {
+           alert("Digite números entre 1 e 100");
+        }
+        else {
+
+            let sorteado = (Math.random() * (10 - 1) + 1).toFixed(0);
+
+            console.log(sorteado);
+
+            if (
+                sorteado == numero_sorte1 || 
+                sorteado == numero_sorte2 || 
+                sorteado == numero_sorte3
+            )
+            {
+                div_mensagem.innerHTML = 
+                `Parabéns, ${nome} você foi sorteado(a) após ${contador} sorteios!`
+            }
+            else {
+                div_mensagem.innerHTML = "Não foi dessa vez =(";
+            }
+        }
+    }
+</script>

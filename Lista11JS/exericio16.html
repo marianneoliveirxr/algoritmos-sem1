@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercício 16</title>
 </head>
+
 <!-- a) Solicite ao usuário que digite seu nome e seu número inteiro da sorte. 
  Esse número deve ser entre 1 e 10. 
 
@@ -13,10 +14,49 @@ Caso não, exiba um alert orientando sobre o erro. Caso contrário, faça um sor
 
 c) Caso o número sorteado em b) seja o número da sorte informado em a), exiba um texto em qualquer 
 lugar da página dizendo "Parabéns, YYYYYYY você foi sorteado(a) após X sorteios!", onde X é a 
-quantidade de sorteios realizados e YYYYYYY é o nome do usuário 
-
- -->
+quantidade de sorteios realizados e YYYYYYY é o nome do usuário -->
 <body>
-    
+    <p>Digite seu nome:</p>
+    <input type="text" id="ipt_nome">
+    <p>Digite seu número da sorte: (Entre 1 e 10)</p>
+    <input type="numero" id="ipt_numero">
+    <button onclick="sortear()">Sortear</button>
+    <div id="div_mensagem"></div>
 </body>
 </html>
+<script>
+    let contador = 0;
+
+    function sortear(){
+        let nome = ipt_nome.value;
+        let numero_sorte = Number(ipt_numero.value);
+        contador++;
+
+        console.log(contador);
+
+        if (numero_sorte > 10){
+            alert("Digite um número entre 1 e 10"); 
+        }
+        else if (numero_sorte < 1){
+           alert("Digite um número entre 1 e 10");
+        }
+        else {
+            console.log("Entrou no Else 1");
+            console.log(numero_sorte);
+
+            let sorteado = (Math.random() * (10 - 1) + 1).toFixed(0);
+
+            console.log(sorteado);
+
+            if (sorteado == numero_sorte){
+                
+                div_mensagem.innerHTML = 
+                `Parabéns, ${nome} você foi sorteado(a) após ${contador} sorteios!`
+            }
+
+            else {
+                div_mensagem.innerHTML = "Não foi dessa vez =(";
+            }
+        }
+    }
+</script>

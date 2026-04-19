@@ -18,6 +18,72 @@ b) Ao clicar no botão “Jogar”, sorteie um valor de 1 a 6 para o Jogador 1 e
 
 c) Após atualizar o placar, emita a mensagem "O jogador X está vencendo!", onde X é o jogador que está vencendo. Caso o jogo esteja empatado, a mensagem será "O jogo está empatado!"  -->
 <body>
+    <center>
+        <h1>Jogar dados</h1>
+        <button onclick="jogar()">Jogar</button>
+        <div id="resultado"></div>
+    </center>
     
 </body>
 </html>
+<script>
+
+    let jogador1 = 0;
+    let jogador2 = 0;
+
+    let vitoria1 = 0;
+    let vitoria2 = 0;
+    let empate = 0;
+
+    function jogar(){
+        jogador1 = (Math.random() * (6-1) + 1).toFixed(0);
+        jogador2 = (Math.random() * (6 - 1) + 1).toFixed(0);
+
+        console.log(jogador1);
+        console.log(jogador2);
+
+        resultado.innerHTML = "";
+
+        if (jogador1 > jogador2){
+            vitoria1++;
+        }
+        else if (jogador2 > jogador1){
+            vitoria2++;
+        }
+        else {
+            empate++;
+        }
+
+        if (vitoria1 > vitoria2){
+            resultado.innerHTML = 
+            `Jogador 1: ${vitoria1}<br>
+            Jogador 2: ${vitoria2}<br>
+
+            Empate: ${empate}<br>
+            
+            O jogador 1 está vencendo!!`;
+        }
+        else if(vitoria2 > vitoria1){
+            resultado.innerHTML = 
+            `Jogador 1: ${vitoria1}<br>
+            Jogador 2: ${vitoria2}<br>
+
+            Empate: ${empate}<br>
+            
+            O jogador 2 está vencendo!!`;
+        }
+        else if (vitoria1 == vitoria2){
+            resultado.innerHTML = 
+            `Jogador 1: ${vitoria1}<br>
+            Jogador 2: ${vitoria2}<br>
+
+            Empate: ${empate}<br>
+            
+            Empate!!`;
+        }
+        
+    
+    }
+    
+    
+</script>
