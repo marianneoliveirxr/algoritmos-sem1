@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Catálogo de Filmes</title>
 </head>
 <!-- 2. Catálogo de Filmes
 Crie um programa o qual:
 
-a) Pergunte ao usuário o nome de cada filme que já viu na vida. Ele digita e clica em "Cadastrar". Na medida em que vai cadastrando, verifique quantos filmes já foram assistidos e exiba abaixo do botão:  "Você já assistiu X filmes". 
+a) Pergunte ao usuário o nome de cada filme que já viu na vida. 
+Ele digita e clica em "Cadastrar". Na medida em que vai cadastrando, 
+verifique quantos filmes já foram assistidos e exiba abaixo do botão:  
+"Você já assistiu X filmes". 
 
-b) Tenha um botão "Listar Filmes", que quando clicado, mostra os filmes cadastrados, um abaixo do outro, em ordem inversa ao que foi cadastrado.  
+b) Tenha um botão "Listar Filmes", que quando clicado, mostra os 
+filmes cadastrados, um abaixo do outro, em ordem inversa ao que foi cadastrado.  
 
-c) Receba um intervalo crescente de dois números, que servem para filtrar a ordem dos filmes vistos de acordo com o mínimo e máximo inserido.
+c) Receba um intervalo crescente de dois números, 
+que servem para filtrar a ordem dos filmes vistos de acordo com o mínimo e máximo inserido.
 
 d) Ao clicar no botão "Filtrar Filmes", deve exibir os filmes em ordem inversa, porém filtrando de acordo com o mínimo e máximo solicitado pelo usuário.
 
@@ -20,6 +25,56 @@ OBS: Se o usuário solicitar "filtrar do filme 4 ao 6", deve exibir em ordem inv
 
  -->
 <body>
-    
+    <center>
+        <p>Quais são os filmes que você já viu na vida</p>
+        <input type="text" id="ipt_filme">
+        <br><br>
+        <button onclick="cadastrar()">Cadastrar</button>
+        <br>
+        <div id="div_mensagem"></div>
+        <br> <br>
+        <button onclick="listar()">Listar Filmes</button>
+        <div id="lista"></div>
+        <span>De: </span><input type="number" id="ipt_inicio"><span> Até: </span><input type="number" id="ipt_fim">
+        <br><br>
+        <button onclick="filtrar()">Filtrar Filmes</button>
+        <div id="f"></div>
+    </center>
 </body>
 </html>
+<script>
+
+    let filmes = [];
+
+    function cadastrar(){
+        let filme = ipt_filme.value;
+        filmes.push(filme);
+        div_mensagem.innerHTML = "";
+
+        div_mensagem.innerHTML += `Você já assistiu ${filmes.length} filmes.`;
+    }
+
+    function listar(){
+        lista.innerHTML = "";
+
+        for (let i = filmes.length - 1; i >= 0; i--){
+            lista.innerHTML += `${filmes[i]} <br>`;
+        }
+    }
+
+    function filtrar(){
+        let inicio = Number(ipt_inicio.value);
+        let fim = Number(ipt_fim.value);
+
+        f.innerHTML = "";
+
+        if(inicio < 1 || fim > filmes.length || inicio > fim){
+            f.innerHTML = "Intervalo inválido!";
+            return;
+        }
+
+        for(let i = inicio - 1; i < fim; i++){
+            f.innerHTML += `${filmes[i]} <br>`;
+        }
+    }
+</script>

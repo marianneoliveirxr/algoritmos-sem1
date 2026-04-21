@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro de Produtos</title>
 </head>
 <!-- 3. Registro de Produtos
 Crie um programa o qual:  
 
 a) Pergunte ao usuário o preço e o nome de um produto; 
 
-b) Ao clicar em "Cadastrar", caso o preço seja positivo e o nome contenha ao menos 3 letras, registra as informações num lugar que o usuário não vê e exibe uma mensagem de sucesso. Caso contrário, exibe uma mensagem explicativa; 
+b) Ao clicar em "Cadastrar", caso o preço seja positivo e o nome contenha ao menos 3 letras,
+ registra as informações num lugar que o usuário não vê e exibe uma mensagem de sucesso. 
+ Caso contrário, exibe uma mensagem explicativa; 
 
-c) Ao clicar em "Atualizar Estoque", deve aparecer a lista de preços e o nome dos produtos cadastrados e  um texto como este abaixo:  
+c) Ao clicar em "Atualizar Estoque", deve aparecer a lista de preços e o nome dos produtos 
+cadastrados e  um texto como este abaixo:  
 
      Você tem AAA produtos cadastrados em estoque:
 
@@ -22,14 +25,103 @@ c) Ao clicar em "Atualizar Estoque", deve aparecer a lista de preços e o nome d
 
      Seu estoque vale R$DDD 
 
-Em AAA é a quantidade de produtos cadastrados pelo usuário, BBB o nome do produto, CCC o preço do produto e DDD é a soma de todos os valores. 
+Em AAA é a quantidade de produtos cadastrados pelo usuário, BBB o nome do produto, 
+CCC o preço do produto e DDD é a soma de todos os valores. 
 
-d) Tenha uma select com as opções "Preços acima de" e "Preços abaixo de" e um campo "Valor".
+d) Tenha uma select com as opções "Preços acima de" e "Preços abaixo de" e um campo
+ "Valor".
 
-e) Ao clicar no botão "Filtrar Produtos", deve exibir a lista de produtos filtrada de acordo com o valor informado no campo e a opção selecionada.
+e) Ao clicar no botão "Filtrar Produtos", deve exibir a lista de produtos filtrada de 
+acordo com o valor informado no campo e a opção selecionada.
 
-OBS: caso escolha "Preços acima de" e o valor seja "20", deve exibir somente produtos cadastrados com preço acima de 20 -->
+OBS: caso escolha "Preços acima de" e o valor seja "20", deve exibir somente produtos 
+cadastrados com preço acima de 20 -->
 <body>
-    
+    <center>
+        <p>Informe o nome do produto:</p>
+        <input type="text" id="ipt_nome">
+        <div id="aviso1"></div>
+        <p>Informe o preço:</p>
+        <input type="number" id="ipt_preco">
+        <div id="aviso2"></div>
+        <br> <br>
+        <button onclick="cadastrar()">Cadastrar</button>
+        <button onclick="atualizar()">Atualizar Estoque</button>
+
+        <br><br>
+
+        <select id="filtro">
+            <option value="acima">Preços acima de</option>
+            <option value="abaixo">Preços abaixo de</option>
+        </select>
+
+        <input type="number" id="ipt_valor">
+        <button onclick="filtrar()">Filtrar Produtos</button>
+
+        <br><br>
+
+        <div id="resultado"></div>
+    </center>
 </body>
 </html>
+<script>
+    let produtos = [];
+    let precos = [];
+
+    function cadastrar(){
+
+        let produto = ipt_nome.value;
+        let preco = Number(ipt_preco.value);
+
+
+        if(produto.length < 3){
+            aviso1.innerHTML = "Informe um nome com pelo menos 3 caracteres";
+            return;
+        }
+
+        if(preco <= 0){
+            aviso2.innerHTML = "Informe um preço positivo";
+            return;
+        }
+
+        produtos.push(produto);
+        precos.push(preco);
+
+        resultado.innerHTML = "Produto cadastrado com sucesso!";
+
+        ipt_nome.value = "";
+        ipt_preco.value = "";
+    }
+
+    function atualizar(){
+        resultado.innerHTML = "";
+        let total = 0;
+
+        resultado.innerHTML += `Você tem ${produtos.length} produtos cadastrados em estoque:<br><br>`;
+
+        for(let i = 0; i < produtos.length; i++){
+            resultado.innerHTML += `${i+1}. ${produtos[i]} - R$${precos[i]} <br>`;
+            total += precos[i];
+        }
+
+        resultado.innerHTML += `<br>Seu estoque vale R$${total}`;
+    }
+
+    function filtrar(){
+        let tipo = select_filtro.value;
+        let valor = Number(ipt_valor.value);
+
+        resultado.innerHTML = "";
+
+        for(let i = 0; i < produtos.length; i++){
+
+            if(tipo == "acima" && precos[i] > valor){
+                resultado.innerHTML += `${produtos[i]} - R$${precos[i]} <br>`;
+            }
+
+            if(tipo == "abaixo" && precos[i] < valor){
+                resultado.innerHTML += `${produtos[i]} - R$${precos[i]} <br>`;
+            }
+        }
+    }
+</script>

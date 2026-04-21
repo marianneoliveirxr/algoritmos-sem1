@@ -26,6 +26,7 @@ OBS: se o usuário informar "de 1 até 5", deve mostrar da primeira música até
     <span>De: </span><input type="number" id="ipt_inicio"><span> Até: </span><input type="number" id="ipt_fim">
     <br><br>
     <button onclick="filtrar()">Filtrar</button>
+    <div id="f"></div>
 </body>
 </html>
 <script>
@@ -51,10 +52,15 @@ OBS: se o usuário informar "de 1 até 5", deve mostrar da primeira música até
         let inicio = Number(ipt_inicio.value);
         let fim = Number(ipt_fim.value);
 
-        inicio = musicas[0];
-        fim = musicas[musicas.length - 1];
+        f.innerHTML = "";
 
-        
+        if(inicio < 1 || fim > musicas.length || inicio > fim){
+            f.innerHTML = "Intervalo inválido!";
+            return;
+        }
 
+        for(let i = inicio - 1; i < fim; i++){
+            f.innerHTML += `${musicas[i]} <br>`;
+        }
     }
 </script>
