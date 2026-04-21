@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Caixa de Músicas</title>
 </head>
 <!-- 1. Caixa de Músicas
  Crie um programa o qual:
@@ -18,6 +18,43 @@ d) Ao clicar em "Filtrar", deve exibir as músicas que estão dentro daquele int
 
 OBS: se o usuário informar "de 1 até 5", deve mostrar da primeira música até a quinta música da lista. -->
 <body>
-    
+    <p>Informe os nomes das músicas que você mais gosta:</p>
+    <input type="text" id="ipt_musica">
+    <button onclick="cadastrar()">Cadastrar</button><br> <br>
+    <button onclick="exibir()">Exibir</button> <br> <br> 
+    <div id="lista_musicas"></div> <br> <br>
+    <span>De: </span><input type="number" id="ipt_inicio"><span> Até: </span><input type="number" id="ipt_fim">
+    <br><br>
+    <button onclick="filtrar()">Filtrar</button>
 </body>
 </html>
+<script>
+    
+    let musicas = [];
+
+    function cadastrar(){
+        let musica = ipt_musica.value;
+        musicas.push(musica);
+        console.log(musicas);
+
+    }
+    
+    function exibir(){
+        lista_musicas.innerHTML = "";
+
+        for(let i = 0; i < musicas.length; i++){
+            lista_musicas.innerHTML += `${musicas[i]} <br>`;
+        }
+    }
+
+    function filtrar(){
+        let inicio = Number(ipt_inicio.value);
+        let fim = Number(ipt_fim.value);
+
+        inicio = musicas[0];
+        fim = musicas[musicas.length - 1];
+
+        
+
+    }
+</script>
