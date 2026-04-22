@@ -6,17 +6,131 @@
     <title>Lista 12</title>
 </head>
 <body>
-    <h2>Somar</h2>
+    <h2>1.1 Somar</h2>
     <p>Primeiro número:</p>
     <input type="number" id="ipt_numero1">
     <p>Segundo número</p>
     <input type="number" id="ipt_numero2">
+    <br> <br>
+    <button onclick="soma()">Somar</button>
     <div id="div_msg"></div>
-    <button onclick="somar()">Somar</button>
+
+    <h2>1.2 Calcular distância entre dois pontos</h2>
+    <p>Informe o valor de X1</p>
+    <input type="number" id="ipt_x1">
+    <p>Informe o valor de Y1</p>
+    <input type="number" id="ipt_y1">
+    <p>Informe o valor de X2</p>
+    <input type="number" id="ipt_x2">
+    <p>Informe o valor de Y2</p>
+    <input type="number" id="ipt_y2">
+    <br><br>
+    <button onclick="distancia()">Calcular Distância</button>
+    <div id="d"></div>
+
+    <h2>1.3 Converter segundos para hora:minuto:segundo</h2>
+    <p>Informe um tempo em segundos:</p>
+    <input type="number" id="ipt_tempo">
+    <br><br>
+    <button onclick="tempo()">Converter</button>
+    <br>
+    <div id="h"></div>
+
+    <h2>1.4 Validar número primo</h2>
+    <p>Informe um número:</p>
+    <input type="number" id="ipt_num">
+    <br><br>
+    <button onclick="primos()">É primo?</button>
+    <br>
+    <div id="p"></div>
+
+    <h2>1.5 Calcular fatorial de um número</h2>
+    <p>Informe um número:</p>
+    <input type="number" id="ipt_numero">
+    <br><br>
+    <button onclick="fatorial()">Calcular Fatorial</button>
+    <br>
+    <div id="f"></div>
+
+    <h2>1.6 Calcular média</h2>
+    <p>Informe um número:</p>
+    <input type="number" id="ipt_n">
+    <button onclick="media()">Calcular Média</button>
+    <br><br>
+    <div id="m"></div>
+
+    <h2>1.7 Calcular média ponderada</h2>
+    <p>Informe um número:</p>
+    <input type="number" id="ipt_n1">
+    <p>Informe o peso:</p>
+    <input type="number" id="ipt_peso">
+    <br><br>
+    <button onclick="ponderada()">Calcular média ponderada</button>
+    <div id="po"></div>
+
+
+
 </body> 
 </html>
 <script src="matematica.js"></script>
 <script>
-    let numero1 = Number(ipt_numero1);
-    let numero2 = Number(ipt_numero2);
+    function soma(){
+        let numero1 = Number(ipt_numero1.value);
+        let numero2 = Number(ipt_numero2.value);
+
+        div_msg.innerHTML = `${somar(numero1, numero2)}`;
+    }
+
+    function distancia(){
+        let x1 = Number(ipt_x1.value);
+        let y1 = Number(ipt_y1.value);
+        let x2 = Number(ipt_x2.value);
+        let y2 = Number(ipt_y2.value);
+
+        //Esse Math.ceil arredonda sem transoformar em "texto", como o toFixed faz
+        d.innerHTML = `${Math.ceil(calcularDistancia(x1, y1, x2, y2))}`;
+    }
+
+    function tempo(){
+        let numero = Number(ipt_tempo.value);
+
+        h.innerHTML = `${converterParaHoraMinutoSegundo(numero)}`;
+    }
+
+
+    function primos(){
+        let numero = Number(ipt_num.value);
+
+        p.innerHTML = `${ePrimo(numero)}`;
+    }
+    
+    function fatorial(){
+        let numero = Number(ipt_numero.value);
+
+        f.innerHTML = `${numero}! = ${calcularFatorial(numero)}`;
+    }
+
+    let vetor = [];
+
+    function media(){
+        let numero = Number(ipt_n.value);
+        vetor.push(numero);
+
+        m.innerHTML = `A média é ${calcularMedia(vetor)}`;
+    }
+
+    let vetorMedias = [];
+    let vetorPesos = [];
+
+    function ponderada(){
+        let numero = Number(ipt_n1.value);
+        vetorMedias.push(numero);
+        
+        let peso = Number(ipt_peso.value);
+        vetorPesos.push(peso);
+
+        
+    }
+    
+
 </script>
