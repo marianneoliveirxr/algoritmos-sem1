@@ -119,6 +119,7 @@
         m.innerHTML = `A média é ${calcularMedia(vetor)}`;
     }
 
+
     let vetorMedias = [];
     let vetorPesos = [];
 
@@ -129,6 +130,10 @@
         let peso = Number(ipt_peso.value);
         vetorPesos.push(peso);
 
+        console.log(vetorMedias);
+        console.log(vetorPesos);
+
+        po.innerHTML = `${Math.ceil(calcularMediaPonderada(vetorMedias, vetorPesos))}`;
         
     }
     

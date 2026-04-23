@@ -156,6 +156,7 @@ function calcularMedia(vetor){
     return media;
 }
 
+
 function calcularMediaPonderada(vetorMedias, vetorPesos){
     if (vetorMedias == null || vetorMedias == undefined){
         console.log(`numero não pode ser nulo ou indefinido`);
@@ -174,14 +175,20 @@ function calcularMediaPonderada(vetorMedias, vetorPesos){
         return;
     }
 
+    let soma = 0;
+    for (let i = 0; i < vetorMedias.length; i++){
+            for (let j = 0; j <vetorPesos.length; j++){
+                if(i == j){
+                    let n = (vetorMedias[i] * vetorPesos[j]);
+                    soma += n;
+                }
+            }
+        }
     
-    for (let i = 0; i < vetorMedias.length; i++) {
-        
+    let somaPesos = 0;
+    for (let k = 0; k < vetorPesos.length; k++){
+        somaPesos += vetorPesos[k];
     }
 
-    let media = soma / vetor.length;
-    return media;
-
-
-
+    return soma / somaPesos;
 }
