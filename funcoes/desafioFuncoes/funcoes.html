@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar funções</title>
+</head>
+<body>
+    <center>
+        <h2>Adicionar ao final</h2>
+        <p>Informe um elemento (caractere ou número): </p>
+        <input type="text" id="ipt_elemento">
+        <button onclick="push()">Adicionar elemento</button>
+        <div id="v"></div>
+
+        <h2>Eliminar do final</h2>
+        <button onclick="pop()">Eliminar último item</button>
+        <div id="p"></div>
+
+        <h2>Remover do Início</h2>
+        <button onclick="shift()">Eliminar primeiro item</button>
+        <div id="k"></div>
+
+        <h2>Adicionar no Início</h2>
+        <input type="text" id="ipt_elemento2">
+        <button onclick="unshift()">Adicionar primeiro item</button>
+        <div id="l"></div>
+
+        <h2>Alterar lista</h2>
+        <p>Informe a posição:</p>
+        <input type="number" id="ipt_position">
+        <p>Novo elemento:</p>
+        <input type="text" id="ipt_elemento3">
+        <button onclick="alterar(true)">Adicionar</button>
+        <p>Informe a quantidade de elementos a remover:</p>
+        <input type="number" id="ipt_qtd">
+        <button onclick="alterar(false)">Remover</button>
+        <div id="i"></div>
+    </center>
+</body>
+</html>
+<script src="calcular.js"></script>
+<script>
+    let elementos = [];
+    let novoElementos = [];
+
+    function push(){
+        let elemento = ipt_elemento.value;
+
+        elementos = adicionarNoFinal(elementos, elemento);
+
+        v.innerHTML = elementos;
+    }
+
+    function pop(){
+        let elemento = ipt_elemento.value;
+
+        elementos = removerDoFinal(elementos);
+
+        p.innerHTML = elementos;
+    }
+
+    function shift(){
+        let elemento = ipt_elemento.value;
+
+        elementos = removerDoInicio(elementos);
+
+        k.innerHTML = elementos;
+    }
+
+    function unshift(){
+        let elemento = ipt_elemento2.value;
+
+        elementos = adicionarNoInicio(elementos, elemento);
+
+        l.innerHTML = elementos;
+    }
+
+
+function alterar(acao){
+    let qtd = Number(ipt_qtd.value);
+    let elemento = ipt_elemento3.value;
+    let position = Number(ipt_position.value);
+
+    if (acao === true) {
+
+        elementos = alterarLista(elementos, position, 0, elemento);
+    } 
+    else {
+
+        elementos = alterarLista(elementos, position, qtd, "");
+    }
+
+    i.innerHTML = elementos;
+}
+</script>
