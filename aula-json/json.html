@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let aluno = {
+        "nome": "Marianne",
+        "idade": 17,
+        "notas": [9, 10],
+        "endereco": {
+            "rua": "Rua X",
+            "numero": 311
+        }
+    };
+
+console.log(aluno);
+console.log(`Meu nome é: ${aluno.nome}`);
+console.log(`Minha idade é: ${aluno["idade"]}`);
+console.log(`Minha primeira nota é: ${aluno.notas[0]}`);
+console.log(`Eu moro na rua: ${aluno.endereco["rua"]}`);
+console.log(`O número da minha casa é: ${aluno.endereco.numero}`);
+
+let informacao = "idade";
+
+console.log(`Acessando ${informacao}: ${aluno[informacao]}`);
+
+//let novaInformacao = "altura";
+
+// Inserindo uma nova chave no JSON
+aluno["altura"] = 1.61; // Adicionando um valor
+aluno.altura //Acessando um valor;
+
+// Alterando o valor da altura
+aluno["altura"] = 2.00;
+
+console.log(aluno);
+
+</script>
