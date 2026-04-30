@@ -3,6 +3,7 @@ function adicionarNoFinal(elementos, elemento) {
 
     for (let i = 0; i < elementos.length; i++) {
         novoElementos[i] = elementos[i];
+        
     }
 
     novoElementos[elementos.length] = elemento;

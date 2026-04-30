@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte 2 Desafio</title>
+</head>
+<body>
+    <center>
+        <h2>Contém elemento</h2>
+        <p>Digite qual fruta você quer encontrar:</p>
+        <input type="text" id="ipt_buscar">
+        <br> <br>
+        <button onclick="inclue()">Contém elemento</button>
+        <div id="div_msg">
+
+        <h2>Buscar primeira ocorrência</h2>
+        <input type="text" id="ipt_busca">
+        <br> <br>
+        <button onclick="primeraOcorrencia()">Buscar primeira posição</button>
+        <div id="msg"></div>
+
+        <h2>Buscar última ocorrência</h2>
+        <input type="text" id="ipt_busca3">
+        <br> <br>
+        <button onclick="ultimaOcorrencia()">Buscar última posição</button>
+        <div id="msg3"></div>
+
+        <h2>Concatenar dois vetores</h2>
+        <button onclick="juntar()">Ver dispensa </button>
+        <div id="msg4"></div>
+
+        <h2>Comparar vetores doces e doces2</h2>
+        <button onclick="compararVetores()">Comparar</button>
+        <div id="msg5"></div>
+
+        <h2>Comparar vetores doces e salgados</h2>
+        <button onclick="compararVetores2()">Comparar</button>
+        <div id="msg6"></div>
+    </center>
+</body>
+</html>
+<script src="matematica.js"></script>
+<script>
+    let frutas = ["banana", "morango", "maca", "kiwi", "uva", "morango"];
+
+    // includes
+    function inclue(){
+        let buscar = ipt_buscar.value;
+
+        let resultado = contemElemento(frutas, buscar);
+        
+        div_msg.innerHTML = "";
+        div_msg.innerHTML = resultado;
+    }
+
+    // indexOf 
+    function primeraOcorrencia(){
+
+        let buscar = ipt_busca.value;
+
+        let resultado = buscarPrimeiraPosicao(frutas, buscar);
+
+        msg.innerHTML = "";
+        msg.innerHTML = `A primeira posição de ${buscar} é ${resultado}`;
+    }
+
+    // lastIndexOf
+
+    function ultimaOcorrencia(){
+
+        let buscar = ipt_busca3.value;
+
+        let resultado = buscarUltimaPosicao(frutas, buscar);
+
+        msg3.innerHTML = "";
+        msg3.innerHTML = `A última posição de ${buscar} é ${resultado}`;
+
+    }
+
+
+    let doces = ["cheesecake", "açaí", "brigadeiro de ninho"];
+    let doces2 = ["cheesecake", "açaí", "brigadeiro de ninho"];
+    let doces3 = ["açaí", "brigadeiro de ninho", "cheesecake"];
+    let salgados = ["hamburguer", "pizza", "coxinha"]
+
+    function juntar(){
+
+        let resultado = concatenar(doces, salgados);
+
+        msg4.innerHTML = resultado;
+
+    }
+
+    function compararVetores(){
+
+        let resultado = comparar(doces, doces2, salgados);
+
+        msg5.innerHTML = resultado;
+
+    }
+
+    function compararVetores2(){
+
+        let resultado = comparar(doces, salgados);
+
+        msg6.innerHTML = resultado;
+
+    }
+
+</script>
