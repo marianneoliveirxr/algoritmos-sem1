@@ -179,6 +179,7 @@
 
     function pesquisarMedia(){
       let buscar = ipt_media.value;
+      let parametro = ipt_media_parametro.value;
 
       div_resultado.innerHTML = "";
 
@@ -219,6 +220,21 @@
 
     function pesquisar(){
       div_resultado.innerHTML = "";
+
+      for (let i = 0; i < filmes.length; i++) {
+      let filme = filmes[i];
+
+      let soma = 0;
+
+        for (let j = 0; j < filme.notas.length; j++) {
+          soma += filme.notas[j];
+        }
+
+        let media = soma / filme.notas.length;
+
+        div_resultado.innerHTML += 
+            `Nome: ${filme.nome} | Diretor: ${filme.diretor} | Ano: ${filme.ano} | Média: ${media.toFixed(1)} <br>`;
     }
+}
 
 </script>
