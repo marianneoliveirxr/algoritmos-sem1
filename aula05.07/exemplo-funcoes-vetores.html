@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funções com vetor</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    // let exibir = (valor, indice) => {
+    //     if(valor % 2 == 0){
+    //         console.log(indice, valor);
+    //     }
+        
+    // }
+
+    // O que o forEarch faz?
+    // O mesmo que o for para percorrer o vetor faz
+    // for(let i = 0; i < numeros.length; i++){
+    //     exibir(numeros[i], i)
+    // }
+
+    // let numeros2 = [[1, 2, 3], [4, 5, 6]];
+    // numeros2.forEach((valor, indice) => { 
+    //     valor.forEach((valor2, indice2)=> {
+    //         console.log(valor2);
+    //     }) 
+    // });
+
+    let numeros = [7, 42, 89, 10, 25, 99];
+
+    // numeros.forEach((valor, indice) => {
+    //     if(valor % 2 == 0){
+    //         console.log(indice, valor);
+    //     }
+    // });
+
+    // Usa o predicate: Recebe um valor e informa se ele é verdadeiro ou falso
+    //Remove os itens do vetor que não correspondem àquela condição
+    numeros.filter((valor) => {
+        return valor % 2 == 0; //já retorna true ao invés de colocar no IF
+    }).forEach(
+        valor => {
+            console.log(valor);
+        }
+    );
+
+    //.map trabalha com todos os itens do vetor 
+    let parOuImpar = numeros.map((valor) =>{
+        if(valor % 2 == 0){
+            return 'Par'
+        } else {
+            return 'Ímpar';
+        }
+    });
+
+    //Considera os itens anteriores e o próximo e realiza alguma operação com esses valores 
+    let somar = numeros.reduce(
+        (anterior, atual) => {
+        return anterior + atual;
+    }
+);
+
+</script>

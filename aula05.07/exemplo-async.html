@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Função async</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //exemplo async
+
+    console.log("Antes do TimeOut");
+
+    //Guarda o valor da promise (pode ou não ser cumprida)
+    let consulta = new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+            resolve("Time Out");
+
+            // reject(new Error("Não foi possível cumprir a promessa :(")); 
+        }, 2000);
+    })
+
+    //A função then executa no momento em que a promessa for concluída
+    //Catch possui a função do reject de exibir um erro
+    consulta.then(valor => {
+        console.log(valor);
+        console.log("Caiu no then");
+
+    }).catch(erro => {
+        console.log("Caiu no catch");
+        console.error(erro);
+    });
+
+    // Não espera o TimeOut executar pra exibir essa mensagem no console
+    console.log("Depois do TimeOut");
+
+
+    // FETCH devolve uma promise 
+    fetch("https://viacep.com.br/ws/03638150/json/")
+    .then(resposta => resposta.json())
+    .then(json => {
+        console.log(json);
+    })
+    .catch(error => {
+        console.error(error);
+    })
+
+
+    //Função assíncrona
+    async function viaCep(){
+        //ao invés de colocar o then, usa o await
+        let resposta = await fetch("https://viacep.com.br/ws/03638150/json/");
+        let json = await resposta.json();
+        console.log(json);
+    }
+
+
+</script>
