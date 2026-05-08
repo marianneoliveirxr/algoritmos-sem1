@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade JSON</title>
+</head>
+<body>
+    <p>Adicionar nova música</p>
+    <input type="text" id="ipt_musica" placeholder="Titulo"> <br>
+    <input type="text" id="ipt_banda" placeholder="Banda"> <br>
+    <input type="text" id="ipt_duracao" placeholder="Duração"> <br>
+    <input type="number" id="ipt_anoLancamento" placeholder="Ano de Lançamento"> <br>
+    <input type="text" id="ipt_avaliacoes" placeholder="Avaliação"> <br>
+    <input type="text" id="ipt_integrantes" placeholder="Integrantes"> <br> <br>
+
+    <button onclick="adicionarMusica()">Adicionar</button>
+
+    <br><br>
+
+    <button onclick="listarMusicas()">Listar todas as músicas</button>
+
+    <p>Remover uma música</p>
+    <input type="text" id="ipt_remover" placeholder="Título">
+    <button onclick="removerMusica()">Remover</button>
+
+    <p>Atualizar ano de lançamento</p>
+    <input type="text" id="ipt_titulo" placeholder="Título"> <br>
+    <input type="number" id="ipt_anoNovo" placeholder="Novo ano"> <br>
+    <button onclick="atualizarAnoLancamento()">Atualizar</button>
+
+    <p>Ver média de avaliações</p>
+    <input type="text" id="ipt_tituloMedia" placeholder="Título da música">
+    <button onclick="mediaAvaliacoes()">Ver média</button>
+
+
+    <p>Em qual banda esse integrante está?</p>
+    <input type="text" id="ipt_integrante" placeholder="Nome do Integrante">
+    <button onclick="buscarBandaPorIntegrante()">Buscar</button>
+
+    <div id="div_resultado"></div>
+
+</body>
+</html>
+<script src="musicas.js"></script>
+<script>
+    function adicionarMusica(){
+        div_resultado.innerHTML = "";
+
+        let titulo = ipt_musica.value;
+        let banda = ipt_banda.value;
+        let duracao = ipt_duracao.value;
+        let anoLancamento = Number(ipt_anoLancamento.value);
+        let avaliacoes = ipt_avaliacoes.value;
+        let integrantes = ipt_integrantes.value;
+
+            const todos_integrantes = integrantes.split(",");
+            const todas_avaliacoes = avaliacoes.split(",");
+
+        nova_musica = {
+            "titulo": titulo,
+            "banda": banda,
+            "duracao": duracao,
+            "anoLancamento": anoLancamento,
+            "avaliacoes": avaliacoes,
+            "integrantes": integrantes
+        }
+
+        musicas.push(nova_musica);
+        div_resultado.innerHTML = "Sua música foi adicionada com sucesso!!";
+    }
+
+    function listarMusicas(){
+        div_resultado.innerHTML = "";
+
+        for (let i = 0; i < musicas.length; i++){
+            let musica = musicas[i];
+
+            div_resultado.innerHTML += 
+            `Título: ${musica.titulo} | Banda: ${musica.banda} | Duração: ${musica.duracao} |
+            Ano de Lançamento: ${musica.anoLancamento} <br>`;
+        }
+    }
+
+    function removerMusica(){
+        div_resultado.innerHTML = "";
+
+        let buscar = ipt_remover.value.toLowerCase();
+
+        for (let i = 0; i < musicas.length; i ++){
+            let musica = musicas[i];
+
+            if (musica.titulo.toLowerCase().includes(buscar)){
+                musicas.pop(musica[i]);
+            }
+        }
+
+    }
+
+    function atualizarAnoLancamento(){
+        div_resultado.innerHTML = "";
+
+        let buscar = ipt_titulo.value.toLowerCase();
+        let novo = Number(ipt_anoNovo.value);
+
+
+        for (let i = 0; i < musicas.length; i++){
+            let musica = musicas[i];
+
+            if(musica.titulo.toLowerCase().includes(buscar)){
+                musica.anoLancamento = novo;
+
+                
+            div_resultado.innerHTML = 
+            `Título: ${musica.titulo} | Banda: ${musica.banda} | Duração: ${musica.duracao} |
+            Ano de Lançamento: ${musica.anoLancamento} <br>`;
+            }
+
+            
+        }
+        
+    }
+
+    function mediaAvaliacoes(){
+        div_resultado.innerHTML = "";
+
+        let buscar = ipt_tituloMedia.value.toLowerCase();
+
+        for(let i = 0; i < musicas.length; i++){
+            let musica = musicas[i];
+
+            if(musica.titulo.toLowerCase().includes(buscar)){
+                let soma = 0;
+
+                for(let j = 0; j < musica.avaliacoes.length; j++){
+                    soma += musica.avaliacoes[j]
+                }
+
+                console.log(soma);
+
+            let media = soma / musica.avaliacoes.length;
+
+            div_resultado.innerHTML += 
+            `Título: ${musica.titulo} | Banda: ${musica.banda}
+            | Média de avaliações: ${media.toFixed(1)} <br>`;
+            }
+        }
+    }
+
+    function buscarBandaPorIntegrante(){
+        div_resultado.innerHTML = "";
+
+        let buscar = ipt_integrante.value.toLowerCase();
+
+        for (let i = 0; i < musicas.length; i++){
+            let musica = musicas[i];
+
+            for (let j = 0; j < musica.integrantes.length; j++){
+
+                if (musica.integrantes[j].toLowerCase().includes(buscar)){
+                    div_resultado.innerHTML = 
+                    `Banda: ${musica.banda}`;
+                }
+            }
+        }
+
+    }
+
+</script>
