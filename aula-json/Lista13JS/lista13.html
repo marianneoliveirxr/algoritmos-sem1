@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista 13 JSON</title>
+  </head>
+  <body>
+    <button onclick="exibirAlunos()">Exibir Alunos</button> <br /><br />
+
+    <button onclick="total()">Ver valor total</button> <br />
+    <br />
+
+    <button onclick="endereco()">Ver endereços</button> <br />
+    <br />
+
+    <input type="number" id="ipt_valor" placeholder="Digite um valor" />
+    <button onclick="depositar()">Depositar</button>
+    <button onclick="sacar()">Sacar</button> <br /><br />
+
+    <button onclick="listaContato()">Ver Lista de Contatos</button> <br />
+    <br />
+
+    <input type="text" id="ipt_categoria" placeholder="Digite uma categoria" />
+    <button onclick="filtrar()">Filtrar</button> <br> <br>
+
+    <input type="text" id="ipt_prato" placeholder="Digite o tipo de prato">
+    <button onclick="tiposPrato()">Ver pratos</button>
+
+    <div id="resultado"></div>
+  </body>
+</html>
+<script src="lista13.js"></script>
+<script>
+  function exibirAlunos() {
+    resultado.innerHTML = "";
+
+    for (let i = 0; i < alunos.length; i++) {
+      let aluno = alunos[i];
+
+      resultado.innerHTML += `Nome: ${aluno.nome} <br>
+                            RA: ${aluno.ra} <br>
+                            Curso: ${aluno.curso} <br>
+                            Semestre: ${aluno.semestre} <br><br>`;
+    }
+  }
+
+  function total() {
+    resultado.innerHTML = "";
+
+    for (let i = 0; i < produtos.length; i++) {
+      let produto = produtos[i];
+      let valor_total = produto.preco * produto.quantidade;
+
+      resultado.innerHTML += `Nome: ${produto.nome} <br>
+                            Preço: ${produto.preco} <br>
+                            Quantidade: ${produto.quantidade} <br>
+                            Valor Total: ${valor_total} <br><br>`;
+    }
+  }
+
+  function endereco() {
+    resultado.innerHTML = "";
+
+    for (let i = 0; i < cliente.length; i++) {
+      let c = cliente[i];
+
+      resultado.innerHTML += `Nome: ${c.nome} <br>
+                              Idade: ${c.idade} <br>
+                              Endereço: <br>
+                              Rua: ${c.endereco.rua}, <br>
+                              Número: ${c.endereco.numero}, <br>
+                              Cidade: ${c.endereco.cidade} <br> <br>`;
+    }
+  }
+
+  function depositar() {
+    resultado.innerHTML = "";
+
+    let valor = Number(ipt_valor.value);
+
+    for (let i = 0; i < conta.length; i++) {
+      let ct = conta[i];
+
+      ct.saldo += valor;
+
+      resultado.innerHTML = `Saldo atual: ${ct.saldo}`;
+    }
+  }
+
+  function sacar() {
+    resultado.innerHTML = "";
+
+    let valor = Number(ipt_valor.value);
+
+    for (let i = 0; i < conta.length; i++) {
+      let ct = conta[i];
+
+      ct.saldo -= valor;
+
+      resultado.innerHTML = `Saldo atual: ${ct.saldo}`;
+    }
+  }
+
+  function listaContato() {
+    resultado.innerHTML = "";
+
+    for (let i = 0; i < contatos.length; i++) {
+      let contato = contatos[i];
+
+      resultado.innerHTML += `Nome: ${contato.nome} <br>
+                              Telefone: ${contato.telefone} <br><br>`;
+    }
+  }
+
+  function filtrar() {
+    resultado.innerHTML = "";
+
+    let buscar = ipt_categoria.value.toLowerCase();
+
+    for (let i = 0; i < produtos2.length; i++) {
+      let produto = produtos2[i];
+
+      if (produto.categoria.toLowerCase().includes(buscar)) {
+        resultado.innerHTML += `Produto: ${produto.nome} <br>
+                              Categoria: ${produto.categoria} <br>
+                              Preço: ${produto.preco} <br> <br>`;
+      }
+    }
+  }
+
+  function tiposPrato(){
+    resultado.innerHTML = "";
+
+    let buscar = ipt_prato.value.toLowerCase();
+
+    for (let i = 0; i < cardapio.length; i++) {
+      let prato = cardapio[i];
+
+      if (prato.tipo.toLowerCase().includes(buscar)) {
+        resultado.innerHTML += `Prato: ${prato.nome} <br>
+                              Tipo: ${prato.tipo} <br>
+                              Preço: ${prato.preco} <br> <br>`;
+      }
+    }
+  }
+</script>
