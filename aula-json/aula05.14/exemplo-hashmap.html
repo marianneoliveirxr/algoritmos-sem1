@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 14/05</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // Exemplo hashmap
+
+  let alunos = [
+    {
+      ra: "0014",
+      nome: "Fabio",
+      idade: 16,
+    },
+    {
+      ra: "1010",
+      nome: "Lucas",
+      idade: 20,
+    },
+    {
+      ra: "1015",
+      nome: "Alessandro",
+      idade: 18,
+    },
+  ];
+
+  //Forma lenta
+
+  function buscarPorRa(ra) {
+    for (let i = 0; i < alunos.length; i++) {
+      if (alunos[i].ra == ra) {
+        return alunos[i];
+      }
+    }
+
+    return "Aluno não encontrado";
+  }
+
+  //Usando hashmap com acesso instantâneo a chave
+    let alunosMap = {
+    "0014": {
+      "nome": "Fabio",
+      "idade": 16,
+    },
+    1010: {
+      "nome": "Lucas",
+      "idade": 20,
+    },
+    1015: {
+      "nome": "Alessandro",
+      "idade": 18,
+    },
+  };
+
+  // Adicionar algo no hasmap
+
+  let novoRa = "7482";
+  let novoNome = "Giu";
+  let novaIdade = 26;
+
+  alunosMap[novoRa] = {
+    "nome": novoNome,
+    "idade": novaIdade
+  }
+
+  function buscarPorRa2(ra){
+
+    //validar se existe 
+    if(!(ra in alunosMap)){
+        return "Aluno não encontrado!";
+    }
+
+    return alunosMap[ra];
+  }
+
+  //Remover algo do hashmap
+
+  function remover(ra){
+    delete alunosMap[ra];
+  };
+
+  //Como ver tudo
+  function listarAlunos(){
+    let chaves = Object.keys(alunosMap);
+
+    for(let i = 0; i < chaves.length; i++){
+        console.log(alunosMap[chaves[i]]);
+    }
+  }
+</script>
