@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galeria de Gatinhos</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #4f1f4d;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #8225a4;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 30px;
+      transition: 0.3s;
+    }
+
+    .gatos-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+    }
+
+    .card-gato {
+      width: 180px;
+      height: 220px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .imagem-gato {
+      width: 100%;
+      height: 150px;
+      background-color: #ff9ada;
+    }
+
+    .info-gato {
+      height: 70px;
+      background-color: #a349ee;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Gatinhos Aleatórios</h1>
+
+  <button onclick="exibirGatinhos()">
+    Exibir Gatinhos
+  </button>
+
+  <div class="gatos-container" id="card"></div>
+
+</body>
+</html>
+
+<script>
+  function exibirGatinhos() {
+
+    card.innerHTML = "";
+
+    fetch("https://api.thecatapi.com/v1/images/search?limit=8")
+      .then((resposta) => resposta.json())
+      .then((json) => {
+
+        for (let i = 0; i < json.length; i++) {
+
+          let gato = json[i];
+
+          card.innerHTML += `
+            <div class="card-gato">
+              <img 
+                class="imagem-gato"
+                src="${gato.url}" 
+                alt="Gatinho"
+              >
+
+              <div class="info-gato">
+                Gatinho ${i + 1}
+              </div>
+            </div>
+          `;
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+</script>

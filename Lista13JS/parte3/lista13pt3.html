@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista 13 pt3</title>
+  </head>
+  <!-- NO EXERCÍCIO 16 precisa de pelo menos 1 for e usar vetor -->
+  <body>
+    <h2>13. Contador de Votos</h2>
+
+    <input type="text" id="ipt_candidato" placeholder="Nome do candidato" />
+    <button onclick="votar()">Votar</button>
+    <button onclick="apurar()">Apurar</button>
+
+    <br />
+
+    <h2>14. Itens Duplicados no Carrinho</h2>
+
+    <input type="text" id="ipt_produto" placeholder="Nome do produto" />
+    <button onclick="adicionarProduto()">Adicionar ao Carrinho</button>
+    <button onclick="verCarrinho()">Ver Carrinho</button>
+
+    <br />
+
+    <h2>15. Primeiro Elemento Único</h2>
+
+    <input type="text" id="ipt_palavra" placeholder="Digite uma palavra" />
+    <button onclick="adicionarPalavra()">Adicionar</button>
+    <button onclick="encontrarUnica()">Encontrar Única</button>
+
+    <br />
+
+    <h2>16. Dois Números que Somam um Alvo</h2>
+
+    <input type="number" id="ipt_numero" placeholder="Número" />
+    <button onclick="adicionarNumero()">Adicionar</button>
+
+    <br /><br />
+
+    <input type="number" id="ipt_alvo" placeholder="Valor alvo" />
+    <button onclick="encontrarPar()">Encontrar Par</button>
+
+    <br />
+
+    <h2>17. Índice de Palavras</h2>
+
+    <input type="text" id="ipt_frase" placeholder="Digite uma frase" />
+    <button onclick="adicionarFrase()">Adicionar Frase</button>
+    <button onclick="construirIndice()">Construir Índice</button>
+
+    <br /><br />
+
+    <input type="text" id="ipt_busca" placeholder="Buscar palavra" />
+    <button onclick="buscar()">Buscar</button>
+
+    <br />
+
+    <h2>18. Cache de Fibonacci</h2>
+
+    <input type="number" id="ipt_fibonacci" placeholder="Digite N" />
+    <button onclick="calcularFibonacci()">Calcular</button>
+
+    <br />
+
+    <h2>19. Verificador de Anagramas</h2>
+
+    <input type="text" id="ipt_texto1" placeholder="Primeiro texto" />
+    <input type="text" id="ipt_texto2" placeholder="Segundo texto" />
+
+    <button onclick="verificarAnagrama()">Verificar</button>
+
+    <br />
+
+    <div id="div_resultado"></div>
+  </body>
+</html>
+<script>
+  const votacao = {};
+
+  function votar() {
+    let nome = ipt_candidato.value;
+
+    if (nome == "") {
+      div_resultado.innerHTML = "Informe um candidato";
+      return;
+    }
+
+    if (nome in votacao) {
+      votacao[nome]++;
+    } else {
+      votacao[nome] = 1;
+    }
+
+    div_resultado.innerHTML = "Voto registrado!";
+  }
+
+  function apurar() {
+    let candidatos = Object.keys(votacao);
+
+    let texto = "";
+    let vencedor = "";
+    let maiorVoto = 0;
+
+    for (let i = 0; i < candidatos.length; i++) {
+      let candidato = candidatos[i];
+      let votos = votacao[candidato];
+
+      texto += `${candidato}: ${votos} voto(s)<br>`;
+
+      if (votos > maiorVoto) {
+        maiorVoto = votos;
+        vencedor = candidato;
+      }
+    }
+
+    texto += `<br>Vencedor: ${vencedor}`;
+
+    div_resultado.innerHTML = texto;
+  }
+
+  let carrinho = [];
+
+  function adicionarProduto() {
+    carrinho.push(ipt_produto.value);
+  }
+
+  function verCarrinho() {
+    let contador = {};
+
+    for (let i = 0; i < carrinho.length; i++) {
+      let produto = carrinho[i];
+
+      if (produto in contador) {
+        contador[produto]++;
+      } else {
+        contador[produto] = 1;
+      }
+    }
+
+    let produtos = Object.keys(contador);
+
+    let texto = "";
+
+    for (let i = 0; i < produtos.length; i++) {
+      let produto = produtos[i];
+
+      texto += `${produto}: ${contador[produto]} unidade(s)<br>`;
+    }
+
+    div_resultado.innerHTML = texto;
+  }
+
+  let palavras = [];
+
+  function adicionarPalavra() {
+    palavras.push(ipt_palavra.value);
+  }
+
+  function encontrarUnica() {
+    let frequencia = {};
+
+    for (let i = 0; i < palavras.length; i++) {
+      let palavra = palavras[i];
+
+      if (palavra in frequencia) {
+        frequencia[palavra]++;
+      } else {
+        frequencia[palavra] = 1;
+      }
+    }
+
+    for (let i = 0; i < palavras.length; i++) {
+      let palavra = palavras[i];
+
+      if (frequencia[palavra] == 1) {
+        div_resultado.innerHTML = palavra;
+        return;
+      }
+    }
+
+    div_resultado.innerHTML = "Nenhuma palavra única encontrada";
+  }
+
+  let numeros = [];
+
+  function adicionarNumero() {
+    numeros.push(Number(ipt_numero.value));
+  }
+
+  function encontrarPar() {
+    let alvo = Number(ipt_alvo.value);
+
+    let vistos = {};
+
+    for (let i = 0; i < numeros.length; i++) {
+      let numero = numeros[i];
+
+      let complemento = alvo - numero;
+
+      if (complemento in vistos) {
+        div_resultado.innerHTML = `${numero} + ${complemento} = ${alvo}`;
+
+        return;
+      }
+
+      vistos[numero] = true;
+    }
+
+    div_resultado.innerHTML = "Nenhum par encontrado";
+  }
+
+  let frases = [];
+
+  function adicionarFrase() {
+    frases.push(ipt_frase.value);
+  }
+
+  function construirIndice() {
+    let indice = {};
+
+    for (let i = 0; i < frases.length; i++) {
+      let palavras = frases[i].split(" ");
+
+      for (let j = 0; j < palavras.length; j++) {
+        let palavra = palavras[j].toLowerCase();
+
+        if (!(palavra in indice)) {
+          indice[palavra] = [];
+        }
+
+        indice[palavra].push(i);
+      }
+    }
+
+    let palavrasIndice = Object.keys(indice);
+
+    let texto = "";
+
+    for (let i = 0; i < palavrasIndice.length; i++) {
+      let palavra = palavrasIndice[i];
+
+      texto += `${palavra} → frases [${indice[palavra]}]<br>`;
+    }
+
+    div_resultado.innerHTML = texto;
+
+    window.indicePalavras = indice;
+  }
+
+  function buscar() {
+    let palavra = ipt_busca.value.toLowerCase();
+
+    if (palavra in indicePalavras) {
+      div_resultado.innerHTML = `Aparece nas frases: [${indicePalavras[palavra]}]`;
+    } else {
+      div_resultado.innerHTML = "Palavra não encontrada";
+    }
+  }
+
+  const cache = {};
+
+  function fibonacci(n) {
+    if (n in cache) {
+      return cache[n];
+    }
+
+    if (n <= 1) {
+      return n;
+    }
+
+    cache[n] = fibonacci(n - 1) + fibonacci(n - 2);
+
+    return cache[n];
+  }
+
+  function calcularFibonacci() {
+    let n = Number(ipt_fibonacci.value);
+
+    let resultado = fibonacci(n);
+
+    let quantidade = Object.keys(cache).length;
+
+    div_resultado.innerHTML = `Fibonacci(${n}) = ${resultado}<br>
+         Valores no cache: ${quantidade}`;
+  }
+
+  function verificarAnagrama() {
+    let texto1 = ipt_texto1.value.toLowerCase().replaceAll(" ", "");
+
+    let texto2 = ipt_texto2.value.toLowerCase().replaceAll(" ", "");
+
+    if (texto1.length != texto2.length) {
+      div_resultado.innerHTML = "Não são anagramas";
+
+      return;
+    }
+
+    let letras = {};
+
+    for (let i = 0; i < texto1.length; i++) {
+      let letra = texto1[i];
+
+      if (letra in letras) {
+        letras[letra]++;
+      } else {
+        letras[letra] = 1;
+      }
+    }
+
+    for (let i = 0; i < texto2.length; i++) {
+      let letra = texto2[i];
+
+      if (!(letra in letras)) {
+        div_resultado.innerHTML = "Não são anagramas";
+
+        return;
+      }
+
+      letras[letra]--;
+    }
+
+    let chaves = Object.keys(letras);
+
+    for (let i = 0; i < chaves.length; i++) {
+      if (letras[chaves[i]] != 0) {
+        div_resultado.innerHTML = "Não são anagramas";
+
+        return;
+      }
+    }
+
+    div_resultado.innerHTML = "São anagramas";
+  }
+</script>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício 04</title>
+  </head>
+  <body>
+    <h2>Desfazer / Refazer (Ctrl+Z / Ctrl+Shift+Z) ✏️</h2>
+    <input type="text" id="ipt_texto" placeholder="Seu texto" />
+    <button onclick="escrever()">Escrever</button>
+    <button onclick="desfazer()">Desfazer</button>
+    <button onclick="refazer()">Refazer</button>
+    <div id="documento_atual"></div>
+    <br />
+    <p>Histórico:</p>
+    <div id="historico"></div>
+  </body>
+</html>
+<script>
+  let acoes = [];
+  let desfeitas = [];
+
+  function escrever() {
+    let texto = ipt_texto.value.trim();
+    documento_atual.innerHTML = "";
+
+    if (texto == "") {
+      documento_atual.innerHTML = "Escreva algo primeiro";
+    } else {
+      acoes.push(texto);
+
+      desfeitas.length = 0;
+
+      for (let i = 0; i < acoes.length; i++) {
+        console.log(acoes[i]);
+        documento_atual.innerHTML += `${acoes[i]} `;
+      }
+    }
+  }
+
+  function desfazer() {
+    documento_atual.innerHTML = "";
+    historico.innerHTML = "";
+
+    if (acoes.length == 0) {
+      documento_atual.innerHTML = `Nada para desfazer`;
+    } else {
+      let desfeito = acoes.pop();
+      desfeitas.push(desfeito);
+
+      alert(`Ação desfeita: ${desfeito}`);
+
+      for (let i = 0; i < acoes.length; i++) {
+        console.log(acoes[i]);
+        documento_atual.innerHTML += `${acoes[i]} `;
+      }
+      for (let j = 0; j < desfeitas.length; j++) {
+        historico.innerHTML += `${desfeitas[j]} <br>`;
+      }
+    }
+  }
+
+  function refazer() {
+    documento_atual.innerHTML = "";
+    historico.innerHTML = "";
+
+    if (desfeitas.length == 0) {
+      documento_atual.innerHTML = "Nada para refazer";
+    } else {
+      let refazer = desfeitas.pop();
+      acoes.push(refazer);
+
+      alert(`Ação refeita: ${refazer}`);
+
+      for (let i = 0; i < acoes.length; i++) {
+        console.log(acoes[i]);
+        documento_atual.innerHTML += `${acoes[i]} `;
+      }
+      for (let j = 0; j < desfeitas.length; j++) {
+        historico.innerHTML += `${desfeitas[j]} <br>`;
+      }
+    }
+  }
+</script>

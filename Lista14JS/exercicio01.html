@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício 1</title>
+  </head>
+  <body>
+    <h2>Fila de Atendimento 🏦</h2>
+    <input type="text" id="ipt_cliente" placeholder="Digite o seu nome" />
+    <button onclick="entrarNaFila()">Entrar na fila</button>
+    <button onclick="chamarProximo()">Chamar o Próximo</button>
+    <div id="div_fila_atual"></div> <br>
+    <div id="clientes_atendidos"></div>
+    <div id="historico"></div>
+  </body>
+</html>
+<script>
+  let fila = [];
+  let posicao = 0;
+  let atendidos = [];
+
+  function entrarNaFila() {
+    let nome = ipt_cliente.value;
+    console.log(nome);
+
+    if (nome == "") {
+      div_fila_atual.innerHTML = "Preencha o campo nome";
+    } else {
+      fila.push(nome);
+
+      for (let i = 0; i < fila.length; i++) {
+        if (fila.includes(nome)) {
+          posicao = i + 1;
+        }
+      }
+
+      div_fila_atual.innerHTML += `${nome} entrou na fila. Posição: ${posicao} <br>`;
+    }
+  }
+
+  function chamarProximo(){
+
+
+    clientes_atendidos.innerHTML = "";
+    historico.innerHTML = "";
+
+    if (fila.length == 0){
+        clientes_atendidos.innerHTML = "Não há clientes na fila."
+    }
+    else {
+        let proximo = fila.shift();
+        clientes_atendidos.innerHTML = `Chamando: ${proximo}. Restam ${fila.length} pessoa(s) na fila.`
+
+        atendidos.push(proximo);
+
+        for (let i = 0; i < atendidos.length; i++){
+            historico.innerHTML += `Clientes atendidos: ${atendidos[i]} <br>`
+        }
+        
+    }
+    
+
+
+  }
+</script>

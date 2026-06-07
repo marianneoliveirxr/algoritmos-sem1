@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  let fila = [];
+
+  fila.push("Manoel");
+  fila.push("Lucas");
+  fila.push("Otavio");
+  fila.push("Isabella");
+
+  console.log(fila);
+
+  //Enquanto houver elementos na fila, chama o próximo
+  while (fila.length > 0) {
+    //Remove e retorna o valor que ele removeu
+    let proximo = fila.shift();
+    console.log("Próximo a ser atendido: " + proximo);
+    console.log(fila);
+  }
+</script>

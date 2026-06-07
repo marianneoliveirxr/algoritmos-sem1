@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+</head>
+<body>
+    <h2>2. Fila de Impressão 🖨️</h2>
+    <input type="text" id="ipt_nome" placeholder="Nome do Documento">
+    <input type="number" id="numero_paginas" placeholder="Número de páginas">
+    <button onclick="enviarImpressora()">Enviar para Impressora</button>
+    <button onclick="imprimir()">Imprimir Próximo</button>
+    <div id="documentos"></div>
+    <div id="proximos"></div>
+</body>
+</html>
+<script>
+    let fila = [];
+    let paginas = [];
+    let impressos = [];
+
+    function enviarImpressora(){
+        documentos.innerHTML = "";
+        let nome = ipt_nome.value;
+        console.log(nome);
+
+        let npaginas = Number(numero_paginas.value);
+        console.log(npaginas)
+
+        if(nome == "" || npaginas == ""){
+            documentos.innerHTML = "Preencha todos os campos";
+        }
+        else {
+            fila.push(nome);
+            paginas.push(npaginas);
+
+            documentos.innerHTML = `Documento: ${nome} adicionado à fila (${npaginas} páginas).`
+            console.log(fila.length)
+        }
+    }
+
+    function imprimir(){
+        if (fila.length == 0){
+            proximos.innerHTML = "Nenhum documento na fila de impressão.";
+        }
+        else {
+            let proximo = fila.shift();
+            let proximo_pagina = paginas.shift();
+            impressos.push(proximo)
+
+            documentos.innerHTML = "";
+            proximos.innerHTML = `Imprimindo: ${proximo} (${proximo_pagina} páginas). Documentos restantes: ${fila.length}.`
+
+        }
+
+        
+
+    }
+</script>

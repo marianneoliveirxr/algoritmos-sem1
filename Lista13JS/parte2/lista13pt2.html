@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Tradutor de Dias da Semana</h2>
+    <input type="text" id="ipt_dia" placeholder="Dia da semana em inglês" />
+    <button onclick="traducao()">Traduzir</button>
+    <div id="div_dia"></div>
+
+    <h2>Tabela de Descontos por Categoria</h2>
+    <p>Informe o valor da compra:</p>
+    <input type="number" id="ipt_valor_compra" />
+    <select name="" id="ipt_tipo">
+      <option value="">Selecione o tipo</option>
+      <option value="estudante">Estudante</option>
+      <option value="idoso">Idoso</option>
+      <option value="professor">Professor</option>
+      <option value="comum">Comum</option>
+    </select>
+    <button onclick="calcularDesconto()">Calcular</button>
+    <div id="div_compra"></div>
+
+    <h2>Consulta de Notas por RA</h2>
+    <input type="number" id="ipt_ra" placeholder="RA" />
+    <button onclick="buscarRA()">Consultar</button>
+    <div id="div_ra"></div>
+
+    <h2>Cardápio por Código</h2>
+    <input
+      type="text"
+      id="ipt_codigo"
+      maxlength="3"
+      placeholder="Código: piz"
+    />
+    <button onclick="adicionarCarrinho()">Adicionar</button>
+    <div id="div_carrinho"></div>
+
+    <h2>Agenda de Contatos com CRUD</h2>
+    <input
+      type="number"
+      id="ipt_telefone"
+      placeholder="11900000000"
+      maxlength="11"
+    /> <br>
+    <input type="text" id="ipt_nome" placeholder="Seu Nome" /> <br>
+    <input type="text" id="ipt_email" placeholder="email@exemplo.com"/> <br> <br>
+    <button onclick="addContato()">Adicionar Contato</button> <br>
+    <button onclick="buscarTelefone()">Buscar telefone</button> <br>
+    <button onclick="removerContato()">Remover contato</button> <br>
+    <button onclick="listarContatos()">Listar contatos</button> <br>
+
+    <div id="div_resultado"></div>
+  </body>
+</html>
+<script>
+  const dias = {
+    sunday: "Domingo",
+    monday: "Segunda-feira",
+    tuesday: "Terça-feira",
+    wednesday: "Quarta-feira",
+    thursday: "Quinta-feira",
+    friday: "Sexta-feira",
+    saturday: "Sábado",
+  };
+
+  function traducao() {
+    div_dia.innerHTML = "";
+
+    let dia = ipt_dia.value.toLowerCase();
+
+    if (!(dia in dias)) {
+      div_dia.innerHTML = "Dia não encontrado";
+    } else {
+      div_dia.innerHTML = `${dias[dia]}`;
+    }
+  }
+
+  const descontos = {
+    estudante: 0.2,
+    idoso: 0.15,
+    professor: 0.1,
+    comum: 0.0,
+  };
+
+  function calcularDesconto() {
+    div_compra.innerHTML = "";
+
+    let valor_compra = Number(ipt_valor_compra.value);
+
+    let tipo = ipt_tipo.value;
+
+    let desconto = descontos[tipo];
+
+    let valor_total = valor_compra - desconto;
+
+    div_compra.innerHTML = `Valor Final: R$${valor_total.toFixed(2)}`;
+  }
+
+  const turma = {
+    1001: { nome: "Lucas", nota: 3.5 },
+    1002: { nome: "Otavio", nota: 1.0 },
+    1003: { nome: "Amanda", nota: 8.0 },
+    1004: { nome: "Marianne", nota: 10.0 },
+    1005: { nome: "Isabella", nota: 9.0 },
+  };
+
+  function buscarRA() {
+    div_ra.innerHTML = "";
+
+    let ra = ipt_ra.value;
+
+    if (!(ra in turma)) {
+      div_ra.innerHTML = "RA não encontrado!";
+    } else {
+      div_ra.innerHTML = `Nome: ${turma[ra].nome} | Nota: ${turma[ra].nota}`;
+    }
+  }
+
+  const cardapio = {
+    HAM: { nome: "Hambúrguer Clássico", preco: 25.9 },
+    ACA: { nome: "Açaí 500ml", preco: 18.0 },
+    BAT: { nome: "Batata Frita", preco: 40.0 },
+    PIZ: { nome: "Pizza", preco: 49.99 },
+  };
+
+  let pedidos = "";
+  let total = 0;
+
+  function adicionarCarrinho() {
+    div_carrinho.innerHTML = "";
+
+    let codigo = ipt_codigo.value.toUpperCase();
+
+    if (!(codigo in cardapio)) {
+      div_carrinho.innerHTML = "Código do prato não encontrado";
+    } else {
+      pedidos += `${codigo} - R$${cardapio[codigo].preco} <br>`;
+      total += cardapio[codigo].preco;
+
+      console.log(total);
+
+      div_carrinho.innerHTML = `${pedidos} <br> Total a pagar: R$${total.toFixed(2)}`;
+    }
+  }
+
+  const contatos = {
+    11969325649: {
+      nome: "Marianne",
+      email: "marianne@gmail.com",
+    },
+    11987654320: {
+      nome: "Amanda",
+      email: "amanda@gmail.com",
+    },
+    11975362345: {
+      nome: "Isabella",
+      email: "isabella@gmail.com",
+    },
+  };
+
+  function addContato() {
+    div_resultado.innerHTML = "";
+
+    let nome = ipt_nome.value;
+    let email = ipt_email.value;
+    let telefone = Number(ipt_telefone.value);
+
+    if (
+      !(nome in cardapio) ||
+      !(email in cardapio) ||
+      !(telefone in cardapio)
+    ) {
+
+      contatos[telefone] = {
+        nome: nome,
+        email: email,
+      };
+
+      div_resultado.innerHTML = `Contato adicionado com sucesso!! <br>
+                                  Telefone: ${telefone} <br>
+                                  Nome: ${contatos[telefone].nome} <br>
+                                  Email: ${contatos[telefone].email}`
+
+    } else {
+      div_resultado.innerHTML = `Não foi possível adicionar esse contato pois ele já existe!`
+    }
+  }
+
+  function buscarTelefone(){
+    div_resultado.innerHTML = "";
+
+    let telefone = Number(ipt_telefone.value);
+
+
+    if(!(telefone in contatos)){
+      div_resultado.innerHTML = `Telefone não encontrado`
+    }
+    else {
+      div_resultado.innerHTML = `Telefone: ${telefone} <br>
+                                Nome: ${contatos[telefone].nome} <br>
+                                Email: ${contatos[telefone].email} <br>`
+    }
+
+  }
+
+  function removerContato(){
+    div_resultado.innerHTML = "";
+    let telefone = Number(ipt_telefone.value);
+
+    if (!(telefone in contatos)){
+      div_resultado.innerHTML = `Telefone não encontrado`
+    }
+    else{
+      delete contatos[telefone];
+      div_resultado.innerHTML = `Telefone removido com sucesso!`
+
+      console.log(contatos);
+    }
+  }
+
+  function listarContatos(){
+    div_resultado.innerHTML = "";
+
+    let telefones = Object.keys(contatos);
+
+    for (let i = 0; i < telefones.length; i++){
+
+      let telefone = telefones[i];
+
+      div_resultado.innerHTML += `Telefone: ${telefone} <br>
+                                Nome: ${contatos[telefone].nome} <br>
+                                Email: ${contatos[telefone].email} <br> <br>`
+    }
+  }
+
+</script>
