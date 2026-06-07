@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Matriz</title>
+</head>
+
+<body>
+    <button onclick="exibirMatriz()">
+        Exibir Matriz
+    </button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    let matriz = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
+
+    function exibirMatriz() {
+        div_mensagem.innerHTML = "";
+        for (let linha = 0; linha < matriz.length; linha++) {
+            div_mensagem.innerHTML +=
+                `<br>Acessando <span style="color: blue">linha ${linha + 1}</span>: <b>${matriz[linha]}</b><br>`;
+
+            for (let coluna = 0; coluna < matriz[linha].length; coluna++) {
+                div_mensagem.innerHTML +=
+                    `Acessando <span style="color: red">coluna ${coluna + 1}</span> da <span style="color: blue">linha ${linha + 1}</span>: <b>${matriz[linha][coluna]}</b><br>`
+            }
+        }
+    }
+</script>
