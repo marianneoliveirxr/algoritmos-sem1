@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+</head>
+<body>
+    <button onclick="calcularMatriz()">Calcular (versão normal)</button>
+    <button onclick="calcularDesafio()">Calcular (desafio: 2 fors)</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let matriz = [
+        [4, 7, 2],
+        [9, 1, 5],
+        [3, 8, 6]
+    ];
+ 
+    function calcularMatriz() {
+        div_mensagem.innerHTML = "";
+ 
+        let soma = 0;
+        let maior = matriz[0][0];
+        let totalElementos = 0;
+ 
+        for (let linha = 0; linha < matriz.length; linha++) {
+            div_mensagem.innerHTML += `<br>Linha ${linha + 1}:<br>`;
+ 
+            for (let coluna = 0; coluna < matriz[linha].length; coluna++) {
+                let valor = matriz[linha][coluna];
+ 
+                soma += valor;
+                totalElementos++;
+ 
+                if (valor > maior) {
+                    maior = valor;
+                }
+ 
+                div_mensagem.innerHTML += `&nbsp;&nbsp;coluna ${coluna + 1}: ${valor}<br>`;
+            }
+        }
+ 
+        let media = soma / totalElementos;
+ 
+        div_mensagem.innerHTML += `<br>Soma: ${soma}<br>`;
+        div_mensagem.innerHTML += `Média: ${media.toFixed(2)}<br>`;
+        div_mensagem.innerHTML += `Maior número: ${maior}<br>`;
+    }
+ 
+    function calcularDesafio() {
+        div_mensagem.innerHTML = "";
+ 
+        let listaPlana = matriz.flat();
+ 
+        let soma = 0;
+        let maior = listaPlana[0];
+ 
+        for (let i = 0; i < listaPlana.length; i++) {
+            soma += listaPlana[i];
+            if (listaPlana[i] > maior) {
+                maior = listaPlana[i];
+            }
+        }
+ 
+        let media = soma / listaPlana.length;
+
+        div_mensagem.innerHTML += "Desafio (2 fors):<br><br>";
+ 
+        for (let linha = 0; linha < matriz.length; linha++) {
+            div_mensagem.innerHTML += `Linha ${linha + 1}: ${matriz[linha].join(" | ")}<br>`;
+        }
+ 
+        div_mensagem.innerHTML += `<br>Soma: ${soma}<br>`;
+        div_mensagem.innerHTML += `Média: ${media.toFixed(2)}<br>`;
+        div_mensagem.innerHTML += `Maior número: ${maior}<br>`;
+    }
+</script>

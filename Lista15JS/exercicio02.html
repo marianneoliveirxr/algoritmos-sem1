@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    <button onclick="exibirTabuleiro()">Exibir Tabuleiro</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let tabuleiro = [
+        ["O", "O", "X", "O", "O"],
+        ["X", "O", "O", "O", "X"],
+        ["O", "O", "X", "O", "O"],
+        ["O", "X", "O", "O", "O"],
+        ["X", "O", "O", "X", "O"]
+    ];
+ 
+    function exibirTabuleiro() {
+        div_mensagem.innerHTML = "";
+ 
+        for (let linha = 0; linha < tabuleiro.length; linha++) {
+            let linhaFormatada = "";
+ 
+            for (let coluna = 0; coluna < tabuleiro[linha].length; coluna++) {
+                if (coluna > 0) {
+                    linhaFormatada += " ";
+                }
+                linhaFormatada += tabuleiro[linha][coluna];
+            }
+ 
+            div_mensagem.innerHTML += linhaFormatada + "<br>";
+        }
+    }
+</script>

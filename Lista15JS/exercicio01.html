@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01</title>
+</head>
+<body>
+    <button onclick="exibirCinema()">Exibir Mapa do Cinema</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    let cinema = [
+        ["Livre",   "Ocupado", "Livre",   "Livre"],
+        ["Ocupado", "Ocupado", "Livre",   "Livre"],
+        ["Livre",   "Livre",   "Ocupado", "Ocupado"]
+    ];
+ 
+    function exibirCinema() {
+        div_mensagem.innerHTML = "";
+ 
+        for (let linha = 0; linha < cinema.length; linha++) {
+            let assentosFormatados = "";
+ 
+            for (let coluna = 0; coluna < cinema[linha].length; coluna++) {
+                if (coluna > 0) {
+                    assentosFormatados += " | ";
+                }
+                assentosFormatados += cinema[linha][coluna];
+            }
+ 
+            div_mensagem.innerHTML += `Linha ${linha + 1}: ${assentosFormatados}<br>`;
+        }
+    }
+</script>

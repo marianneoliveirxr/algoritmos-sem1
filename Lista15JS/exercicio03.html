@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 03</title>
+</head>
+<body>
+    <button onclick="exibirAgenda()">Exibir Agenda</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    
+    let agenda = [
+        ["Estudar",  "Trabalho", "Academia"],
+        ["Trabalho", "Trabalho", "Estudar"],
+        ["Academia", "Livre",    "Estudar"],
+        ["Trabalho", "Estudar",  "Livre"],
+        ["Academia", "Trabalho", "Livre"],
+        ["Livre",    "Academia", "Estudar"],
+        ["Livre",    "Livre",    "Academia"]
+    ];
+ 
+    let dias     = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"];
+    let horarios = ["Manhã", "Tarde", "Noite"];
+ 
+    function exibirAgenda() {
+        div_mensagem.innerHTML = "";
+ 
+        let totalLivres = 0;
+        let contagem = { "Estudar": 0, "Trabalho": 0, "Academia": 0, "Livre": 0 };
+ 
+        for (let linha = 0; linha < agenda.length; linha++) {
+            div_mensagem.innerHTML += `<br><b>${dias[linha]}:</b><br>`;
+ 
+            for (let coluna = 0; coluna < agenda[linha].length; coluna++) {
+                let atividade = agenda[linha][coluna];
+ 
+                if (atividade === "Livre") totalLivres++;
+                contagem[atividade]++;
+ 
+                div_mensagem.innerHTML += `&nbsp;&nbsp;${horarios[coluna]}: ${atividade}<br>`;
+            }
+        }
+ 
+        let maisFrequente = "";
+        let maiorContagem = 0;
+ 
+        for (let atividade in contagem) {
+            if (contagem[atividade] > maiorContagem) {
+                maiorContagem = contagem[atividade];
+                maisFrequente = atividade;
+            }
+        }
+ 
+        div_mensagem.innerHTML += `<br>Horários livres: ${totalLivres}<br>`;
+        div_mensagem.innerHTML += `Atividade mais frequente: ${maisFrequente} (${maiorContagem}x)<br>`;
+    }
+</script>
